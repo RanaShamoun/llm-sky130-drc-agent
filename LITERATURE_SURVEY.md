@@ -8,7 +8,6 @@ All papers below are within the last 1–3 years (2023–2026) and directly rele
 **Kim, Byun, Hwang, Park, Song — Seoul National University / Samsung AI Center. ICML 2026.**
 
 The closest prior work to this project. Introduces a large-scale benchmark (1,000 rule-to-script tasks, ~14,000 evaluation GDS layouts) for LLM agents that translate natural-language SKY130-style design rules into executable KLayout DRC scripts, scored by execution correctness rather than code similarity. Also proposes SplitTester, an execution-feedback-driven method for selecting the best candidate script among several LLM-generated options.
-
 **Relevance:** confirms the DRC-interpretation space is active and well-resourced at a top ML venue; this project deliberately does *not* compete on script generation (Rule2DRC's task) and instead targets rule interpretation/explanation using an already-correct DRC engine as a tool, a different sub-problem within the same domain.
 
 ### 2. DRC-Coder: Automated DRC Checker Code Generation Using LLM Autonomous Agent
@@ -58,7 +57,7 @@ A recent survey specifically on *agentic* (as opposed to single-shot prompting) 
 
 Introduces a benchmark for LLM agents on post-layout tasks including DRC *violation fixing* (not just detection), evaluated hierarchically against PPA (power/performance/area) convergence criteria.
 
-**Relevance:** a closely adjacent but distinct task — fixing violations rather than explaining them — that reinforces this project's chosen boundary: verdict + grounded explanation, not automated layout repair, is the appropriate scope for a solo, 11-week project.
+**Relevance:** a closely adjacent but distinct task — fixing violations rather than explaining them — that reinforces this project's chosen boundary: verdict + grounded explanation, not automated layout repair, is the appropriate scope for 11-week project.
 
 ### 9. LLM for EDA in Front-End Design: Challenges and Opportunities
 **arXiv 2026.**
@@ -71,4 +70,4 @@ A recent overview paper cataloguing LLM applications and open challenges across 
 
 ## Summary Takeaway
 
-The literature confirms that "LLM + DRC" is an active research area with recent top-venue work (Rule2DRC at ICML 2026, DRC-Coder at ISPD 2025 from NVIDIA), which is a meaningfully different picture than the initial "blue ocean" assumption behind this project's earliest framing. However, essentially all closely related work targets **DRC script/checker code generation** as the LLM's task. This project instead treats the DRC engine as a fixed, already-correct tool and focuses the LLM's contribution on **rule interpretation, grounded explanation, and multi-model cost/latency evaluation** — a genuinely different sub-problem that has not been the focus of the papers surveyed above. See `NOVELTY_AUDIT.md` for the full critique and repositioning rationale.
+The literature confirms that "LLM + DRC" is an active research area with recent top-venue work (Rule2DRC at ICML 2026, DRC-Coder at ISPD 2025 from NVIDIA), which is a meaningfully different picture than the initial "blue ocean" assumption behind this project's earliest framing. However, essentially all closely related work targets **DRC script/checker code generation** as the LLM's task. This project instead treats the DRC engine as a fixed, already-correct tool and focuses the LLM's contribution on **rule interpretation, grounded explanation, and multi-model cost/latency evaluation** — a genuinely different sub-problem that has not been the focus of the papers surveyed above. See `AI_NOVELTY_FEASIBILITY.md` for the full critique and repositioning rationale.

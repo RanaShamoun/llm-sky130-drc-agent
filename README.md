@@ -1,6 +1,7 @@
 # An LLM Agent for SKY130 Design Rule Interpretation & Explanation
 
-**Team:** [Rana Shamoun] 
+**Team members:** Rana Shamoun
+                  Giovanni Cascone
 
 **Track:** Option 2 — LLMs + AI Agent System
 
@@ -19,10 +20,10 @@ Manufacturable chip layouts must satisfy thousands of geometry-based design rule
 ```
 /proposal/          - Project proposal document (Canvas submission)
 /literature/         - Literature & SOTA survey (this repo, see LITERATURE_SURVEY.md)
-/novelty-audit/       - AI novelty & feasibility audit (see NOVELTY_AUDIT.md)
+/novelty-audit/       - AI novelty & feasibility audit (see AI_NOVELTY_FEASIBILITY.md)
 /spike/             - Feasibility spike documentation and reproducible commands
 /src/                - Agent implementation (Planner / Executor / verification)
 /eval/               - Evaluation set generation and labeling scripts
 ```
 
-See `LITERATURE_SURVEY.md` and `NOVELTY_AUDIT.md` in this repository for the required literature review and AI critique deliverables.
+See `LITERATURE_SURVEY.md` and `AI_NOVELTY_FEASIBILITY.md` in this repository for the required literature review and AI critique deliverables.

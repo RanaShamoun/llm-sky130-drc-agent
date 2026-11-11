@@ -31,6 +31,9 @@ changes = subprocess.check_output(
 if changes:
     sys.exit("Source checkout has edits; restore or use a separate clean checkout.")
 subprocess.run(
+    ["git", "-C", str(dest), "config", "core.autocrlf", "false"], check=True
+)
+subprocess.run(
     [
         "git",
         "-C",
@@ -45,6 +48,11 @@ subprocess.run(
 )
 subprocess.run(
     ["git", "-C", str(dest), "checkout", "--detach", lock["revision"]], check=True
+)
+for relative in lock["files"]:
+    (dest / relative).unlink(missing_ok=True)
+subprocess.run(
+    ["git", "-C", str(dest), "checkout-index", "--all", "--force"], check=True
 )
 for relative, expected in lock["files"].items():
     actual = hashlib.sha256((dest / relative).read_bytes()).hexdigest()

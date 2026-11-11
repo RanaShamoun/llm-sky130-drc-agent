@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DRC Explain</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><h1>DRC Explain</h1><span>SKY130 / LOCAL WORKBENCH</span><span id="status" role="status">Ready</span></header>
+<main>
+<section class="input"><h2>Layout Query</h2><label for="case">Public layout</label><select id="case"></select><label for="question">Engineering question</label><textarea id="question" rows="5" maxlength="8000"></textarea><button id="run" type="button">Run Check</button><p id="error" role="alert"></p><dl><dt>Top Cell</dt><dd id="cell">TOP</dd><dt>Units</dt><dd>um</dd><dt>Model</dt><dd>qwen3:8b</dd></dl></section>
+<section class="geometry"><div class="section-title"><h2>Layout Geometry</h2><span id="shape-count"></span></div><canvas id="layout" aria-label="Selected layout polygons"></canvas><div class="legend"><span class="m1">metal1</span><span class="m2">metal2</span><span class="via">via</span></div></section>
+<section class="answer"><div class="section-title"><h2>Verdict</h2><strong id="verdict">Pending</strong></div><p id="explanation">No result yet.</p><div id="checks"></div><h3>Selected Rules</h3><div id="selections"></div><dl id="metrics"></dl></section>
+<section class="trace"><h2>Tool Trace</h2><div id="trace">No calls yet.</div></section>
+</main>
+<footer>SKY130 pinned manufacturing deck <span>Selected rules only. Not tape-out certification.</span></footer>
+</body></html>

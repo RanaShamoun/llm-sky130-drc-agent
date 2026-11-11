@@ -15,7 +15,7 @@ for file, expected in lock["files"].items():
     if sha256(source / file) != expected:
         raise RuntimeError(f"Pinned source mismatch: {file}")
 deck = source / "tech/sky130/drc/sky130A_mr.drc"
-text = deck.read_text()
+text = deck.read_text(encoding="utf-8")
 outputs = {
     m[1]: (m[2], text[: m.start()].count("\n") + 1)
     for m in re.finditer(r'\.output\(\s*"([^"]+)"\s*,\s*"([^"]+)"\s*\)', text)

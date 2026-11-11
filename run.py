@@ -1,6 +1,7 @@
 """Simple project commands. Run `python run.py --help` from any directory."""
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -10,7 +11,11 @@ sys.path.insert(0, str(ROOT / "src"))
 
 
 def python(*arguments):
-    subprocess.run([sys.executable, *arguments], cwd=ROOT, check=True)
+    environment = os.environ.copy()
+    environment["PYTHONPATH"] = os.pathsep.join(
+        [str(ROOT / "src"), environment.get("PYTHONPATH", "")]
+    )
+    subprocess.run([sys.executable, *arguments], cwd=ROOT, env=environment, check=True)
 
 
 def main():
@@ -31,18 +36,24 @@ def main():
             "agent-smoke",
             "serve-local",
             "pull-local",
+            "experiments",
+            "ui",
         ],
         help="See README.md for the normal workflow.",
     )
     args, extra = parser.parse_known_args()
-    if extra and args.command != "agent":
-        parser.error("Extra arguments are supported only for the agent command.")
+    if extra and args.command not in {"agent", "experiments", "ui"}:
+        parser.error("Extra arguments are supported only for agent, experiments, and ui.")
     try:
         if args.command == "check":
             python("-m", "pytest", "-q")
             python("scripts/verify_benchmark.py")
         elif args.command == "demo":
             python("examples/use_tools.py")
+        elif args.command == "experiments":
+            python("-m", "drc_explain.experiments", *extra)
+        elif args.command == "ui":
+            python("-m", "drc_explain.ui", *extra)
         elif args.command == "serve-local":
             from drc_explain.local_runtime import ensure_server
 

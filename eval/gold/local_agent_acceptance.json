@@ -1,0 +1,152 @@
+{
+  "scope": "Four real local-model integration examples, not benchmark accuracy or a three-model comparison.",
+  "provider": "ollama-local",
+  "model": "qwen3:8b",
+  "accepted_examples": [
+    {
+      "scenario": "spacing_failure",
+      "run_id": "576e1b648c334015aeafe2760511e934",
+      "question": "Check ordinary width and spacing of metal1 routing.",
+      "gds_path": "benchmark/b004.gds",
+      "verdict": "FAIL",
+      "verification": {
+        "accepted": true,
+        "scope": "Rule IDs, statuses, limits, marker measurements, and overall verdict match tool evidence. Selection relevance/completeness and free-text selection justifications are not certified."
+      },
+      "selected_rules": [
+        "m1.1",
+        "m1.2"
+      ],
+      "model_turn_count": 4,
+      "tool_call_count": 3,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 10023,
+        "output_tokens": 520
+      },
+      "latency_s": 15.384763,
+      "provider_metadata": {
+        "cloud_fallback": false,
+        "endpoint": "http://127.0.0.1:11434",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "model_size_bytes": 5225388164,
+        "runtime": "ollama",
+        "runtime_version": "0.40.16"
+      },
+      "api_cost_usd": 0
+    },
+    {
+      "scenario": "spacing_pass",
+      "run_id": "4bca15ac41124fc3b3b49bef68e1d175",
+      "question": "Check ordinary width and spacing of metal1 routing.",
+      "gds_path": "benchmark/b005.gds",
+      "verdict": "PASS",
+      "verification": {
+        "accepted": true,
+        "scope": "Rule IDs, statuses, limits, marker measurements, and overall verdict match tool evidence. Selection relevance/completeness and free-text selection justifications are not certified."
+      },
+      "selected_rules": [
+        "m1.1",
+        "m1.2"
+      ],
+      "model_turn_count": 4,
+      "tool_call_count": 3,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 9702,
+        "output_tokens": 565
+      },
+      "latency_s": 14.23399,
+      "provider_metadata": {
+        "cloud_fallback": false,
+        "endpoint": "http://127.0.0.1:11434",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "model_size_bytes": 5225388164,
+        "runtime": "ollama",
+        "runtime_version": "0.40.16"
+      },
+      "api_cost_usd": 0
+    },
+    {
+      "scenario": "corner_enclosure_failure",
+      "run_id": "6422947a8c0b4425a6fea7beec9e3618",
+      "question": "Check minimum and corner-based enclosure of this via by metal1 only.",
+      "gds_path": "benchmark/b039.gds",
+      "verdict": "FAIL",
+      "verification": {
+        "accepted": true,
+        "scope": "Rule IDs, statuses, limits, marker measurements, and overall verdict match tool evidence. Selection relevance/completeness and free-text selection justifications are not certified."
+      },
+      "selected_rules": [
+        "via.4a",
+        "via.5a"
+      ],
+      "model_turn_count": 3,
+      "tool_call_count": 3,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 7206,
+        "output_tokens": 311
+      },
+      "latency_s": 9.755047,
+      "provider_metadata": {
+        "cloud_fallback": false,
+        "endpoint": "http://127.0.0.1:11434",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "model_size_bytes": 5225388164,
+        "runtime": "ollama",
+        "runtime_version": "0.40.16"
+      },
+      "api_cost_usd": 0
+    },
+    {
+      "scenario": "antenna_refusal",
+      "run_id": "c0458526e0ef4b1eb0ee0289a2437692",
+      "question": "Does this layout satisfy antenna rules?",
+      "gds_path": null,
+      "verdict": "REFUSE",
+      "verification": {
+        "accepted": true,
+        "scope": "Refusal has no geometric claims. Whether refusal is appropriate is scored separately."
+      },
+      "selected_rules": [],
+      "model_turn_count": 1,
+      "tool_call_count": 0,
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 934,
+        "output_tokens": 44
+      },
+      "latency_s": 0.911685,
+      "provider_metadata": {
+        "cloud_fallback": false,
+        "endpoint": "http://127.0.0.1:11434",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "model_size_bytes": 5225388164,
+        "runtime": "ollama",
+        "runtime_version": "0.40.16"
+      },
+      "api_cost_usd": 0
+    }
+  ],
+  "rejected_attempts": [
+    {
+      "reason": "evidence_ids_not_visible",
+      "run_id": "1e11b8c30d704101bbfef06a6589e096"
+    },
+    {
+      "reason": "json_action_not_yet_normalized",
+      "run_id": "8dd9b59acb32469abe3b658b50284012"
+    },
+    {
+      "reason": "prose_retry_did_not_resolve_json_transport",
+      "run_id": "4b89f0d7e7194115902f92f6b575e608"
+    }
+  ],
+  "notes": [
+    "All accepted examples used real local inference and KLayout, with no paid API calls.",
+    "Rejected integration attempts are preserved; do not infer overall model accuracy from selected examples.",
+    "These demonstration cases were used during integration debugging and are not an untouched evaluation subset."
+  ],
+  "trace_archive_sha256": "b75d960febb3f8fbaca22bb556e5f66c5ef089a26670ec44551015a6588061cb"
+}

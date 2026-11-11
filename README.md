@@ -4,7 +4,7 @@
 
 An LLM agent that selects SKY130 design rules, checks chip-layout geometry with KLayout, and explains the result using real evidence.
 
-**Current status:** Giovanni's tools and benchmark are complete. Rana's LLM agent and experiments are next.
+**Current status:** Tools, benchmark, and a free local LLM agent are implemented. Rana's remaining work is evaluation, model comparisons, the UI, and final report.
 
 ## Start here
 
@@ -13,12 +13,12 @@ On the prepared Mac, open a terminal in this folder:
 ```sh
 source .venv/bin/activate
 python run.py check
-python run.py demo
+python run.py agent --gds benchmark/b004.gds
 ```
 
-`check` verifies the code and saved benchmark evidence. `demo` checks a real layout: width passes and spacing fails with a **0.135 um gap** against a **0.140 um minimum**.
+`check` verifies the code and saved benchmark evidence. `agent` uses the local model to select and check rules; this test layout has an intended spacing failure. The separate tool-only `demo` command shows: width passes and spacing fails with a **0.135 um gap** against a **0.140 um minimum**.
 
-New machine? Follow [Setup](docs/SETUP.md). Ready to build the agent? Read [Rana's handoff](docs/HANDOFF.md) and [the working example](examples/use_tools.py).
+New machine? Follow [Setup](docs/SETUP.md). For the free model, follow [Local setup](docs/LOCAL_MODEL.md) and [Agent details](docs/AGENT.md). For evaluation, read [Rana's handoff](docs/HANDOFF.md) and [the working example](examples/use_tools.py).
 
 ## Completed work
 
@@ -31,12 +31,15 @@ New machine? Follow [Setup](docs/SETUP.md). Ready to build the agent? Read [Rana
 - [x] Cross-check saved reports and 41 numeric markers with KLayout's native reader.
 - [x] Review 10 cases visually and document the enclosure-rule discrepancy.
 - [x] Verify passing/failing examples for all eight supported rules.
+- [x] Implement the local model agent, bounded tool loop, claim verification, and refusal path.
+- [x] Verify five scripted agent scenarios with the real checker (not LLM accuracy).
+- [x] Verify real local inference: spacing FAIL/PASS, corner-enclosure FAIL, and antenna REFUSE.
 
-**Verified result:** 15 regression tests pass. The benchmark has 24 scoped PASS and 26 scoped FAIL cases. These are checker results; LLM accuracy has not been measured yet.
+**Verified result:** 55 regression tests pass. The benchmark has 24 scoped PASS and 26 scoped FAIL cases. These are checker results; Four real local-model examples passed acceptance checks; the full LLM benchmark has not been evaluated yet.
 
 ## Rana's next steps
 
-1. Build the planner, tool calls, answer verification, and refusal behavior.
+1. Reproduce the live agent demo using [Agent setup](docs/AGENT.md).
 2. Compare coordinates only, retrieval, and full tools across the chosen models.
 3. Calculate accuracy, grounding, citation errors, cost, latency, and tool counts.
 4. Finish the minimal demo UI, results analysis, and report.
@@ -64,6 +67,9 @@ Give models only `eval/public/`. Keep `eval/gold/` in the evaluator.
 | Command | What it does |
 |---|---|
 | `python run.py check` | Run tests and validate all saved benchmark reports |
+| `python run.py pull-local` | Download the free local model once |
+| `python run.py agent --gds benchmark/b004.gds` | Run the real local LLM agent; no paid API |
+| `python run.py agent-smoke` | Run five explicitly scripted agent integration checks |
 | `python run.py demo` | Run a short example using all three tools |
 | `python run.py doctor` | Verify the batch executable and pinned sources |
 | `python run.py smoke` | Run 16 real-tool checks covering all supported rules |

@@ -1,26 +1,20 @@
 # Rana's handoff
 
-Giovanni's tools and benchmark are complete. Your part is the LLM agent, experiments, minimal UI, and report. Start with `python run.py demo`, then open [examples/use_tools.py](../examples/use_tools.py).
+The tools, benchmark, and LLM agent code are implemented. Your part is evaluation/scoring, model comparisons, the minimal UI, and report. The default provider is now a free local model; follow [Local setup](LOCAL_MODEL.md) and [Agent details](AGENT.md). No paid API credits are required. Start with `python run.py demo`, then open [examples/use_tools.py](../examples/use_tools.py).
 
-## 1. Connect the agent to the tools
+## 1. Reproduce the agent
 
-Suggested new file: `src/drc_explain/agent.py`.
+Follow [Agent setup](AGENT.md), set up the local model, then run:
 
-```python
-from drc_explain.tools import Toolset, TOOL_SCHEMAS
-
-tools = Toolset(log_path="runs/model_case_tool_calls.jsonl")
-answer = tools.call("run_drc", {
-    "gds_path": "benchmark/b004.gds",
-    "rule_ids": ["m1.1", "m1.2"],
-})
+```sh
+python run.py agent --gds benchmark/b004.gds --question "Check ordinary width and spacing of metal1 routing."
 ```
 
-Register `TOOL_SCHEMAS` using the selected model provider's function-calling format. The three tools are `retrieve_rules`, `inspect_layout`, and `run_drc`. Every response has `ok: true` and a result, or `ok: false`, an error, and no verdict. Use a separate trace log for each query/run.
+The implementation is in `src/drc_explain/agent.py`, `local_provider.py`, and `verification.py`. Use `Agent(OllamaClient()).run(question, gds_path)` from your experiment runner. Do not rebuild the planner or tool dispatch. Each run saves its result, token usage, model IDs, response IDs, prompt hash, latency, and traces under `runs/agent/`.
 
-Build a planner to choose relevant rules, dispatch calls through `Toolset.call`, and verify the final answer against the returned evidence. Refuse unsupported questions and failed checks. A passing result must state which rules were checked.
+The final explanation is rendered from evidence-verified structured model claims. It does not freely paraphrase arbitrary model prose. Rule-selection completeness, selection justifications, and refusal correctness still require evaluation. Read the limitations in `AGENT.md` before writing the report.
 
-The DRC tool executes the unchanged full deck and filters results afterward. It does not selectively execute checks or read cached labels. Report this behavior accurately.
+The DRC tool executes the unchanged full deck and filters results afterward. Report this accurately. Keep ERROR separate from REFUSE and domain PASS/FAIL.
 
 ## 2. Keep inputs and answers separate
 
@@ -39,7 +33,7 @@ Give models the same base question and coordinates in all conditions. Never pass
 
 Suggested new files: `src/drc_explain/experiments.py` and `src/drc_explain/scoring.py`.
 
-Compare A: coordinates only; B: coordinates plus retrieval; C: full tools. Pin the model IDs and prompts. The full initial grid is 450 queries; three total C runs per model gives 750 before refusal probes. Budget fallback: A/B/C on one model and C on the other two.
+Compare A: coordinates only; B: coordinates plus retrieval; C: full tools. Pin the model IDs and prompts. The original proposal compares one open-weights and two closed models. This local demo provides the open-weights route; agree on free access or an approved change for the other models. The full initial grid is 450 queries; three total C runs per model gives 750 before refusal probes. Budget fallback: A/B/C on one model and C on the other two.
 
 Collect verdict and pair accuracy, rule-selection precision/recall, citation errors, grounding, refusal correctness, API cost, latency, and tool-call count. Keep raw outputs and traces in `runs/`, which is ignored by Git. Save the final aggregate results separately for the report.
 
@@ -55,4 +49,4 @@ Scoring details:
 
 Build the minimal input/trace/verdict UI, compare the model results and failure cases, and complete the report and course deliverables. The original research and Windows spike are under `docs/research/`.
 
-Run `python run.py check` after code changes and `python run.py smoke` after checker changes. The current baseline has 15 passing tests, 56 validated layouts, 41 cross-checked numeric markers, and 16 real-tool smoke checks. Ten layouts were visually inspected by the coding agent; do not describe that as independent human signoff.
+Run `python run.py check` after code changes and `python run.py smoke` after checker changes. The current baseline has 55 passing tests, 56 validated layouts, 41 cross-checked numeric markers, and 16 real-tool smoke checks. Five scripted agent scenarios also pass against the real engine. Separately, four real Qwen3 local-model acceptance examples pass; see `eval/gold/local_agent_acceptance.json` and `local_agent_traces.zip`. Rejected integration attempts are preserved. Those demonstration cases were used for debugging, so do not present them as untouched evaluation data. Ten layouts were visually inspected by the coding agent; do not describe that as independent human signoff.

@@ -28,7 +28,7 @@ If activation is blocked, invoke `.venv\Scripts\python.exe` directly. The root `
 python run.py check
 ```
 
-Expected: 15 tests pass and all 56 saved reports validate. This step uses the Python bindings and archived evidence; the standalone KLayout app is not needed yet.
+Expected: 55 tests pass and all 56 saved reports validate. This step uses the Python bindings and archived evidence; the standalone KLayout app is not needed yet.
 
 ## 3. Fetch the pinned rule sources
 
@@ -81,6 +81,10 @@ python run.py check
 ```
 
 GDS output is deterministic. Labeling runs the full deck, fails on construction/oracle disagreement, and saves original reports, logs, and parsed results in `eval/gold/oracle_reports.zip`. Archive members are verified byte for byte before loose reports are removed. If labeling fails, loose evidence remains under `eval/gold/reports/` for diagnosis.
+
+## Run the LLM
+
+Follow [Local model setup](LOCAL_MODEL.md). On a fresh machine, install Ollama and run `python run.py pull-local`, then `python run.py agent --gds benchmark/b004.gds`. No paid API key is required. The normal `demo` command remains a tool-only example.
 
 ## Troubleshooting and optional CLI
 

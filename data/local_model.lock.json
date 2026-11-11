@@ -1,0 +1,16 @@
+{
+  "provider": "ollama-local",
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "manifest_sha256": "b3d9ba7c899cfd112df2574c6a91458a70b724c5e4e50dfffd75574b2d1648e7",
+  "ollama_version": "0.40.16",
+  "runtime_archive_url": "https://github.com/ollama/ollama/releases/download/v0.40.16/ollama-darwin.tgz",
+  "runtime_archive_sha256": "a743717494315da7cd352982b805f6b992d4b4452ca117fd5fbf86c4ee46fca0",
+  "model_size_bytes": 5225388164,
+  "num_ctx": 32768,
+  "num_predict": 4096,
+  "think": false,
+  "temperature": 0,
+  "api_cost_usd": 0,
+  "cloud_disabled": true
+}

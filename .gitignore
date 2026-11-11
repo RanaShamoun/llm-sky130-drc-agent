@@ -11,3 +11,5 @@ runs/
 .ruff_cache/
 eval/gold/reports/
 *.zip.tmp
+.env.*
+!.env.example

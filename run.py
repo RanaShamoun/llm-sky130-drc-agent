@@ -26,16 +26,40 @@ def main():
             "generate",
             "label",
             "format",
+            "configure",
+            "agent",
+            "agent-smoke",
+            "serve-local",
+            "pull-local",
         ],
         help="See README.md for the normal workflow.",
     )
-    args = parser.parse_args()
+    args, extra = parser.parse_known_args()
+    if extra and args.command != "agent":
+        parser.error("Extra arguments are supported only for the agent command.")
     try:
         if args.command == "check":
             python("-m", "pytest", "-q")
             python("scripts/verify_benchmark.py")
         elif args.command == "demo":
             python("examples/use_tools.py")
+        elif args.command == "serve-local":
+            from drc_explain.local_runtime import ensure_server
+
+            ensure_server()
+            print(
+                "Local Ollama is running. Cloud features are disabled when started by this project."
+            )
+        elif args.command == "pull-local":
+            from drc_explain.local_runtime import pull_model
+
+            pull_model()
+        elif args.command == "configure":
+            from drc_explain.provider import configure_api
+
+            configure_api()
+        elif args.command == "agent-smoke":
+            python("scripts/smoke_agent.py")
         elif args.command == "smoke":
             python("scripts/smoke_handoff.py")
         elif args.command == "setup-sources":
@@ -56,13 +80,23 @@ def main():
                 "examples",
             )
             python(
-                "-m", "ruff", "format", "run.py", "src", "scripts", "tests", "examples"
+                "-m",
+                "ruff",
+                "format",
+                "run.py",
+                "src",
+                "scripts",
+                "tests",
+                "examples",
             )
         else:
             from drc_explain.cli import main as cli_main
 
-            sys.argv = ["drc-explain", args.command]
+            sys.argv = ["drc-explain", args.command, *extra]
             return cli_main()
+    except (ValueError, RuntimeError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
     except subprocess.CalledProcessError as exc:
         return exc.returncode
     return 0

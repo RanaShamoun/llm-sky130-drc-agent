@@ -4,7 +4,7 @@
 
 An LLM agent that selects SKY130 design rules, checks chip-layout geometry with KLayout, and explains the result using real evidence.
 
-**Current status:** Tools, benchmark, a free local LLM agent, a minimal local UI, and an A/B/C experiment runner with scoring are implemented. Windows setup has produced verified live width FAIL and PASS demonstrations. The saved six-query pilot, full model comparisons, results analysis, and final report remain pending.
+**Current status:** Tools, benchmark, a free local LLM agent, a minimal local UI, and an A/B/C experiment runner with scoring are implemented. The first six-query pilot completed: C verified both verdicts, while all A/B runs failed answer-schema validation. A bounded baseline schema-repair change is unit-tested; a new live pilot is pending. Full model comparisons, results analysis, and final report remain pending. See [pilot review](docs/PILOT_REVIEW.md).
 
 ## Start here
 
@@ -57,7 +57,7 @@ Use your actual KLayout executable path if different. Open http://127.0.0.1:8765
 ## Rana's next steps
 
 1. Review the learning guides and [debug-case disclosure](docs/DEBUG_CASE_DISCLOSURE.md). The encoding fix and known Windows demonstration disclosure are complete; b001 and b002 are previously inspected cases.
-2. Review the [completed validation](docs/PRECOMMIT_VALIDATION.md), including its two platform failures, and commit a reproducible implementation checkpoint; then run the six-query smoke pilot below.
+2. Review the [pilot findings](docs/PILOT_REVIEW.md), validate and commit the schema-repair change, and run a new pilot in a separate output directory. The [pre-commit validation](docs/PRECOMMIT_VALIDATION.md) documents the earlier checkpoint's two Windows test failures.
 3. Run A/B/C across the approved model mix and inspect saved metrics, traces, and failures.
 4. Finish results analysis, final report, and demo recording; disclose setup/debug cases.
 
@@ -68,7 +68,7 @@ Use your actual KLayout executable path if different. Open http://127.0.0.1:8765
 From a terminal with `KLAYOUT_BIN` configured and Ollama running:
 
 ```powershell
-.\.venv\Scripts\python.exe run.py experiments run --models qwen3:8b --conditions A B C --cases b001 b002 --no-probes --output runs/experiments/pilot
+.\.venv\Scripts\python.exe run.py experiments run --models qwen3:8b --conditions A B C --cases b001 b002 --no-probes --output runs/experiments/pilot-v2
 ```
 
 A predicts from coordinates without retrieval or DRC. B adds rule retrieval. C uses the existing agent with retrieval, KLayout, and deterministic verification. Two cases times three conditions equals six queries. The runner currently accepts benchmark cases and probes, not development cases; this pilot is a smoke test, not development-only prompt tuning or untouched evaluation.

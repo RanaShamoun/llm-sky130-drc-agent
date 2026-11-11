@@ -129,7 +129,7 @@ These live demonstrations cost $0 in API charges. Hardware, electricity, and tim
 
 Pre-commit validation on November 11, 2026, confirmed 17 focused tests passing and 70 full-suite tests passing with the same two Windows permission/symlink failures. The archived audit passed all 56 layouts and 41 numeric marker cross-checks. The failures were not silently corrected or declared passing; see [the validation record](PRECOMMIT_VALIDATION.md) for their exact scope and unverified security coverage.
 
-No six-query experiment or 168-query experiment has been established as complete in this walkthrough. There are no final comparative accuracy tables yet.
+Update after the first six-query pilot: all six records were saved, C returned two correct verified verdicts, and A/B returned four schema-validation errors. A bounded schema-repair change is unit-tested, with a separate live pilot pending. See [pilot review](PILOT_REVIEW.md). No 168-query experiment or final comparative benchmark is established as complete here.
 
 ## 8. Important Pre-Commit Findings
 

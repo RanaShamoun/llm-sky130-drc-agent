@@ -62,3 +62,38 @@ def test_debug_disclosure_is_saved_not_sent_to_model(tmp_path):
     assert set(supplied) == {"question", "gds_path", "top_cell", "layout"}
     assert demonstrations[0]["run_id"] not in json.dumps(events[0])
     assert "windows_setup_demonstrations" not in json.dumps(events[0])
+
+
+def test_baseline_repairs_schema_without_correcting_prediction(tmp_path):
+    draft = {"verdict": "PASS", "selections": [{"rule_id": "INVENTED", "justification": "prediction"}], "claims": [{"rule_id": "INVENTED", "status": "FAIL", "limit_um": 0.15, "measured_values_um": [0.135], "evidence_call_id": "none"}]}
+
+    class RepairClient(Client):
+        def __init__(self):
+            self.turn = 0
+
+        def respond(self, inputs, tools, instructions):
+            self.turn += 1
+            arguments = dict(draft)
+            if self.turn == 2:
+                feedback = json.loads(inputs[-1]["output"])
+                assert "refusal_reason" in feedback["error"]["message"]
+                assert "INVENTED" not in feedback["error"]["message"]
+                assert "0.14" not in feedback["error"]["message"]
+                arguments["refusal_reason"] = None
+            return {"status": "completed", "output": [{"type": "function_call", "call_id": f"repair{self.turn}", "name": "finalize_answer", "arguments": json.dumps(arguments)}]}
+
+    result = baseline({"question": "width?"}, "A", RepairClient(), tmp_path)
+    assert result["verdict"] == "PASS"
+    assert result["checks"] == draft["claims"]
+    assert result["model_turn_count"] == 2
+    assert result["tool_call_count"] == 0
+    assert not result["verification"]["accepted"]
+    events = json.loads((tmp_path / "trace.json").read_text())
+    assert any(event["event"] == "rejected_call" for event in events)
+
+
+def test_baseline_schema_repair_is_bounded(tmp_path):
+    result = baseline({"question": "width?"}, "B", Client(("finalize_answer", {})), tmp_path, max_turns=2)
+    assert result["verdict"] == "ERROR"
+    assert result["model_turn_count"] == 2
+    assert "budget exhausted" in result["error"]["message"]

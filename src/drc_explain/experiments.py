@@ -78,7 +78,15 @@ def baseline(case, condition, client, directory, max_turns=8):
             call = calls[0]
             arguments = json.loads(call["arguments"], parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value)))
             if call["name"] == "finalize_answer":
-                _validate_prediction(arguments)
+                try:
+                    _validate_prediction(arguments)
+                except ValueError as exc:
+                    feedback = {"ok": False, "error": {"type": type(exc).__name__, "message": str(exc)}, "verdict": None}
+                    events.append({"event": "rejected_call", "turn": turns, "call_id": call["call_id"], "tool": call["name"], "response": feedback})
+                    inputs.append({"type": "function_call_output", "call_id": call["call_id"], "output": json.dumps(feedback)})
+                    if turns == max_turns:
+                        raise ValueError("Model-turn budget exhausted without a structurally valid prediction.") from exc
+                    continue
                 result = {
                     "verdict": arguments["verdict"],
                     "checks": arguments["claims"],
@@ -118,8 +126,16 @@ def baseline(case, condition, client, directory, max_turns=8):
 def _validate_prediction(answer):
     import math
 
-    if not isinstance(answer, dict) or set(answer) != {"verdict", "selections", "claims", "refusal_reason"}:
-        raise ValueError("Invalid prediction fields.")
+    if not isinstance(answer, dict):
+        raise ValueError("Prediction must be an object.")
+    required = {"verdict", "selections", "claims", "refusal_reason"}
+    if set(answer) != required:
+        raise ValueError(
+            f"Invalid prediction fields. Missing: {sorted(required - set(answer))}; "
+            f"unexpected: {sorted(set(answer) - required)}. "
+            "Supply exactly verdict, selections, claims, refusal_reason. "
+            "Use refusal_reason=null for PASS/FAIL, or a nonempty reason for REFUSE."
+        )
     if answer["verdict"] not in {"PASS", "FAIL", "REFUSE"}:
         raise ValueError("Invalid prediction verdict.")
     if not isinstance(answer["selections"], list) or not isinstance(answer["claims"], list):

@@ -516,6 +516,10 @@ Records known prior live-model demonstrations and Windows setup errors, identifi
 
 Records the November 11 pre-commit checks: 17 focused passes, 70 full-suite passes with two Windows failures, and successful archived verification of 56 layouts and 41 numeric markers. Explains the permission and symlink test limitations without treating them as passing or as proof of a tool-boundary escape. This is regression/audit evidence, not live LLM benchmark results.
 
+### [docs/PILOT_REVIEW.md](PILOT_REVIEW.md)
+
+Records the first six-query pilot: two verified C results and four A/B schema errors caused by missing refusal_reason. Explains the raw prediction mistakes, bounded structural-repair change, evidence preservation, and separate pilot-v2 output required before scaling. Protocol feedback does not supply gold labels or fix semantic predictions.
+
 ## Generated Local Files
 
 These paths may be ignored or machine-specific. They are not a request to commit them.

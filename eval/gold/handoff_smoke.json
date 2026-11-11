@@ -1,0 +1,126 @@
+{
+  "cases": [
+    {
+      "case_id": "b001",
+      "rules": {
+        "m1.1": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b002",
+      "rules": {
+        "m1.1": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b004",
+      "rules": {
+        "m1.2": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b005",
+      "rules": {
+        "m1.2": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b007",
+      "rules": {
+        "m2.1": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b008",
+      "rules": {
+        "m2.1": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b010",
+      "rules": {
+        "m2.2": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b011",
+      "rules": {
+        "m2.2": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b037",
+      "rules": {
+        "via.4a": "FAIL",
+        "via.5a": "PASS"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b038",
+      "rules": {
+        "via.4a": "PASS",
+        "via.5a": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b039",
+      "rules": {
+        "via.4a": "PASS",
+        "via.5a": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b040",
+      "rules": {
+        "via.4a": "PASS",
+        "via.5a": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b041",
+      "rules": {
+        "m2.4": "FAIL",
+        "m2.5": "PASS"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b042",
+      "rules": {
+        "m2.4": "PASS",
+        "m2.5": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "case_id": "b043",
+      "rules": {
+        "m2.4": "PASS",
+        "m2.5": "FAIL"
+      },
+      "status": "FAIL"
+    },
+    {
+      "case_id": "b044",
+      "rules": {
+        "m2.4": "PASS",
+        "m2.5": "PASS"
+      },
+      "status": "PASS"
+    }
+  ],
+  "retrieval_ok": true,
+  "selection_isolation_ok": true
+}

@@ -1,0 +1,209 @@
+[
+  {
+    "arguments": {
+      "limit": 3,
+      "query": "metal1 spacing"
+    },
+    "latency_s": 0.000196,
+    "response": {
+      "ok": true,
+      "result": {
+        "rules": [
+          {
+            "applicability": "Spacing of ordinary metal1 geometry; wide-metal variants are outside v1.",
+            "category": "spacing",
+            "description": "m1.2 : min. m1 spacing : 0.14um",
+            "layers": [
+              "m1"
+            ],
+            "limit_um": 0.14,
+            "retrieval_score": 2,
+            "rule_id": "m1.2",
+            "source_line": 985,
+            "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+            "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L985"
+          },
+          {
+            "applicability": "Width of ordinary metal1 geometry.",
+            "category": "width",
+            "description": "m1.1 : min. m1 width : 0.14um",
+            "layers": [
+              "m1"
+            ],
+            "limit_um": 0.14,
+            "retrieval_score": 1,
+            "rule_id": "m1.1",
+            "source_line": 980,
+            "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+            "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L980"
+          },
+          {
+            "applicability": "Spacing of ordinary metal2 geometry; wide-metal variants are outside v1.",
+            "category": "spacing",
+            "description": "m2.2 : min. m2 spacing : 0.14um",
+            "layers": [
+              "m2"
+            ],
+            "limit_um": 0.14,
+            "retrieval_score": 1,
+            "rule_id": "m2.2",
+            "source_line": 1144,
+            "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+            "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1144"
+          }
+        ],
+        "scope": "Eight curated rules for ordinary rectangular metal1/metal2 and via geometry. Other rules are unsupported."
+      }
+    },
+    "timestamp": "2026-11-11T00:49:31.158069+00:00",
+    "tool": "retrieve_rules"
+  },
+  {
+    "arguments": {
+      "gds_path": "benchmark/b004.gds"
+    },
+    "latency_s": 0.000377,
+    "response": {
+      "ok": true,
+      "result": {
+        "dbu_um": 0.001,
+        "layers": [
+          {
+            "datatype": 20,
+            "layer": 68,
+            "name": "m1",
+            "polygons": [
+              {
+                "bbox_um": [
+                  0.0,
+                  0.0,
+                  0.5,
+                  0.5
+                ],
+                "is_rectangle": true,
+                "points_um": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0,
+                    0.5
+                  ],
+                  [
+                    0.5,
+                    0.5
+                  ],
+                  [
+                    0.5,
+                    0.0
+                  ]
+                ]
+              },
+              {
+                "bbox_um": [
+                  0.635,
+                  0.0,
+                  1.135,
+                  0.5
+                ],
+                "is_rectangle": true,
+                "points_um": [
+                  [
+                    0.635,
+                    0.0
+                  ],
+                  [
+                    0.635,
+                    0.5
+                  ],
+                  [
+                    1.135,
+                    0.5
+                  ],
+                  [
+                    1.135,
+                    0.0
+                  ]
+                ]
+              }
+            ],
+            "shape_count": 2
+          }
+        ],
+        "shape_count": 2,
+        "top_cell": "TOP",
+        "units": "um"
+      }
+    },
+    "timestamp": "2026-11-11T00:49:33.247892+00:00",
+    "tool": "inspect_layout"
+  },
+  {
+    "arguments": {
+      "gds_path": "benchmark/b004.gds",
+      "rule_ids": [
+        "m1.2"
+      ]
+    },
+    "latency_s": 1.041524,
+    "response": {
+      "ok": true,
+      "result": {
+        "checks": [
+          {
+            "description": "m1.2 : min. m1 spacing : 0.14um",
+            "limit_um": 0.14,
+            "measurement_note": "Report markers measure violations only. No violation does not imply a measured passing distance.",
+            "rule_id": "m1.2",
+            "status": "FAIL",
+            "violations": [
+              {
+                "cell": "TOP",
+                "markers": [
+                  {
+                    "edge_pair_um": [
+                      [
+                        0.635,
+                        0.0
+                      ],
+                      [
+                        0.635,
+                        0.5
+                      ],
+                      [
+                        0.5,
+                        0.5
+                      ],
+                      [
+                        0.5,
+                        0.0
+                      ]
+                    ],
+                    "measured_um": 0.135,
+                    "measurement_source": "Distance between parallel edges in the KLayout violation marker.",
+                    "raw": "edge-pair: (0.635,0;0.635,0.5)/(0.5,0.5;0.5,0)"
+                  }
+                ],
+                "rule_id": "m1.2"
+              }
+            ]
+          }
+        ],
+        "execution_mode": "full_deck_then_filter",
+        "gds_sha256": "e5448ab5043ce238a12b9744dad9c8b5d0ea87cf9b8ec014cb99f41028561b6b",
+        "provenance": {
+          "deck_sha256": "caf4a6b08cb12f78d6bb2d120737424c786b3bae8d6489234b9b269e91107bfc",
+          "klayout_version": "KLayout 0.30.13",
+          "layer_map_sha256": "7caca63445153c269bfb8d4431ae9c89eebdfd3c5835cc4966aba8c0018f4ddf",
+          "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564"
+        },
+        "scope": "Requested rules only; not tape-out approval.",
+        "status": "FAIL",
+        "units": "um"
+      }
+    },
+    "timestamp": "2026-11-11T00:49:33.248337+00:00",
+    "tool": "run_drc"
+  }
+]

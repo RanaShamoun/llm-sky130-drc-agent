@@ -1,0 +1,91 @@
+{
+  "cases": 56,
+  "mismatches": [
+    {
+      "case_id": "b039",
+      "expected": {
+        "via.4a": "PASS",
+        "via.5a": "FAIL"
+      },
+      "oracle": {
+        "via.4a": "PASS",
+        "via.5a": "PASS"
+      },
+      "original_left_bottom_right_top_margins_um": [
+        0.08,
+        0.1,
+        0.08,
+        0.1
+      ]
+    },
+    {
+      "case_id": "b043",
+      "expected": {
+        "m2.4": "PASS",
+        "m2.5": "FAIL"
+      },
+      "oracle": {
+        "m2.4": "PASS",
+        "m2.5": "PASS"
+      },
+      "original_left_bottom_right_top_margins_um": [
+        0.1,
+        0.08,
+        0.1,
+        0.08
+      ]
+    },
+    {
+      "case_id": "b046",
+      "expected": {
+        "via.4a": "PASS",
+        "via.5a": "PASS"
+      },
+      "oracle": {
+        "via.4a": "PASS",
+        "via.5a": "FAIL"
+      },
+      "original_left_bottom_right_top_margins_um": [
+        0.085,
+        0.085,
+        0.055,
+        0.055
+      ]
+    },
+    {
+      "case_id": "b048",
+      "expected": {
+        "m2.4": "PASS",
+        "m2.5": "PASS"
+      },
+      "oracle": {
+        "m2.4": "PASS",
+        "m2.5": "FAIL"
+      },
+      "original_left_bottom_right_top_margins_um": [
+        0.055,
+        0.085,
+        0.085,
+        0.055
+      ]
+    },
+    {
+      "case_id": "b049",
+      "expected": {
+        "via.4a": "PASS",
+        "via.5a": "FAIL"
+      },
+      "oracle": {
+        "via.4a": "PASS",
+        "via.5a": "PASS"
+      },
+      "original_left_bottom_right_top_margins_um": [
+        0.085,
+        0.055,
+        0.085,
+        0.055
+      ]
+    }
+  ],
+  "note": "Original pre-correction construction predictions and actual deck results. Case geometry was subsequently revised; these margins refer to the original run, not final cases with the same IDs."
+}

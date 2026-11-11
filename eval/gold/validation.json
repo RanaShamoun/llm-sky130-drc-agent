@@ -1,0 +1,408 @@
+{
+  "benchmark_case_types": {
+    "competing_rules": 12,
+    "conditional_enclosure": 14,
+    "near_boundary": 12,
+    "pass_fail_pair": 12
+  },
+  "benchmark_verdict_counts": {
+    "FAIL": 26,
+    "PASS": 24
+  },
+  "cases": 56,
+  "checks": [
+    {
+      "case_id": "b001",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b002",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b003",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b004",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b005",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b006",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b007",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b008",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b009",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b010",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b011",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b012",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b013",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b014",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b015",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b016",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b017",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b018",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b019",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b020",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b021",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b022",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b023",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b024",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b025",
+      "category_count": 169,
+      "marker_count": 4,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 4
+    },
+    {
+      "case_id": "b026",
+      "category_count": 169,
+      "marker_count": 2,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 2
+    },
+    {
+      "case_id": "b027",
+      "category_count": 169,
+      "marker_count": 2,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 2
+    },
+    {
+      "case_id": "b028",
+      "category_count": 169,
+      "marker_count": 2,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 2
+    },
+    {
+      "case_id": "b029",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b030",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b031",
+      "category_count": 169,
+      "marker_count": 3,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 3
+    },
+    {
+      "case_id": "b032",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b033",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b034",
+      "category_count": 169,
+      "marker_count": 4,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 4
+    },
+    {
+      "case_id": "b035",
+      "category_count": 169,
+      "marker_count": 2,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 2
+    },
+    {
+      "case_id": "b036",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b037",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b038",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b039",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b040",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b041",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "b042",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b043",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b044",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b045",
+      "category_count": 169,
+      "marker_count": 2,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b046",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b047",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b048",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b049",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "b050",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "d001",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "d002",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "d003",
+      "category_count": 169,
+      "marker_count": 1,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 1
+    },
+    {
+      "case_id": "d004",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    },
+    {
+      "case_id": "d005",
+      "category_count": 169,
+      "marker_count": 6,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 4
+    },
+    {
+      "case_id": "d006",
+      "category_count": 169,
+      "marker_count": 0,
+      "native_rdb_matches_xml": true,
+      "numeric_markers_crosschecked": 0
+    }
+  ],
+  "scope": "Parser/data verification only. Same KLayout engine; not an independent physical signoff oracle."
+}

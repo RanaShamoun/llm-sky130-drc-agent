@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drc-explain"
+version = "0.1.0"
+description = "Pinned SKY130 tool adapters and independently labeled DRC benchmark"
+requires-python = ">=3.11"
+dependencies = ["klayout==0.30.7"]
+
+[project.scripts]
+drc-explain = "drc_explain.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

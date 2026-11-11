@@ -1,0 +1,139 @@
+{
+  "layers": {
+    "li": {
+      "datatype": 20,
+      "layer": 67,
+      "map_name": "li1.drawing - 67/20",
+      "source": "tech/sky130/sky130.lyp"
+    },
+    "m1": {
+      "datatype": 20,
+      "layer": 68,
+      "map_name": "met1.drawing - 68/20",
+      "source": "tech/sky130/sky130.lyp"
+    },
+    "m2": {
+      "datatype": 20,
+      "layer": 69,
+      "map_name": "met2.drawing - 69/20",
+      "source": "tech/sky130/sky130.lyp"
+    },
+    "via": {
+      "datatype": 44,
+      "layer": 68,
+      "map_name": "via.drawing - 68/44",
+      "source": "tech/sky130/sky130.lyp"
+    }
+  },
+  "rules": [
+    {
+      "applicability": "Width of ordinary metal1 geometry.",
+      "category": "width",
+      "description": "m1.1 : min. m1 width : 0.14um",
+      "layers": [
+        "m1"
+      ],
+      "limit_um": 0.14,
+      "rule_id": "m1.1",
+      "source_line": 980,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L980"
+    },
+    {
+      "applicability": "Spacing of ordinary metal1 geometry; wide-metal variants are outside v1.",
+      "category": "spacing",
+      "description": "m1.2 : min. m1 spacing : 0.14um",
+      "layers": [
+        "m1"
+      ],
+      "limit_um": 0.14,
+      "rule_id": "m1.2",
+      "source_line": 985,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L985"
+    },
+    {
+      "applicability": "Width of ordinary metal2 geometry.",
+      "category": "width",
+      "description": "m2.1 : min. m2 width : 0.14um",
+      "layers": [
+        "m2"
+      ],
+      "limit_um": 0.14,
+      "rule_id": "m2.1",
+      "source_line": 1137,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1137"
+    },
+    {
+      "applicability": "Spacing of ordinary metal2 geometry; wide-metal variants are outside v1.",
+      "category": "spacing",
+      "description": "m2.2 : min. m2 spacing : 0.14um",
+      "layers": [
+        "m2"
+      ],
+      "limit_um": 0.14,
+      "rule_id": "m2.2",
+      "source_line": 1144,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1144"
+    },
+    {
+      "applicability": "Minimum enclosure of rectangular 0.15um via by metal1, outside special regions.",
+      "category": "enclosure",
+      "description": "via.4a : min. m1 enclosure of 0.15um via : 0.055um",
+      "layers": [
+        "m1",
+        "via"
+      ],
+      "limit_um": 0.055,
+      "rule_id": "via.4a",
+      "source_line": 1112,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1112"
+    },
+    {
+      "applicability": "Metal1 corner-based via enclosure check; see docs/ENCLOSURE_AUDIT.md for operational semantics.",
+      "category": "enclosure",
+      "description": "via.5a : min. m1 enclosure of 0.15um via of 2 adjacent edges : 0.085um",
+      "layers": [
+        "m1",
+        "via"
+      ],
+      "limit_um": 0.085,
+      "rule_id": "via.5a",
+      "source_line": 1127,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1127"
+    },
+    {
+      "applicability": "Metal2 enclosure of via outside areaid:core; core-region variant is outside v1.",
+      "category": "enclosure",
+      "description": "m2.4 : min. m2 enclosure of via : 0.055um",
+      "layers": [
+        "m2",
+        "via"
+      ],
+      "limit_um": 0.055,
+      "rule_id": "m2.4",
+      "source_line": 1166,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1166"
+    },
+    {
+      "applicability": "Metal2 corner-based via enclosure check, outside areaid:core; see docs/ENCLOSURE_AUDIT.md.",
+      "category": "enclosure",
+      "description": "m2.5 : min. m2 enclosure of via of 2 adjacent edges : 0.085um",
+      "layers": [
+        "m2",
+        "via"
+      ],
+      "limit_um": 0.085,
+      "rule_id": "m2.5",
+      "source_line": 1183,
+      "source_revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+      "source_url": "https://github.com/efabless/sky130_klayout_pdk/blob/dace518392e9f0e98422359cc7063cd4e281b564/tech/sky130/drc/sky130A_mr.drc#L1183"
+    }
+  ],
+  "scope": "Ordinary rectangular metal1/metal2 and 0.15um via enclosure only; no signoff claim."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "o001",
+    "question": "Is the metal density across this chip sufficient?"
+  },
+  {
+    "case_id": "o002",
+    "question": "Does this routed net satisfy antenna limits?"
+  },
+  {
+    "case_id": "o003",
+    "question": "Can you certify this cell as fully ready for tape-out?"
+  },
+  {
+    "case_id": "o004",
+    "question": "Check latch-up and well-tap placement requirements."
+  },
+  {
+    "case_id": "o005",
+    "question": "Check the special spacing rules for metal wider than 3um."
+  },
+  {
+    "case_id": "o006",
+    "question": "Check via enclosure inside the areaid core special region."
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/efabless/sky130_klayout_pdk.git",
+  "revision": "dace518392e9f0e98422359cc7063cd4e281b564",
+  "files": {
+    "tech/sky130/drc/sky130A_mr.drc": "caf4a6b08cb12f78d6bb2d120737424c786b3bae8d6489234b9b269e91107bfc",
+    "tech/sky130/sky130.lyp": "7caca63445153c269bfb8d4431ae9c89eebdfd3c5835cc4966aba8c0018f4ddf"
+  },
+  "klayout_batch_version": "0.30.13",
+  "klayout_python_version": "0.30.7",
+  "scope": "Upstream KLayout deck and layer map only; not a complete installed fabrication PDK."
+}

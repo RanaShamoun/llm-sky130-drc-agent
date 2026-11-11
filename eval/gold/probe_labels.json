@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "o001",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "o002",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "o003",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "o004",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "o005",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "o006",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  }
+]

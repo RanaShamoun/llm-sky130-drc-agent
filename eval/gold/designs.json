@@ -1,0 +1,2224 @@
+[
+  {
+    "case_id": "b001",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.1": "FAIL"
+    },
+    "gds_path": "benchmark/b001.gds",
+    "gds_sha256": "3caf2fea2d23093fd1e02efc3993e10a7c5eec532078c68261bfb5259afb1ee3",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.135,
+          0.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "width=0.135um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b002",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.1": "PASS"
+    },
+    "gds_path": "benchmark/b002.gds",
+    "gds_sha256": "5cc5cb4e49fe1f519f21341c33c757fdb2a146e15ee5d2b222d0bcde87456511",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "width=0.14um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b003",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.1": "PASS"
+    },
+    "gds_path": "benchmark/b003.gds",
+    "gds_sha256": "51d3b4da9b43f3177da935d90af892fec8feb32239a9a0e65d0705fe9a5063a1",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.145,
+          0.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "width=0.145um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b004",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "benchmark/b004.gds",
+    "gds_sha256": "e5448ab5043ce238a12b9744dad9c8b5d0ea87cf9b8ec014cb99f41028561b6b",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.635,
+          0,
+          1.135,
+          0.5
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "spacing=0.135um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b005",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b005.gds",
+    "gds_sha256": "f663f90fab7c87455a8ba8919a5abaa665d9f63f2ffe7b37812edbabefeeba1c",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.64,
+          0,
+          1.14,
+          0.5
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "spacing=0.14um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b006",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b006.gds",
+    "gds_sha256": "5953bf20b4c4eefd160629d7536c1910170b2c2eec95c8789e904d03135e1682",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.645,
+          0,
+          1.145,
+          0.5
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "spacing=0.145um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal1 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b007",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.1": "FAIL"
+    },
+    "gds_path": "benchmark/b007.gds",
+    "gds_sha256": "895947c782f0e02ac4a3189ab64835e8e30693ff42cab83927fc884f54b5ea7a",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.135,
+          0.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "width=0.135um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b008",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.1": "PASS"
+    },
+    "gds_path": "benchmark/b008.gds",
+    "gds_sha256": "31cfe4fd9f8c9db5457215a4e139c3cc68a80fd09c6e77413d1f92565a47d88b",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "width=0.14um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b009",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.1": "PASS"
+    },
+    "gds_path": "benchmark/b009.gds",
+    "gds_sha256": "916da4e04459db0e1da7cc9191ec3c51ebe10674a0f14f05302f772ce41ea248",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.145,
+          0.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "width=0.145um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 width in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b010",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "FAIL"
+    },
+    "gds_path": "benchmark/b010.gds",
+    "gds_sha256": "cfbea7d0e6611c14d17a2bd6c050dd23f792c2b8ef006503cde62a7cb4859133",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.635,
+          0,
+          1.135,
+          0.5
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "spacing=0.135um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b011",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b011.gds",
+    "gds_sha256": "4766f1a42416ef0dd06e1ae647b3eb940b2656584d25cf742dcbd95fb212b9db",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.64,
+          0,
+          1.14,
+          0.5
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "spacing=0.14um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b012",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b012.gds",
+    "gds_sha256": "d356d612a39c58ae8fb6154ef2f1d609f6fb95c53f85d5883f10f0290c88cc85",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.5,
+          0.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.645,
+          0,
+          1.145,
+          0.5
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "spacing=0.145um; exact boundary or one 5nm step away.",
+    "pair_id": null,
+    "question": "Does the metal2 spacing in TOP meet the ordinary manufacturing requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b013",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.1": "FAIL"
+    },
+    "gds_path": "benchmark/b013.gds",
+    "gds_sha256": "67762c3fd41562397ee3886a3317926aa878c425f5f31893f71307080a9b4867",
+    "geometry": [
+      {
+        "bbox_um": [
+          2,
+          2,
+          2.135,
+          2.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p01",
+    "question": "Is the metal1 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b014",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.1": "PASS"
+    },
+    "gds_path": "benchmark/b014.gds",
+    "gds_sha256": "af1d76bdf194b76828998603358cc4e6dff41f60bd43472a195598bbebd7ab62",
+    "geometry": [
+      {
+        "bbox_um": [
+          2,
+          2,
+          2.14,
+          2.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p01",
+    "question": "Is the metal1 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b015",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "benchmark/b015.gds",
+    "gds_sha256": "c049f8108be83609127f4ff8584dd32a3928ff827e32f4772d5ed115db864c58",
+    "geometry": [
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.5,
+          3.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3.635,
+          3.5,
+          4.135
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p02",
+    "question": "Is the metal1 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b016",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b016.gds",
+    "gds_sha256": "2741883b7caca926efb450096aa91c31ff8c853a219a273b99db90ca18c508c3",
+    "geometry": [
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.5,
+          3.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3.64,
+          3.5,
+          4.14
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p02",
+    "question": "Is the metal1 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b017",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.1": "FAIL"
+    },
+    "gds_path": "benchmark/b017.gds",
+    "gds_sha256": "b01352e7892b8046da5fb0b3e7f9b9e7af0ca0acec4ccad191e9e2e817bd1a82",
+    "geometry": [
+      {
+        "bbox_um": [
+          4,
+          4,
+          4.135,
+          4.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p03",
+    "question": "Is the metal2 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b018",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.1": "PASS"
+    },
+    "gds_path": "benchmark/b018.gds",
+    "gds_sha256": "d94926caa317bf25b0dafeab853c75f8c8110e5125ea7f03fa95fb542b0e8893",
+    "geometry": [
+      {
+        "bbox_um": [
+          4,
+          4,
+          4.14,
+          4.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p03",
+    "question": "Is the metal2 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b019",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.2": "FAIL"
+    },
+    "gds_path": "benchmark/b019.gds",
+    "gds_sha256": "63434adbbafc133998d19685e7cb239b954a78d09e87c5f5ed80fcfe03215191",
+    "geometry": [
+      {
+        "bbox_um": [
+          5,
+          5,
+          5.5,
+          5.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          5,
+          5.635,
+          5.5,
+          6.135
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p04",
+    "question": "Is the metal2 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b020",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b020.gds",
+    "gds_sha256": "f7f40a99b4e2b9c633665a2a048c35085af51ec05d5d8b4074fa5f49ad43c059",
+    "geometry": [
+      {
+        "bbox_um": [
+          5,
+          5,
+          5.5,
+          5.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          5,
+          5.64,
+          5.5,
+          6.14
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p04",
+    "question": "Is the metal2 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b021",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.1": "FAIL"
+    },
+    "gds_path": "benchmark/b021.gds",
+    "gds_sha256": "34394b391aa10c86b5f7cedcb7234b87b397990d5ec1aaccf7265cad01fc1f59",
+    "geometry": [
+      {
+        "bbox_um": [
+          6,
+          6,
+          6.135,
+          6.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p05",
+    "question": "Is the metal1 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b022",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.1": "PASS"
+    },
+    "gds_path": "benchmark/b022.gds",
+    "gds_sha256": "e60bfab803f406325ab9d5ad89aed5f63d4cb4c9f0b718ff42d6ecd11836bdfa",
+    "geometry": [
+      {
+        "bbox_um": [
+          6,
+          6,
+          6.14,
+          6.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p05",
+    "question": "Is the metal1 width in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b023",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.2": "FAIL"
+    },
+    "gds_path": "benchmark/b023.gds",
+    "gds_sha256": "71aaf985c50eb3c2da3365e2e436d631e2e8a5a04a84499b1eebdc51a964d186",
+    "geometry": [
+      {
+        "bbox_um": [
+          7,
+          7,
+          7.5,
+          7.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          7,
+          7.635,
+          7.5,
+          8.135
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p06",
+    "question": "Is the metal2 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b024",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b024.gds",
+    "gds_sha256": "9d6c28bf07d766ca2fbe3c51667fabe7c1420276117599023f8c1172eed8c944",
+    "geometry": [
+      {
+        "bbox_um": [
+          7,
+          7,
+          7.5,
+          7.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          7,
+          7.64,
+          7.5,
+          8.14
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": "p06",
+    "question": "Is the metal2 spacing in this cell within the ordinary design requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b025",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "benchmark/b025.gds",
+    "gds_sha256": "8838f23282cb28e400ae8a21612c3ec10839d6866f77e0f2358d8aa363123a16",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.13,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.26,
+          0,
+          0.39,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b026",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL",
+      "m2.1": "FAIL",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b026.gds",
+    "gds_sha256": "a2052a58f03ea10f88478497492ab1d55106c552b6556e79d16b168e26acaaab",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.27,
+          0,
+          0.41000000000000003,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.135,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b027",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "benchmark/b027.gds",
+    "gds_sha256": "6ccd7d2d3d288354ac6cb34210957d8f70413bbe929a9d8cfd94636a4c8d0eb7",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.16,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.29000000000000004,
+          0,
+          0.45,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b028",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "PASS",
+      "m2.1": "PASS",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b028.gds",
+    "gds_sha256": "88a9e4cc09fd12754164896fc832d9ce0bc566d7b17935d96834f0fe76f9be04",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.13,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.28,
+          0,
+          0.41000000000000003,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.15,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b029",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b029.gds",
+    "gds_sha256": "259c60291e1dd5316f9fc55593e52e74a0c2da53283ba57aab6e209cb600ed52",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.29000000000000004,
+          0,
+          0.43000000000000005,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b030",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "PASS",
+      "m2.1": "FAIL",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b030.gds",
+    "gds_sha256": "bb467e4b585f9d8587e98704968756ce1ee2e6ec5947a75ef08e9c4351f5ea4e",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.16,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.31,
+          0,
+          0.47,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.135,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b031",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b031.gds",
+    "gds_sha256": "fd5dd87dda86e55ef470618074e8ec3412a643f788f8a358479222659d401bcf",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.13,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.27,
+          0,
+          0.4,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b032",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "PASS",
+      "m2.1": "PASS",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b032.gds",
+    "gds_sha256": "78483ac70a959febdf7e5b2930cd5f23b05adacabb26d12046dff44b52fa6125",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.28,
+          0,
+          0.42000000000000004,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.15,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b033",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "PASS"
+    },
+    "gds_path": "benchmark/b033.gds",
+    "gds_sha256": "baaeb2aaa66966ed21867629b11dfe808aa5567200118b482a7bf21cafeb61b8",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.16,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.30000000000000004,
+          0,
+          0.46,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b034",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "FAIL",
+      "m2.1": "FAIL",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b034.gds",
+    "gds_sha256": "d477c594e7d547d352e2d65af6e0120d3337230559f6a97c9cbea1a273758f58",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.13,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.26,
+          0,
+          0.39,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.135,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b035",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "benchmark/b035.gds",
+    "gds_sha256": "dc59c5b15a4a47e6fdd5c12920aade2d05c3063940b37f140f683c4b88d1df32",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.14,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.27,
+          0,
+          0.41000000000000003,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.13,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of metal1 routing only; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b036",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL",
+      "m2.1": "PASS",
+      "m2.2": "PASS"
+    },
+    "gds_path": "benchmark/b036.gds",
+    "gds_sha256": "50df0d0555147608ea52557350f2c4ce621dad81fe4d323702a30e6c8ea441dd",
+    "geometry": [
+      {
+        "bbox_um": [
+          0,
+          0,
+          0.16,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.29000000000000004,
+          0,
+          0.45,
+          0.9
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          3,
+          3,
+          3.15,
+          3.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check ordinary width and spacing of both metal1 and metal2 routing in TOP.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2",
+      "m2.1",
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b037",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "PASS"
+    },
+    "gds_path": "benchmark/b037.gds",
+    "gds_sha256": "91077b1a1016b1dae9f2496c731a594f086d84a99ab6774be2c84bc35318f934",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.25,
+          0.19999999999999998,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.05, 0.1, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b038",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "PASS"
+    },
+    "gds_path": "benchmark/b038.gds",
+    "gds_sha256": "5f25e6ace1629294a2465a6505fdfc6f44d2393b2622c10a96c38a29238a61b3",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.245,
+          0.19999999999999998,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.055, 0.1, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b039",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "benchmark/b039.gds",
+    "gds_sha256": "75b1e04eb74766d4bb3e834487d0ffe91460fe3a363190267f7881069423c12e",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.21999999999999997,
+          0.21999999999999997,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.08, 0.08, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b040",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "PASS"
+    },
+    "gds_path": "benchmark/b040.gds",
+    "gds_sha256": "9c66adf1b70314e76ffd3fce13c6ef3ff5032592f6607a83b38e81aec4cd0468",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.21499999999999997,
+          0.21999999999999997,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.085, 0.08, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b041",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "FAIL",
+      "m2.5": "PASS"
+    },
+    "gds_path": "benchmark/b041.gds",
+    "gds_sha256": "2bbbb0f73504c8818225b404dfb200bc500b72edbbc0af2729925518dab16bb0",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.19999999999999998,
+          0.25,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.1, 0.05, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b042",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "PASS",
+      "m2.5": "PASS"
+    },
+    "gds_path": "benchmark/b042.gds",
+    "gds_sha256": "5cda8246c7a2c4b0ed51305b8f82ca0a7e60b495677ace735876ec8e7bdd3854",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.19999999999999998,
+          0.245,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.1, 0.055, 0.1, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b043",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "PASS",
+      "m2.5": "FAIL"
+    },
+    "gds_path": "benchmark/b043.gds",
+    "gds_sha256": "e95ca59f8b55999ac85b5a9737b9ef6b55797e5e6e4b51b330748e537a4f0833",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.19999999999999998,
+          0.21999999999999997,
+          0.53,
+          0.55
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.1, 0.08, 0.08, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b044",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "PASS",
+      "m2.5": "PASS"
+    },
+    "gds_path": "benchmark/b044.gds",
+    "gds_sha256": "2537a792b727bbb6e4d774bca53e12d5412fd31155215919840da20c79ced3f4",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.19999999999999998,
+          0.21499999999999997,
+          0.53,
+          0.55
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.1, 0.085, 0.08, 0.1]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b045",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "benchmark/b045.gds",
+    "gds_sha256": "e0a5ac11681883393f0f78f28f324d1939bc68ac52b694803a9bc6a83ca949a0",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.245,
+          0.245,
+          0.505,
+          0.505
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.055, 0.055, 0.055, 0.055]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b046",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "PASS"
+    },
+    "gds_path": "benchmark/b046.gds",
+    "gds_sha256": "358e5ca216c07f7eb526e5c090d1380e86025f3e107950d420a24cf69b007416",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.21499999999999997,
+          0.245,
+          0.535,
+          0.505
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.085, 0.055, 0.085, 0.055]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b047",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "PASS",
+      "m2.5": "FAIL"
+    },
+    "gds_path": "benchmark/b047.gds",
+    "gds_sha256": "65e2b6ad9d4f62891f43c66364347266960e1b9d96d76236bb0635d7971de4fe",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.245,
+          0.245,
+          0.505,
+          0.505
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.055, 0.055, 0.055, 0.055]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b048",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "m2.4": "PASS",
+      "m2.5": "PASS"
+    },
+    "gds_path": "benchmark/b048.gds",
+    "gds_sha256": "70a5c8fc1bd7318946dcaf3aef04da59f22ee14c45a58b63f3981608c6f8feb4",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.245,
+          0.21499999999999997,
+          0.505,
+          0.535
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.055, 0.085, 0.055, 0.085]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal2 only.",
+    "relevant_rule_ids": [
+      "m2.4",
+      "m2.5"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b049",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "benchmark/b049.gds",
+    "gds_sha256": "4e05db72c37a5e877a55ec2f25740d17ba2d7dca9d22423fe46698071795535c",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.245,
+          0.245,
+          0.535,
+          0.535
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.055, 0.055, 0.085, 0.085]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "b050",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "PASS"
+    },
+    "gds_path": "benchmark/b050.gds",
+    "gds_sha256": "a5d88db888df2dee462cd6dcde03d0b5f418625893db95e8fd4da23739770ec9",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.21499999999999997,
+          0.245,
+          0.535,
+          0.535
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Left,bottom,right,top margins=[0.085, 0.055, 0.085, 0.085]um; pinned deck flags adjacent deficient edges; see docs/ENCLOSURE_AUDIT.md.",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based enclosure requirements of this 0.15um via landing by metal1 only.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "d001",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "m1.1": "FAIL"
+    },
+    "gds_path": "development/d001.gds",
+    "gds_sha256": "2c581572cd5f56577b3c697e2e3740c601da8261375836e36bd158a83158b997",
+    "geometry": [
+      {
+        "bbox_um": [
+          20,
+          20,
+          20.125,
+          20.9
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check metal1 width.",
+    "relevant_rule_ids": [
+      "m1.1"
+    ],
+    "split": "development"
+  },
+  {
+    "case_id": "d002",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "m2.1": "PASS"
+    },
+    "gds_path": "development/d002.gds",
+    "gds_sha256": "fb124880122097c1a7af836aeb3c8ca05e79e7cfa5b036d9c575921088acb905",
+    "geometry": [
+      {
+        "bbox_um": [
+          20,
+          20,
+          20.16,
+          20.9
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check metal2 width.",
+    "relevant_rule_ids": [
+      "m2.1"
+    ],
+    "split": "development"
+  },
+  {
+    "case_id": "d003",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "development/d003.gds",
+    "gds_sha256": "27dabc3620ab2c9b35c6193691d88f54e16bfe6aa33216c5b8722d45875002c2",
+    "geometry": [
+      {
+        "bbox_um": [
+          20,
+          20,
+          20.5,
+          20.5
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          20.62,
+          20,
+          21.12,
+          20.5
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check metal1 spacing.",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "development"
+  },
+  {
+    "case_id": "d004",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "development/d004.gds",
+    "gds_sha256": "3e6fb7b9b1bbad885f7cb568e6e3c65a912a24394e2fe615482746d88f741def",
+    "geometry": [
+      {
+        "bbox_um": [
+          20,
+          20,
+          20.5,
+          20.5
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          20.67,
+          20,
+          21.17,
+          20.5
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check metal2 spacing.",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "development"
+  },
+  {
+    "case_id": "d005",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "development/d005.gds",
+    "gds_sha256": "3541635941f6ba6725fe24cdea774acd1966cc26cc6f046d6ac7bea21116cab4",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.255,
+          0.255,
+          0.495,
+          0.495
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check the metal1 enclosure of this via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "development"
+  },
+  {
+    "case_id": "d006",
+    "case_type": "few_shot",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "PASS"
+    },
+    "gds_path": "development/d006.gds",
+    "gds_sha256": "d5746781fe274b96436565ad93b5aace2c857213fbdf75938a23fcd4f4c83dc5",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.3,
+          0.45,
+          0.45
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.19999999999999998,
+          0.19999999999999998,
+          0.55,
+          0.55
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.2,
+          0.2,
+          0.55,
+          0.55
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": null,
+    "pair_id": null,
+    "question": "Check the metal1 enclosure of this via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "development"
+  }
+]

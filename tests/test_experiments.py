@@ -44,15 +44,17 @@ def test_baseline_refusal_is_not_engine_verified(tmp_path):
 
 def test_debug_disclosure_is_saved_not_sent_to_model(tmp_path):
     class LocalFixture(Client):
-        def __init__(self, model):
+        def __init__(self, model, timeout_s):
             super().__init__(("finalize_answer", {"verdict": "REFUSE", "claims": [], "selections": [], "refusal_reason": "Fixture only."}))
             self.model = model
+            self.timeout_s = timeout_s
 
         def _check_model(self):
             pass
 
     run_grid(tmp_path, ["fixture"], ["A"], ["b001"], probes=False, client_factory=LocalFixture)
     manifest = json.loads((tmp_path / "manifest.json").read_text())
+    assert manifest["inference_timeout_s"] == 600
     demonstrations = manifest["windows_setup_demonstrations"]
     assert [(entry["case_id"], entry["verdict"]) for entry in demonstrations] == [("b001", "FAIL"), ("b002", "PASS")]
     assert {"b001", "b002", "b004", "b005", "b039", "o002"} == set(manifest["previous_live_acceptance_cases"])

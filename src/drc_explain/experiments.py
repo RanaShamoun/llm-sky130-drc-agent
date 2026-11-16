@@ -159,9 +159,20 @@ def _validate_prediction(answer):
             raise ValueError("Invalid numeric prediction.")
 
 
-def run_grid(output, models, conditions, case_ids=None, repetitions=1, probes=True, client_factory=OllamaClient):
+def run_grid(
+    output,
+    models,
+    conditions,
+    case_ids=None,
+    repetitions=1,
+    probes=True,
+    client_factory=OllamaClient,
+    timeout_s=600,
+):
     if repetitions < 1 or not models or not conditions or set(conditions) - {"A", "B", "C"}:
         raise ValueError("Use positive repetitions, local models, and conditions A/B/C.")
+    if type(timeout_s) is not int or timeout_s < 1:
+        raise ValueError("timeout_s must be a positive integer.")
     cases = [case for case in read_json(ROOT / "eval/public/cases.json") if case["split"] == "benchmark"]
     if probes:
         cases += read_json(ROOT / "eval/public/probes.json")
@@ -174,11 +185,14 @@ def run_grid(output, models, conditions, case_ids=None, repetitions=1, probes=Tr
             raise ValueError("Public layout hash mismatch.")
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
-    clients = {model: client_factory(model=model) for model in models}
+    clients = {
+        model: client_factory(model=model, timeout_s=timeout_s) for model in models
+    }
     for client in clients.values():
         client._check_model()
     manifest = {
         "version": 1, "models": models, "conditions": conditions,
+        "inference_timeout_s": timeout_s,
         "repetitions": repetitions, "case_ids": [case["case_id"] for case in cases],
         "public_inputs_sha256": hashlib.sha256(json.dumps([model_input(case) for case in cases], sort_keys=True).encode()).hexdigest(),
         "prompts_sha256": hashlib.sha256((BASELINE_INSTRUCTIONS + INSTRUCTIONS).encode()).hexdigest(),
@@ -261,10 +275,24 @@ def main():
     parser.add_argument("--conditions", nargs="+", choices=["A", "B", "C"], default=["A", "B", "C"])
     parser.add_argument("--cases", nargs="+")
     parser.add_argument("--repetitions", type=int, default=1)
+    parser.add_argument(
+        "--timeout-s",
+        type=int,
+        default=600,
+        help="Per-request local inference timeout, including model loading (default: 600).",
+    )
     parser.add_argument("--no-probes", action="store_true")
     args = parser.parse_args()
     if args.action == "run":
-        run_grid(args.output, args.models, args.conditions, args.cases, args.repetitions, not args.no_probes)
+        run_grid(
+            args.output,
+            args.models,
+            args.conditions,
+            args.cases,
+            args.repetitions,
+            not args.no_probes,
+            timeout_s=args.timeout_s,
+        )
     score_grid(args.output)
     print(f"Saved metrics and results table to {args.output}")
 

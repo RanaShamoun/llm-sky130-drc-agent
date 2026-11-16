@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import time
 import uuid
 from datetime import datetime, timezone
@@ -33,6 +34,10 @@ actually checked, including passing rules. Cite the successful run_drc call_id i
 claim's evidence_call_id; do not use response IDs or retrieval call IDs. Supply one
 claim per selected rule and a short justification for each selection. Verdict is FAIL
 if any selected check fails, otherwise PASS. This says nothing about unchecked rules.
+For PASS/FAIL, finalize_answer must have exactly these fields and JSON types:
+{"verdict":"PASS","selections":[{"rule_id":"m1.1","justification":"The question asks about metal1 width."}],"claims":[{"rule_id":"m1.1","status":"PASS","limit_um":0.14,"measured_values_um":[],"evidence_call_id":"run_drc call_id"}],"refusal_reason":null}
+selections and claims are arrays of objects, never strings or copied tool results. Each
+claim has exactly rule_id, status, limit_um, measured_values_um, evidence_call_id.
 For unsupported or underspecified questions, use REFUSE with empty selections/claims
 and a concise refusal_reason. Do not issue partial certification for an unsupported task.
 Only tool evidence can support a geometric verdict. A tool error is never PASS.
@@ -52,7 +57,12 @@ FINAL_TOOL = {
     "type": "function",
     "name": "finalize_answer",
     "strict": True,
-    "description": "Submit a proposed answer for deterministic verification; rejected claims may be corrected.",
+    "description": (
+        "Submit a proposed answer for deterministic verification. For PASS/FAIL, "
+        "selections and claims must be arrays of objects, not strings or copied tool "
+        "results. Claims contain only rule_id, status, limit_um, measured_values_um, "
+        "and evidence_call_id. Rejected claims may be corrected."
+    ),
     "parameters": _object(
         {
             "verdict": {"type": "string", "enum": ["PASS", "FAIL", "REFUSE"]},
@@ -88,6 +98,72 @@ def model_tools():
     return [
         {"type": "function", **schema, "strict": False} for schema in TOOL_SCHEMAS
     ] + [FINAL_TOOL]
+
+
+def _validate_tool_arguments(name, arguments):
+    schema = next(
+        (tool["parameters"] for tool in TOOL_SCHEMAS if tool["name"] == name), None
+    )
+    if schema is None:
+        raise ValueError(f"Unknown function name: {name}.")
+
+    properties = schema["properties"]
+    required = set(schema.get("required", []))
+    missing = required - set(arguments)
+    unexpected = set(arguments) - set(properties)
+    invalid = []
+    for key, value in arguments.items():
+        field = properties.get(key)
+        if field is None:
+            continue
+        expected = field.get("type")
+        valid = {
+            "string": lambda item: isinstance(item, str),
+            "integer": lambda item: type(item) is int,
+            "number": lambda item: type(item) in {int, float}
+            and math.isfinite(item),
+            "array": lambda item: isinstance(item, list),
+            "object": lambda item: isinstance(item, dict),
+            "boolean": lambda item: isinstance(item, bool),
+        }
+        if expected in valid and not valid[expected](value):
+            invalid.append(f"{key} must be {expected}")
+            continue
+        if "enum" in field and value not in field["enum"]:
+            invalid.append(f"{key} must be one of {field['enum']}")
+        if expected in {"integer", "number"}:
+            if "minimum" in field and value < field["minimum"]:
+                invalid.append(f"{key} must be at least {field['minimum']}")
+            if "maximum" in field and value > field["maximum"]:
+                invalid.append(f"{key} must be at most {field['maximum']}")
+        if expected == "array":
+            item_type = field.get("items", {}).get("type")
+            if item_type == "string" and any(
+                not isinstance(item, str) for item in value
+            ):
+                invalid.append(f"every {key} item must be a string")
+            if len(value) < field.get("minItems", 0):
+                invalid.append(f"{key} must contain at least {field['minItems']} item(s)")
+            if field.get("uniqueItems") and len(value) != len(
+                {json.dumps(item, sort_keys=True) for item in value}
+            ):
+                invalid.append(f"{key} items must be unique")
+
+    if missing or unexpected or invalid:
+        details = []
+        if missing:
+            details.append(f"missing required: {', '.join(sorted(missing))}")
+        if unexpected:
+            details.append(f"unexpected: {', '.join(sorted(unexpected))}")
+        details.extend(invalid)
+        descriptions = "; ".join(
+            f"{key}: {value.get('description', value.get('type', 'value'))}"
+            for key, value in properties.items()
+        )
+        raise ValueError(
+            f"Invalid arguments for {name}: {'; '.join(details)}. "
+            f"Use only these arguments: {descriptions}."
+        )
 
 
 class Agent:
@@ -293,10 +369,9 @@ class Agent:
                                 },
                             }
                         )
+                    _validate_tool_arguments(name, arguments)
                     if tool_calls >= self.max_tool_calls:
                         raise ValueError("Tool-call budget exhausted.")
-                    if name not in {schema["name"] for schema in TOOL_SCHEMAS}:
-                        raise ValueError("Unknown function name.")
                     if name in {"inspect_layout", "run_drc"}:
                         if (
                             arguments.get("gds_path") != gds_path

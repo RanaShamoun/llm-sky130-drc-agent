@@ -2,6 +2,7 @@
 
 import copy
 import json
+import os
 from io import BytesIO
 from urllib.error import HTTPError
 
@@ -146,6 +147,22 @@ def test_refusal_is_distinct_from_geometric_verdict():
         verify_answer(proposal, {})
 
 
+def test_invalid_final_shape_reports_repairable_field_guidance():
+    with pytest.raises(
+        VerificationError,
+        match=r"missing: selections; unexpected: evidence_call_id.*JSON arrays",
+    ):
+        verify_answer(
+            {
+                "verdict": "PASS",
+                "claims": "[]",
+                "evidence_call_id": "drc",
+                "refusal_reason": "",
+            },
+            {},
+        )
+
+
 def call(name, arguments, id):
     return {
         "type": "function_call",
@@ -226,6 +243,37 @@ def test_agent_full_flow_saves_logs_and_never_reads_gold(tmp_path):
         if item.get("type") == "function_call_output" and item["call_id"] == "drc"
     )
     assert json.loads(returned["output"])["evidence_call_id"] == "drc"
+
+
+def test_agent_returns_tool_schema_feedback_and_recovers(tmp_path):
+    invalid_lookup = call(
+        "retrieve_rules",
+        {"layers": "[{'name': 'm1'}]", "geometry": "rectangle"},
+        "invalid-lookup",
+    )
+    client = SequenceClient(
+        [
+            invalid_lookup,
+            *good_sequence(),
+        ]
+    )
+    result = Agent(client, tmp_path, toolset_factory=factory).run(
+        "Check metal1 width and spacing.", "benchmark/b004.gds"
+    )
+
+    assert result["verdict"] == "FAIL" and result["verification"]["accepted"]
+    assert result["tool_call_count"] == 3 and result["model_turn_count"] == 4
+    feedback = next(
+        item
+        for item in client.inputs[1]
+        if item.get("type") == "function_call_output"
+        and item["call_id"] == "invalid-lookup"
+    )
+    assert "unexpected: geometry, layers" in feedback["output"]
+    assert "query: Natural-language rule" in feedback["output"]
+    trace = (tmp_path / result["run_id"] / "trace.jsonl").read_text()
+    assert '"event": "rejected_call"' in trace
+    assert '"call_id": "invalid-lookup"' in trace
 
 
 def test_agent_can_correct_rejected_final_claim(tmp_path):
@@ -382,7 +430,8 @@ def test_hidden_key_configuration_preserves_other_settings(
     assert "OTHER_SETTING=keep" in contents and "OPENAI_MODEL=test-model" in contents
     assert contents.count("OPENAI_API_KEY=") == 1
     assert "sk-test-not-a-real-key" not in capsys.readouterr().out
-    assert path.stat().st_mode & 0o777 == 0o600
+    if os.name == "posix":
+        assert path.stat().st_mode & 0o777 == 0o600
 
 
 def test_invalid_key_entry_does_not_replace_existing_file(tmp_path, monkeypatch):

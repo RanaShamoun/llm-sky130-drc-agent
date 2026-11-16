@@ -23,8 +23,21 @@ def verify_answer(answer, evidence, inspected_hash=None):
     """
     expected_keys = {"verdict", "selections", "claims", "refusal_reason"}
     if not isinstance(answer, dict) or set(answer) != expected_keys:
+        if isinstance(answer, dict):
+            missing = expected_keys - set(answer)
+            unexpected = set(answer) - expected_keys
+            details = []
+            if missing:
+                details.append(f"missing: {', '.join(sorted(missing))}")
+            if unexpected:
+                details.append(f"unexpected: {', '.join(sorted(unexpected))}")
+            detail = "; ".join(details)
+        else:
+            detail = "arguments must be a JSON object"
         raise VerificationError(
-            "Final answer must contain exactly verdict, selections, claims, refusal_reason."
+            "Final answer must contain exactly verdict, selections, claims, "
+            f"refusal_reason ({detail}). selections and claims must be JSON arrays "
+            "of objects, not strings. PASS/FAIL uses refusal_reason=null."
         )
     verdict = answer["verdict"]
     if verdict not in {"PASS", "FAIL", "REFUSE"}:

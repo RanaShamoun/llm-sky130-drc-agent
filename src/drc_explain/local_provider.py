@@ -14,6 +14,7 @@ from .provider import ProviderError, load_local_config
 
 DEFAULT_LOCAL_MODEL = "qwen3:8b"
 LOCAL_URL = "http://127.0.0.1:11434"
+DEFAULT_TIMEOUT_S = 900
 
 
 class OllamaClient:
@@ -21,7 +22,7 @@ class OllamaClient:
     provider_name = "ollama-local"
     api_cost_usd = 0.0
 
-    def __init__(self, model=None, timeout_s=180):
+    def __init__(self, model=None, timeout_s=DEFAULT_TIMEOUT_S):
         load_local_config()
         self.model = model or os.environ.get("OLLAMA_MODEL", DEFAULT_LOCAL_MODEL)
         if (
@@ -58,7 +59,12 @@ class OllamaClient:
             raise ProviderError(
                 f"Local Ollama returned HTTP {exc.code}. Check the installed model and server log."
             ) from None
-        except (URLError, TimeoutError):
+        except TimeoutError:
+            raise ProviderError(
+                f"Local Ollama request timed out after {self.timeout_s} seconds. "
+                "Check local inference load; no paid API was contacted."
+            ) from None
+        except URLError:
             raise ProviderError(
                 "Local Ollama is unavailable. Run python run.py serve-local in another terminal; no paid API was contacted."
             ) from None
@@ -107,6 +113,7 @@ class OllamaClient:
             "model_size_bytes": entry["size"],
             "endpoint": LOCAL_URL,
             "cloud_fallback": False,
+            "request_timeout_s": self.timeout_s,
         }
 
     @staticmethod
@@ -159,6 +166,33 @@ class OllamaClient:
                 messages.append({"role": "assistant", "content": content})
         return messages
 
+    @staticmethod
+    def _normalize_arguments(name, arguments):
+        if name != "finalize_answer":
+            return arguments, []
+        normalized = dict(arguments)
+        converted = []
+        for field in ("selections", "claims", "refusal_reason"):
+            value = normalized.get(field)
+            if not isinstance(value, str):
+                continue
+            try:
+                decoded = json.loads(
+                    value,
+                    parse_constant=lambda _: (_ for _ in ()).throw(
+                        ValueError("Nonfinite JSON value.")
+                    ),
+                )
+            except (json.JSONDecodeError, ValueError):
+                continue
+            valid = isinstance(decoded, list) if field != "refusal_reason" else (
+                decoded is None or isinstance(decoded, str)
+            )
+            if valid:
+                normalized[field] = decoded
+                converted.append(field)
+        return normalized, converted
+
     def respond(self, inputs, tools, instructions):
         self._check_model()
         native_tools = [
@@ -206,6 +240,7 @@ class OllamaClient:
                 calls = [{"function": action}]
                 action_format = "json_action"
         output = []
+        argument_normalizations = []
         for call in calls:
             function = call.get("function", {})
             arguments = function.get("arguments")
@@ -213,10 +248,18 @@ class OllamaClient:
                 function.get("name"), str
             ):
                 raise ProviderError("Local model emitted malformed tool arguments.")
+            arguments, normalized_fields = self._normalize_arguments(
+                function["name"], arguments
+            )
+            call_id = "local_" + uuid.uuid4().hex
+            if normalized_fields:
+                argument_normalizations.append(
+                    {"call_id": call_id, "fields": normalized_fields}
+                )
             output.append(
                 {
                     "type": "function_call",
-                    "call_id": "local_" + uuid.uuid4().hex,
+                    "call_id": call_id,
                     "name": function["name"],
                     "arguments": json.dumps(arguments, allow_nan=False),
                 }
@@ -242,6 +285,7 @@ class OllamaClient:
             },
             "local_runtime": self.metadata,
             "local_action_format": action_format,
+            "local_argument_normalizations": argument_normalizations,
             "local_assistant_content": message.get("content", ""),
             "local_timings_ns": {
                 k: result[k]

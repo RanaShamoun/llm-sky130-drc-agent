@@ -2,11 +2,12 @@
 
 import json
 from types import SimpleNamespace
+from urllib.error import URLError
 
 import pytest
 
 from drc_explain.agent import model_tools
-from drc_explain.local_provider import OllamaClient
+from drc_explain.local_provider import DEFAULT_TIMEOUT_S, OllamaClient
 from drc_explain.local_runtime import runtime_environment
 from drc_explain.provider import ProviderError
 
@@ -17,6 +18,29 @@ from drc_explain.provider import ProviderError
 def test_cloud_and_remote_models_are_rejected(model):
     with pytest.raises(ProviderError):
         OllamaClient(model=model)
+
+
+def test_local_inference_timeout_is_recorded_and_distinguished(monkeypatch):
+    class TimedOutOpener:
+        def open(self, request, timeout):
+            assert timeout == DEFAULT_TIMEOUT_S == 900
+            raise TimeoutError
+
+    client = OllamaClient(model="qwen3:8b")
+    client._opener = TimedOutOpener()
+    with pytest.raises(ProviderError, match="request timed out after 900 seconds"):
+        client._request("/api/chat", {})
+
+
+def test_unavailable_local_runtime_is_not_reported_as_timeout(monkeypatch):
+    class UnavailableOpener:
+        def open(self, request, timeout):
+            raise URLError("connection refused")
+
+    client = OllamaClient(model="qwen3:8b")
+    client._opener = UnavailableOpener()
+    with pytest.raises(ProviderError, match="Local Ollama is unavailable"):
+        client._request("/api/chat", {})
 
 
 def test_native_history_keeps_tool_names_and_arguments():
@@ -202,3 +226,69 @@ def test_exact_json_action_uses_the_same_verified_tool_path(tmp_path, monkeypatc
     action["name"] = "run_shell"
     result = client.respond([], model_tools(), "Instructions")
     assert result["output"][0]["type"] == "message"
+
+
+def test_stringified_final_arrays_are_unwrapped_as_strict_json(monkeypatch):
+    client = OllamaClient(model="llama3.1:8b")
+    client.metadata = {"runtime": "test"}
+    arguments = {
+        "verdict": "PASS",
+        "selections": json.dumps(
+            [{"rule_id": "m1.1", "justification": "Requested metal1 width."}]
+        ),
+        "claims": json.dumps(
+            [
+                {
+                    "rule_id": "m1.1",
+                    "status": "PASS",
+                    "limit_um": 0.14,
+                    "measured_values_um": [],
+                    "evidence_call_id": "local-drc-call",
+                }
+            ]
+        ),
+        "refusal_reason": "null",
+    }
+    monkeypatch.setattr(
+        client,
+        "_request",
+        lambda *args, **kwargs: {
+            "done": True,
+            "done_reason": "stop",
+            "message": {
+                "tool_calls": [
+                    {"function": {"name": "finalize_answer", "arguments": arguments}}
+                ]
+            },
+        },
+    )
+
+    result = client.respond([], model_tools(), "Instructions")
+    output = result["output"][0]
+    normalized = json.loads(output["arguments"])
+    assert isinstance(normalized["selections"], list)
+    assert isinstance(normalized["claims"], list)
+    assert normalized["refusal_reason"] is None
+    assert result["local_argument_normalizations"] == [
+        {
+            "call_id": output["call_id"],
+            "fields": ["selections", "claims", "refusal_reason"],
+        }
+    ]
+
+
+def test_python_style_final_arguments_are_not_interpreted():
+    arguments = {
+        "selections": "[{'rule_id': 'm1.1'}]",
+        "claims": "[]",
+        "refusal_reason": "",
+    }
+
+    normalized, fields = OllamaClient._normalize_arguments(
+        "finalize_answer", arguments
+    )
+
+    assert normalized["selections"] == arguments["selections"]
+    assert normalized["claims"] == []
+    assert normalized["refusal_reason"] == ""
+    assert fields == ["claims"]

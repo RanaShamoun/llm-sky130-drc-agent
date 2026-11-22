@@ -186,6 +186,9 @@ class Agent:
     def run(self, question, gds_path=None, top_cell="TOP"):
         """Return a saved result. ERROR is separate from a domain refusal or verdict."""
         start = time.perf_counter()
+        initial_api_cost = getattr(self.client, "api_cost_usd", None)
+        api_budget = getattr(self.client, "budget", None)
+        initial_budget_pending = getattr(api_budget, "pending_usd", 0.0)
         run_id = uuid.uuid4().hex
         directory = self.output_root / run_id
         directory.mkdir(parents=True)
@@ -196,6 +199,19 @@ class Agent:
         returned_models = []
         tool_calls = 0
         turns = 0
+
+        def api_cost_delta():
+            current = getattr(self.client, "api_cost_usd", None)
+            if (
+                type(current) in {int, float}
+                and type(initial_api_cost) in {int, float}
+            ):
+                return round(current - initial_api_cost, 10)
+            return current
+
+        def budget_pending_delta():
+            current = getattr(api_budget, "pending_usd", 0.0)
+            return round(max(0.0, current - initial_budget_pending), 10)
 
         def log(kind, **data):
             event = {
@@ -218,7 +234,10 @@ class Agent:
                 "returned_models": returned_models,
                 "response_ids": response_ids,
                 "usage": usage,
-                "cost_usd": getattr(self.client, "api_cost_usd", None),
+                "cost_usd": (
+                    None if budget_pending_delta() else api_cost_delta()
+                ),
+                "api_cost_uncertain_upper_bound_usd": budget_pending_delta(),
                 "provider": getattr(self.client, "provider_name", "test-fixture"),
                 "provider_metadata": getattr(self.client, "metadata", {}),
                 "tool_call_count": tool_calls,

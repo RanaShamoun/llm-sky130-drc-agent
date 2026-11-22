@@ -23,12 +23,23 @@ def test_cloud_and_remote_models_are_rejected(model):
 def test_local_inference_timeout_is_recorded_and_distinguished(monkeypatch):
     class TimedOutOpener:
         def open(self, request, timeout):
-            assert timeout == DEFAULT_TIMEOUT_S == 900
+            assert timeout == DEFAULT_TIMEOUT_S == 1200
             raise TimeoutError
 
     client = OllamaClient(model="qwen3:8b")
     client._opener = TimedOutOpener()
-    with pytest.raises(ProviderError, match="request timed out after 900 seconds"):
+    with pytest.raises(ProviderError, match="request timed out after 1200 seconds"):
+        client._request("/api/chat", {})
+
+
+def test_wrapped_local_inference_timeout_is_not_reported_unavailable():
+    class TimedOutOpener:
+        def open(self, request, timeout):
+            raise URLError(TimeoutError("timed out"))
+
+    client = OllamaClient(model="qwen3:8b")
+    client._opener = TimedOutOpener()
+    with pytest.raises(ProviderError, match="request timed out after 1200 seconds"):
         client._request("/api/chat", {})
 
 
@@ -102,7 +113,7 @@ def test_local_protocol_is_real_inference_with_zero_api_cost(tmp_path, monkeypat
                     {
                         "function": {
                             "name": "retrieve_rules",
-                            "arguments": {"query": "metal1 spacing"},
+                            "arguments": {"query": "metal1 spacing", "limit": "1"},
                         }
                     }
                 ],
@@ -114,7 +125,13 @@ def test_local_protocol_is_real_inference_with_zero_api_cost(tmp_path, monkeypat
         [{"role": "user", "content": "Check geometry."}], model_tools(), "Instructions"
     )
     assert result["output"][0]["type"] == "function_call"
-    assert json.loads(result["output"][0]["arguments"]) == {"query": "metal1 spacing"}
+    assert json.loads(result["output"][0]["arguments"]) == {
+        "query": "metal1 spacing",
+        "limit": 1,
+    }
+    assert [entry["fields"] for entry in result["local_argument_normalizations"]] == [
+        ["limit"]
+    ]
     assert result["usage"] == {"input_tokens": 100, "output_tokens": 20}
     assert client.is_live and client.api_cost_usd == 0.0
     payload = requests[-1][1]
@@ -196,17 +213,21 @@ def test_cli_defaults_to_local_even_when_openai_key_exists(monkeypatch):
     assert main() == 0
 
 
-def test_exact_json_action_uses_the_same_verified_tool_path(tmp_path, monkeypatch):
+@pytest.mark.parametrize("argument_field", ["arguments", "parameters"])
+def test_json_action_uses_the_same_verified_tool_path(
+    tmp_path, monkeypatch, argument_field
+):
     client = OllamaClient(model="qwen3:8b")
     client.metadata = {"runtime": "test"}
+    arguments = {
+        "verdict": "REFUSE",
+        "selections": [],
+        "claims": [],
+        "refusal_reason": "Unsupported scope.",
+    }
     action = {
         "name": "finalize_answer",
-        "arguments": {
-            "verdict": "REFUSE",
-            "selections": [],
-            "claims": [],
-            "refusal_reason": "Unsupported scope.",
-        },
+        argument_field: arguments,
     }
     monkeypatch.setattr(
         client,
@@ -220,12 +241,21 @@ def test_exact_json_action_uses_the_same_verified_tool_path(tmp_path, monkeypatc
     result = client.respond([], model_tools(), "Instructions")
     assert result["local_action_format"] == "json_action"
     assert result["output"][0]["name"] == "finalize_answer"
-    assert json.loads(result["output"][0]["arguments"]) == action["arguments"]
+    assert json.loads(result["output"][0]["arguments"]) == arguments
     assert result["local_assistant_content"] == json.dumps(action)
-    # Arbitrary prose or unknown actions must not become executable calls.
     action["name"] = "run_shell"
     result = client.respond([], model_tools(), "Instructions")
     assert result["output"][0]["type"] == "message"
+
+
+@pytest.mark.parametrize("limit", ["0", "9", "10", "one", 0, 9])
+def test_invalid_retrieval_limit_is_not_normalized(limit):
+    arguments = {"query": "metal1 spacing", "limit": limit}
+    normalized, fields = OllamaClient._normalize_arguments(
+        "retrieve_rules", arguments
+    )
+    assert normalized == arguments
+    assert fields == []
 
 
 def test_stringified_final_arrays_are_unwrapped_as_strict_json(monkeypatch):

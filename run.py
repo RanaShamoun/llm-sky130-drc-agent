@@ -42,8 +42,8 @@ def main():
         help="See README.md for the normal workflow.",
     )
     args, extra = parser.parse_known_args()
-    if extra and args.command not in {"agent", "experiments", "ui"}:
-        parser.error("Extra arguments are supported only for agent, experiments, and ui.")
+    if extra and args.command not in {"agent", "experiments", "ui", "configure"}:
+        parser.error("Extra arguments are supported only for agent, experiments, ui, and configure.")
     try:
         if args.command == "check":
             python("-m", "pytest", "-q")
@@ -66,9 +66,17 @@ def main():
 
             pull_model()
         elif args.command == "configure":
-            from drc_explain.provider import configure_api
+            extra_provider = extra[0] if extra else "openai"
+            if extra_provider == "gemini":
+                from drc_explain.provider import configure_gemini
 
-            configure_api()
+                configure_gemini()
+            elif extra_provider == "openai":
+                from drc_explain.provider import configure_api
+
+                configure_api()
+            else:
+                raise ValueError("Use 'configure openai' or 'configure gemini'.")
         elif args.command == "agent-smoke":
             python("scripts/smoke_agent.py")
         elif args.command == "smoke":

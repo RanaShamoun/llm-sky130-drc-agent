@@ -27,11 +27,19 @@ def _geometry(layer, kind, value, offset=0, rotate=False):
 
 
 def _enclosure(outer, margins):
-    l, b, r, t = margins
+    left, bottom, right, top = margins
     via = [0.3, 0.3, 0.45, 0.45]
     boxes = [
         {"layer": "via", "bbox_um": via},
-        {"layer": outer, "bbox_um": [0.3 - l, 0.3 - b, 0.45 + r, 0.45 + t]},
+        {
+            "layer": outer,
+            "bbox_um": [
+                0.3 - left,
+                0.3 - bottom,
+                0.45 + right,
+                0.45 + top,
+            ],
+        },
         {"layer": "m2" if outer == "m1" else "m1", "bbox_um": [0.2, 0.2, 0.55, 0.55]},
     ]
     return boxes

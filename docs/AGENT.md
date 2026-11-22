@@ -6,7 +6,13 @@ The agent has passed four real local-model acceptance examples; results and reje
 
 The default provider is local Ollama with Qwen3 8B. No API key or paid credits are needed. Follow [Local model setup](LOCAL_MODEL.md); on the prepared Mac, run `python run.py agent --gds benchmark/b004.gds`. The local server starts automatically when necessary, and there is no cloud fallback.
 
-The optional OpenAI adapter remains available only when explicitly selected with `--provider openai` or `DRC_PROVIDER=openai`. An existing OpenAI key does not change the local default. Its hidden-key configuration command is `python run.py configure`; it is not needed for the zero-spend workflow.
+The optional OpenAI and Gemini adapters remain available only when explicitly selected with `--provider openai` or `--provider gemini`. Existing cloud keys do not change the local default. Hidden-key configuration commands are `python run.py configure openai` and `python run.py configure gemini`; neither is needed for the zero-spend workflow.
+
+Gemini uses the Google Generate Content API and converts function calls into the same structured protocol used by the local and OpenAI agents. Set `GEMINI_API_KEY` locally and use `GEMINI_MODEL=gemini-3.5-flash-lite`; never paste the key into chat. New Gemini configurations default to this model, but existing `.env` values are not rewritten. Gemini experiment runs require an explicit `--api-budget-usd` estimated budget guard; it is not a Google billing cap. The runner reserves a conservative per-request amount before sending, records usage-based estimates and model versions, and leaves uncertain in-flight charges reserved. Estimates use Google's standard paid-tier Gemini 3.5 Flash-Lite rates as of November 21, 2026: $0.30/1M input tokens, $0.03/1M cached input tokens, and $2.50/1M output tokens (including thinking); free-tier requests may be unbilled.
+
+The Gemini adapter spaces request starts by at least 6.1 seconds (a target below the observed 15-RPM Free-tier limit) and retries HTTP 429 responses up to five times, honoring `Retry-After` or using bounded exponential backoff. Per-client request, retry, and wait counters are included in provider metadata. Exhausted 429s remain `ERROR`, and their confirmed failed-request budget reservation is released; they are never converted into a model verdict. The limiter is process-local, so do not run the experiment and another Gemini client simultaneously with the same project key. A persisted 429 after retries indicates quota/access limits that pacing cannot resolve.
+
+Google lists `gemini-3.5-flash-lite` as stable and supporting function calling; see its [model page](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) and [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite). `gemini-2.5-flash` remains supported for historical compatibility but is deprecated and may be unavailable to some projects; Google says it will route requests to 3.5 Flash-Lite starting December 1, 2026. In separate three-case diagnostics, A produced correct predictions on all three inputs. After preserving required `thoughtSignature` values, B completed b004/b026 but exhausted its eight-turn limit on b037 after repeatedly omitting geometric claims. C returned verifier-accepted results on b004/b026, then succeeded on b037 in an isolated retry after an initial HTTP 429. These are smoke results, not full-grid benchmark evidence; the B b037 failure should remain visible.
 
 ## Live examples
 
@@ -43,6 +49,7 @@ Use `--json` to print the complete structured result. `--max-turns` defaults to 
 3. Accepts a structured proposed answer through `finalize_answer`.
 4. Verifies IDs were retrieved, all checked rules are represented, statuses and limits match the tool, scalar measurements match exactly, and the overall verdict follows the checks. Evidence must belong to the same unchanged input layout.
 Local calls use native tool calls or an exact JSON `{name, arguments}` action envelope. The provider records which format was used. Both go through the same dispatch and verification; arbitrary prose is never accepted as a geometric answer. Prose-only drafts are asked to resubmit a structured action within the same turn budget.
+The Ollama adapter also unwraps `selections` and `claims` when a local model returns them as strings containing strict JSON arrays, and converts a JSON `null` string for `refusal_reason` to null. It does not interpret Python-style literals or repair claim contents; the regular verifier still validates every normalized field.
 
 5. Renders the authoritative plain-language explanation from the verified facts, with immutable rule source links and original marker evidence. Unsupported claims are rejected; a model can correct its proposal within the turn budget. A tool failure or exhausted budget produces ERROR, never PASS.
 
@@ -52,7 +59,8 @@ PASS and FAIL apply only to the model-selected rules. The verifier cannot prove 
 
 - `src/drc_explain/agent.py`: prompt, bounded model/tool loop, trace capture.
 - `src/drc_explain/local_provider.py`: local Ollama adapter; `local_runtime.py` starts the runtime.
-- `src/drc_explain/provider.py`: optional OpenAI adapter and hidden-key configuration.
+- `src/drc_explain/provider.py`: optional OpenAI and hidden-key configuration helpers.
+- `src/drc_explain/gemini_provider.py`: optional Gemini Generate Content adapter.
 - `src/drc_explain/verification.py`: structured-claim verifier and explanation renderer.
 - `runs/agent/<run_id>/result.json`: verdict, checked evidence, selections, requested/returned models, usage totals, response IDs, latency, prompt hash, and verification status.
 - `runs/agent/<run_id>/trace.jsonl`: model inputs/outputs, rejected claims, and tool results.

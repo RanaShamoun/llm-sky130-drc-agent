@@ -29,7 +29,9 @@ def main():
     )
     agent.add_argument("--top-cell", default="TOP")
     agent.add_argument("--model", default=None)
-    agent.add_argument("--provider", choices=["ollama", "openai"], default=None)
+    agent.add_argument(
+        "--provider", choices=["ollama", "openai", "gemini"], default=None
+    )
     agent.add_argument("--max-turns", type=int, default=8)
     agent.add_argument(
         "--json", action="store_true", help="Print the full structured result"
@@ -41,6 +43,7 @@ def main():
     try:
         if args.command == "agent":
             from .agent import Agent
+            from .gemini_provider import GeminiClient
             from .local_provider import OllamaClient
             from .provider import OpenAIResponses, load_local_config
 
@@ -50,8 +53,10 @@ def main():
                 client = OllamaClient(model=args.model)
             elif provider == "openai":
                 client = OpenAIResponses(model=args.model)
+            elif provider == "gemini":
+                client = GeminiClient(model=args.model)
             else:
-                raise ValueError("Unknown provider. Choose ollama or openai.")
+                raise ValueError("Unknown provider. Choose ollama, openai, or gemini.")
             result = Agent(client, max_turns=args.max_turns).run(
                 args.question, args.gds, args.top_cell
             )

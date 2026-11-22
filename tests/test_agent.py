@@ -9,7 +9,13 @@ from urllib.error import HTTPError
 import pytest
 
 from drc_explain.agent import Agent, model_tools
-from drc_explain.provider import OpenAIResponses, ProviderError, load_local_config
+from drc_explain.provider import (
+    OpenAIBudget,
+    OpenAIResponses,
+    ProviderError,
+    load_local_config,
+    openai_cost_usd,
+)
 from drc_explain.tools import Toolset
 from drc_explain.verification import VerificationError, verify_answer
 
@@ -376,6 +382,64 @@ def test_openai_request_uses_responses_protocol(monkeypatch):
     assert payload["include"] == ["reasoning.encrypted_content"]
     assert "test-only-secret" not in json.dumps(payload)
     assert payload["tools"][-1]["strict"] is True
+
+
+def test_gpt4o_cost_uses_reported_cached_and_uncached_tokens():
+    usage = {
+        "input_tokens": 100,
+        "output_tokens": 20,
+        "input_tokens_details": {"cached_tokens": 50},
+    }
+    assert openai_cost_usd("gpt-4o", usage) == pytest.approx(0.0003875)
+    assert openai_cost_usd("gpt-4o", {"input_tokens": 1}) is None
+
+
+def test_gpt4o_budget_reserves_then_settles_reported_usage(tmp_path, monkeypatch):
+    body = {
+        "id": "resp_budget",
+        "model": "gpt-4o",
+        "status": "completed",
+        "output": [],
+        "usage": {
+            "input_tokens": 100,
+            "output_tokens": 20,
+            "input_tokens_details": {"cached_tokens": 0},
+        },
+    }
+
+    def open_request(request, timeout, context):
+        return BytesIO(json.dumps(body).encode())
+
+    monkeypatch.setattr("drc_explain.provider.urlopen", open_request)
+    budget = OpenAIBudget(0.10, tmp_path / "api_budget.json")
+    client = OpenAIResponses(
+        model="gpt-4o",
+        api_key="test-only-secret",
+        max_output_tokens=10,
+        budget=budget,
+    )
+    client._check_model()
+    client.respond([], [], "instructions")
+    assert client.api_cost_usd == pytest.approx(0.00045)
+    assert budget.spent_usd == pytest.approx(0.00045)
+    assert budget.pending_usd == 0
+    assert budget.cap_usd == 0.10
+
+
+def test_gpt4o_budget_blocks_request_before_network_call(tmp_path, monkeypatch):
+    def unexpected_request(*args, **kwargs):
+        raise AssertionError("budget should block before network access")
+
+    monkeypatch.setattr("drc_explain.provider.urlopen", unexpected_request)
+    budget = OpenAIBudget(0.000001, tmp_path / "api_budget.json")
+    client = OpenAIResponses(
+        model="gpt-4o",
+        api_key="test-only-secret",
+        max_output_tokens=10,
+        budget=budget,
+    )
+    with pytest.raises(ProviderError, match="blocked before sending"):
+        client.respond([], [], "instructions")
 
 
 def test_api_errors_do_not_expose_keys(monkeypatch):

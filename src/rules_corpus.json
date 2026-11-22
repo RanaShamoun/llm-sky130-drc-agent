@@ -1,0 +1,1631 @@
+[
+  {
+    "rule_id": "dnwell.1",
+    "raw_description": "dnwell.1: min. dnwell width : 3.0um",
+    "layer_hint": "dnwell",
+    "rule_type": "width",
+    "threshold_value": 3.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "dnwell.2",
+    "raw_description": "dnwell.2 : min. dnwell spacing : 6.3um",
+    "layer_hint": "dnwell",
+    "rule_type": "spacing",
+    "threshold_value": 6.3,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "nwell.1",
+    "raw_description": "nwell.1 : min. nwell width : 0.84um",
+    "layer_hint": "nwell",
+    "rule_type": "width",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "nwell.2a",
+    "raw_description": "nwell.2a : min. nwell spacing (merged if less) : 1.27um",
+    "layer_hint": "nwell",
+    "rule_type": "spacing",
+    "threshold_value": 1.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "nwell.6",
+    "raw_description": "nwell.6 : min enclosure of nwellHole by dnwell : 1.03um",
+    "layer_hint": "nwell",
+    "rule_type": "enclosure",
+    "threshold_value": 1.03,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "nwell.9",
+    "raw_description": "nwell.9 : HVnwell must be enclosed by hv marker",
+    "layer_hint": "nwell",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "hvtp.1",
+    "raw_description": "hvtp.1 : min. hvtp width : 0.38um",
+    "layer_hint": "hvtp",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvtp.2",
+    "raw_description": "hvtp.2 : min. hvtp spacing : 0.38um",
+    "layer_hint": "hvtp",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "pwde.1",
+    "raw_description": "pwde.1 : min. pwde width : 0.84um",
+    "layer_hint": "pwde",
+    "rule_type": "width",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "pwde.2",
+    "raw_description": "pwde.2 : min. pwde inside v20 spacing : 1.27um",
+    "layer_hint": "pwde",
+    "rule_type": "spacing",
+    "threshold_value": 1.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvtr.1",
+    "raw_description": "hvtr.1 : min. hvtr width : 0.38um",
+    "layer_hint": "hvtr",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvtr.2",
+    "raw_description": "hvtr.2 : min. hvtr spacing : 0.38um",
+    "layer_hint": "hvtr",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvtr.2_a",
+    "raw_description": "hvtr.2_a : hvtr must not overlap hvtp",
+    "layer_hint": "hvtr",
+    "rule_type": "overlap",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "lvtn.1a",
+    "raw_description": "lvtn.1a : min. lvtn width : 0.38um",
+    "layer_hint": "lvtn",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "lvtn.2",
+    "raw_description": "lvtn.2 : min. lvtn spacing : 0.38um",
+    "layer_hint": "lvtn",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "MR_lvtn.OVL.2",
+    "raw_description": "MR_lvtn.OVL.2 : lvtn must not straddle nwell",
+    "layer_hint": null,
+    "rule_type": "straddle",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "ncm.1",
+    "raw_description": "ncm.1 : min. ncm width : 0.38um",
+    "layer_hint": "ncm",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ncm.2a",
+    "raw_description": "ncm.2a : min. ncm spacing : 0.38um",
+    "layer_hint": "ncm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "difftap.1",
+    "raw_description": "difftap.1 : min. diff width across areaid:ce : 0.15um",
+    "layer_hint": "difftap",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "difftap.1_a",
+    "raw_description": "difftap.1_a : min. diff width in periphery : 0.15um",
+    "layer_hint": "difftap",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "difftap.2",
+    "raw_description": "difftap.2 : min. diff width inside areadid:ce : 0.14um",
+    "layer_hint": "difftap",
+    "rule_type": "width",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "difftap.1_b",
+    "raw_description": "difftap.1_b : min. tap width across areaid:ce : 0.15um",
+    "layer_hint": "difftap",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "difftap.1_c",
+    "raw_description": "difftap.1_c : min. tap width in periphery : 0.15um",
+    "layer_hint": "difftap",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "difftap.3",
+    "raw_description": "difftap.3 : min. difftap spacing : 0.27um",
+    "layer_hint": "difftap",
+    "rule_type": "spacing",
+    "threshold_value": 0.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "tunm.1",
+    "raw_description": "tunm.1 : min. tunm width : 0.41um",
+    "layer_hint": "tunm",
+    "rule_type": "width",
+    "threshold_value": 0.41,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "tunm.2",
+    "raw_description": "tunm.2 : min. tunm spacing : 0.5um",
+    "layer_hint": "tunm",
+    "rule_type": "spacing",
+    "threshold_value": 0.5,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "MR_tunm.CON.1",
+    "raw_description": "MR_tunm.CON.1 : use of layer tunm is prohibited",
+    "layer_hint": null,
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "thkox.1",
+    "raw_description": "thkox.1 : min. thkox width inside periphery : 0.6um",
+    "layer_hint": "thkox",
+    "rule_type": "width",
+    "threshold_value": 0.6,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "thkox.2",
+    "raw_description": "thkox.2 : min. thkox spacing inside periphery : 0.7um",
+    "layer_hint": "thkox",
+    "rule_type": "spacing",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "MR_thkox.CON.1",
+    "raw_description": "MR_thkox.CON.1 : thkox must not straddle diff",
+    "layer_hint": null,
+    "rule_type": "straddle",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "poly.1a",
+    "raw_description": "poly.1a : min. poly width : 0.15um",
+    "layer_hint": "poly",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "poly.2",
+    "raw_description": "poly.2 : min. poly spacing : 0.21um",
+    "layer_hint": "poly",
+    "rule_type": "spacing",
+    "threshold_value": 0.21,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "poly.3",
+    "raw_description": "poly.3 : min. poly spacing inside areaid:core : 0.16um",
+    "layer_hint": "poly",
+    "rule_type": "spacing",
+    "threshold_value": 0.16,
+    "threshold_unit": "um",
+    "condition": "inside areaid:core"
+  },
+  {
+    "rule_id": "ldntm.1",
+    "raw_description": "ldntm.1 : min. ldntm width inside areaid:core : 0.7um",
+    "layer_hint": "ldntm",
+    "rule_type": "width",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": "inside areaid:core"
+  },
+  {
+    "rule_id": "ldntm.2",
+    "raw_description": "ldntm.2 : min. ldntm spacing inside areaid:core : 0.7um",
+    "layer_hint": "ldntm",
+    "rule_type": "spacing",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": "inside areaid:core"
+  },
+  {
+    "rule_id": "rpm.1a",
+    "raw_description": "rpm.1a : min. rpm width : 1.27um",
+    "layer_hint": "rpm",
+    "rule_type": "width",
+    "threshold_value": 1.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "rpm.2",
+    "raw_description": "rpm.2 : min. rpm spacing : 0.84um",
+    "layer_hint": "rpm",
+    "rule_type": "spacing",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "rdl.1",
+    "raw_description": "rdl.1 : min. rdl width : 10um",
+    "layer_hint": "rdl",
+    "rule_type": "width",
+    "threshold_value": 10.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "rdl.2",
+    "raw_description": "rdl.2 : min. rdl spacing : 10um",
+    "layer_hint": "rdl",
+    "rule_type": "spacing",
+    "threshold_value": 10.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "MR_rdl.CON.1",
+    "raw_description": "MR_rdl.CON.1 : use of rdl layer is prohibited",
+    "layer_hint": null,
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "urpm.1a",
+    "raw_description": "urpm.1a : min. rpm width : 1.27um",
+    "layer_hint": "urpm",
+    "rule_type": "width",
+    "threshold_value": 1.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "urpm.2",
+    "raw_description": "urpm.2 : min. rpm spacing : 0.84um",
+    "layer_hint": "urpm",
+    "rule_type": "spacing",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "npc.1",
+    "raw_description": "npc.1 : min. npc width : 0.27um",
+    "layer_hint": "npc",
+    "rule_type": "width",
+    "threshold_value": 0.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "npc.2",
+    "raw_description": "npc.2 : min. npc spacing, should be manually merged if less than : 0.27um",
+    "layer_hint": "npc",
+    "rule_type": "spacing",
+    "threshold_value": 0.27,
+    "threshold_unit": "um",
+    "condition": "should be manually merged if less"
+  },
+  {
+    "rule_id": "nsdm.1",
+    "raw_description": "nsdm.1 : min. nsdm spacing in periphery : 0.38um",
+    "layer_hint": "nsdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "nsdm.2",
+    "raw_description": "nsdm.2 : min. nsdm width in periphery : 0.38um",
+    "layer_hint": "nsdm",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "nsdm.3",
+    "raw_description": "nsdm.3 : min. diff width across areaid:ce : 0.38um",
+    "layer_hint": "nsdm",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "nsdm.4",
+    "raw_description": "nsdm.4 : min. spacing across areaid:ce : 0.38um",
+    "layer_hint": "nsdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "nsdm.5",
+    "raw_description": "nsdm.5 : min. nsdm width in areaid:ce : 0.29um",
+    "layer_hint": "nsdm",
+    "rule_type": "width",
+    "threshold_value": 0.29,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "nsdm.6",
+    "raw_description": "nsdm.6 : min. nsdm spacing in areaid:ce : 0.29um",
+    "layer_hint": "nsdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.29,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "nsdm.6a",
+    "raw_description": "nsdm.6a : min. nsdm spacing on parallel edges in areaid:ce : 0.38um",
+    "layer_hint": "nsdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "psdm.1",
+    "raw_description": "psdm.1 : min. psdm spacing in periphery : 0.38um",
+    "layer_hint": "psdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "psdm.2",
+    "raw_description": "psdm.2 : min. psdm width in periphery : 0.38um",
+    "layer_hint": "psdm",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "psdm.3",
+    "raw_description": "psdm.3 : min. diff width across areaid:ce : 0.38um",
+    "layer_hint": "psdm",
+    "rule_type": "width",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "psdm.4",
+    "raw_description": "psdm.4 : min. spacing across areaid:ce : 0.38um",
+    "layer_hint": "psdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "across areaid:ce"
+  },
+  {
+    "rule_id": "psdm.5",
+    "raw_description": "psdm.5 : min. psdm width in areaid:ce : 0.29um",
+    "layer_hint": "psdm",
+    "rule_type": "width",
+    "threshold_value": 0.29,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "psdm.6",
+    "raw_description": "psdm.6 : min. psdm spacing in areaid:ce : 0.29um",
+    "layer_hint": "psdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.29,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "psdm.6a",
+    "raw_description": "psdm.6a : min. psdm spacing on parallel edges in areaid:ce : 0.38um",
+    "layer_hint": "psdm",
+    "rule_type": "spacing",
+    "threshold_value": 0.38,
+    "threshold_unit": "um",
+    "condition": "in areaid:ce"
+  },
+  {
+    "rule_id": "nsdm_psdm_overlap",
+    "raw_description": "nsdm_psdm_overlap : nsdm overlaps psdm over active",
+    "layer_hint": null,
+    "rule_type": "overlap",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "licon.1_c",
+    "raw_description": "licon.1_c : licon should be rectangle",
+    "layer_hint": "licon",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "MR_licon.SP.1",
+    "raw_description": "MR_licon.SP.1: min. licon spacing in periphery : 0.17um",
+    "layer_hint": null,
+    "rule_type": "spacing",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "licon.1",
+    "raw_description": "licon.1: min/max. licon length : 0.17um",
+    "layer_hint": "licon",
+    "rule_type": null,
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "licon.13",
+    "raw_description": "licon.13:  min. licon on diff spacing to npc in periphery : 0.09um",
+    "layer_hint": "licon",
+    "rule_type": "spacing",
+    "threshold_value": 0.09,
+    "threshold_unit": "um",
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "licon.13_a",
+    "raw_description": "licon.13_a:  licon on diff in periphery can't overlap npc",
+    "layer_hint": "licon",
+    "rule_type": "overlap",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "licon.17",
+    "raw_description": "licon.17 : Licons may not overlap both poly and (diff or tap)",
+    "layer_hint": "licon",
+    "rule_type": "overlap",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "licon.6",
+    "raw_description": "licon.6 : npc min enclosure of poly_licon inside areaid:core : 0.045um",
+    "layer_hint": "licon",
+    "rule_type": "enclosure",
+    "threshold_value": 0.045,
+    "threshold_unit": "um",
+    "condition": "inside areaid:core"
+  },
+  {
+    "rule_id": "nsm.1",
+    "raw_description": "nsm.1 : nsm min. spacing : 4.0um",
+    "layer_hint": "nsm",
+    "rule_type": "spacing",
+    "threshold_value": 4.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "nsm.2",
+    "raw_description": "nsm.2 : nsm min. width : 3.0um",
+    "layer_hint": "nsm",
+    "rule_type": "width",
+    "threshold_value": 3.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.1",
+    "raw_description": "capm.1 : min. capm width : 1.0um",
+    "layer_hint": "capm",
+    "rule_type": "width",
+    "threshold_value": 1.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.2a",
+    "raw_description": "capm.2a : min. capm spacing : 0.84um",
+    "layer_hint": "capm",
+    "rule_type": "spacing",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.2b",
+    "raw_description": "capm.2b : min. spacing between met3_bot_plate : 1.2um",
+    "layer_hint": "capm",
+    "rule_type": "spacing",
+    "threshold_value": 1.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.2b_a",
+    "raw_description": "capm.2b_a : min. spacing between met3_bot_plate and met3 : 1.2um",
+    "layer_hint": "capm",
+    "rule_type": "spacing",
+    "threshold_value": 1.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.3",
+    "raw_description": "capm.3 : min. m3 enclosure of capm : 0.14um",
+    "layer_hint": "capm",
+    "rule_type": "enclosure",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.4",
+    "raw_description": "capm.4 : min. capm enclosure of via3 : 0.14um",
+    "layer_hint": "capm",
+    "rule_type": "enclosure",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.5",
+    "raw_description": "capm.5 : min. capm spacing to via3 : 0.14um",
+    "layer_hint": "capm",
+    "rule_type": "spacing",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "capm.11",
+    "raw_description": "capm.11 : Min spacing of capm and met3 not overlapping capm : 0.5um",
+    "layer_hint": "capm",
+    "rule_type": "spacing",
+    "threshold_value": 0.5,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.1",
+    "raw_description": "cap2m.1 : min. cap2m width : 1.0um",
+    "layer_hint": "cap2m",
+    "rule_type": "width",
+    "threshold_value": 1.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.2a",
+    "raw_description": "cap2m.2a : min. cap2m spacing : 0.84um",
+    "layer_hint": "cap2m",
+    "rule_type": "spacing",
+    "threshold_value": 0.84,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.2b",
+    "raw_description": "cap2m.2b : min. cap2m spacing : 1.2um",
+    "layer_hint": "cap2m",
+    "rule_type": "spacing",
+    "threshold_value": 1.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.2b_a",
+    "raw_description": "cap2m.2b_a : min. spacing of m4_bot_plate : 1.2um",
+    "layer_hint": "cap2m",
+    "rule_type": "spacing",
+    "threshold_value": 1.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.3",
+    "raw_description": "cap2m.3 : min. m4 enclosure of cap2m : 0.14um",
+    "layer_hint": "cap2m",
+    "rule_type": "enclosure",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.3_a",
+    "raw_description": "cap2m.3_a : min. m4 enclosure of cap2m : 0.14um",
+    "layer_hint": "cap2m",
+    "rule_type": "enclosure",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.4",
+    "raw_description": "cap2m.4 : min. cap2m enclosure of via4 : 0.2um",
+    "layer_hint": "cap2m",
+    "rule_type": "enclosure",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.5",
+    "raw_description": "cap2m.5 : min. cap2m spacing to via4 : 0.2um",
+    "layer_hint": "cap2m",
+    "rule_type": "spacing",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "cap2m.11",
+    "raw_description": "cap2m.11 : Min spacing of cap2m and met4 not overlapping cap2m : 0.5um",
+    "layer_hint": "cap2m",
+    "rule_type": "spacing",
+    "threshold_value": 0.5,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "li.1",
+    "raw_description": "li.1 : min. li width outside or crossing areaid:ce : 0.17um",
+    "layer_hint": "li",
+    "rule_type": "width",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "li.3",
+    "raw_description": "li.3 : min. li spacing outside or crossing areaid:ce : 0.17um",
+    "layer_hint": "li",
+    "rule_type": "spacing",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "li.5",
+    "raw_description": "li.5 : min. li enclosure of licon of 2 adjacent edges : 0.08um",
+    "layer_hint": "li",
+    "rule_type": "enclosure",
+    "threshold_value": 0.08,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "li.6",
+    "raw_description": "li.6 : min. li area : 0.0561um\u00b2",
+    "layer_hint": "li",
+    "rule_type": "area",
+    "threshold_value": 0.0561,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "li.7",
+    "raw_description": "li.7 : min. li core spacing : 0.14um",
+    "layer_hint": "li",
+    "rule_type": "spacing",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "li.8",
+    "raw_description": "li.8 : min. li core width : 0.14um",
+    "layer_hint": "li",
+    "rule_type": "width",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "MR_li.WID.4",
+    "raw_description": "MR_li.WID.4 : li:res minimum width : 0.29um",
+    "layer_hint": null,
+    "rule_type": "width",
+    "threshold_value": 0.29,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.1",
+    "raw_description": "ct.1: non-ring mcon should be rectangular",
+    "layer_hint": "ct",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "ct.1_a",
+    "raw_description": "ct.1_a : minimum width of mcon : 0.17um",
+    "layer_hint": "ct",
+    "rule_type": "width",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.1_b",
+    "raw_description": "ct.1_b : maximum length of mcon : 0.17um",
+    "layer_hint": "ct",
+    "rule_type": null,
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.2",
+    "raw_description": "ct.2 : min. mcon spacing : 0.19um",
+    "layer_hint": "ct",
+    "rule_type": "spacing",
+    "threshold_value": 0.19,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.3",
+    "raw_description": "ct.3 : min. width of ring-shaped mcon : 0.17um",
+    "layer_hint": "ct",
+    "rule_type": "width",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.3_a",
+    "raw_description": "ct.3_a : max. width of ring-shaped mcon : 0.175um",
+    "layer_hint": "ct",
+    "rule_type": "width",
+    "threshold_value": 0.175,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "ct.3_b",
+    "raw_description": "ct.3_b: ring-shaped mcon must be enclosed by areaid_sl",
+    "layer_hint": "ct",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "ct.4",
+    "raw_description": "ct.4 : mcon should covered by li",
+    "layer_hint": "ct",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m1.1",
+    "raw_description": "m1.1 : min. m1 width : 0.14um",
+    "layer_hint": "m1",
+    "rule_type": "width",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m1.2",
+    "raw_description": "m1.2 : min. m1 spacing : 0.14um",
+    "layer_hint": "m1",
+    "rule_type": "spacing",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m1.3ab",
+    "raw_description": "m1.3ab : min. 3um.m1 spacing m1 : 0.28um",
+    "layer_hint": "m1",
+    "rule_type": "spacing",
+    "threshold_value": 0.28,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "791_m1.4",
+    "raw_description": "791_m1.4 : min. m1 enclosure of mcon : 0.03um",
+    "layer_hint": null,
+    "rule_type": "enclosure",
+    "threshold_value": 0.03,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m1.4",
+    "raw_description": "m1.4 : mcon periphery must be enclosed by m1",
+    "layer_hint": "m1",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m1.4a",
+    "raw_description": "m1.4a : min. m1 enclosure of mcon for specific cells : 0.005um",
+    "layer_hint": "m1",
+    "rule_type": "enclosure",
+    "threshold_value": 0.005,
+    "threshold_unit": "um",
+    "condition": "for specific cells"
+  },
+  {
+    "rule_id": "m1.4a_a",
+    "raw_description": "m1.4a_a : mcon periph must be enclosed by met1 for specific cells",
+    "layer_hint": "m1",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": "for specific cells"
+  },
+  {
+    "rule_id": "m1.6",
+    "raw_description": "m1.6 : min. m1 area : 0.083um\u00b2",
+    "layer_hint": "m1",
+    "rule_type": "area",
+    "threshold_value": 0.083,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m1.7",
+    "raw_description": "m1.7 : min. m1 with holes area : 0.14um\u00b2",
+    "layer_hint": "m1",
+    "rule_type": "area",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m1.5",
+    "raw_description": "m1.5 : min. m1 enclosure of mcon of 2 adjacent edges : 0.06um",
+    "layer_hint": "m1",
+    "rule_type": "enclosure",
+    "threshold_value": 0.06,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "via.1a",
+    "raw_description": "via.1a : via outside of moduleCut should be rectangular",
+    "layer_hint": "via",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via.1a_a",
+    "raw_description": "via.1a_a : min. width of via outside of moduleCut : 0.15um",
+    "layer_hint": "via",
+    "rule_type": "width",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.1a_b",
+    "raw_description": "via.1a_b : maximum length of via : 0.15um",
+    "layer_hint": "via",
+    "rule_type": null,
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.2",
+    "raw_description": "via.2 : min. via spacing : 0.17um",
+    "layer_hint": "via",
+    "rule_type": "spacing",
+    "threshold_value": 0.17,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.3",
+    "raw_description": "via.3 : min. width of ring-shaped via : 0.2um",
+    "layer_hint": "via",
+    "rule_type": "width",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.3_a",
+    "raw_description": "via.3_a : max. width of ring-shaped via : 0.205um",
+    "layer_hint": "via",
+    "rule_type": "width",
+    "threshold_value": 0.205,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.3_b",
+    "raw_description": "via.3_b: ring-shaped via must be enclosed by areaid_sl",
+    "layer_hint": "via",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via.4a",
+    "raw_description": "via.4a : min. m1 enclosure of 0.15um via : 0.055um",
+    "layer_hint": "via",
+    "rule_type": "enclosure",
+    "threshold_value": 0.055,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.4a_a",
+    "raw_description": "via.4a_a : 0.15um via must be enclosed by met1",
+    "layer_hint": "via",
+    "rule_type": "enclosure",
+    "threshold_value": 0.15,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via.5a",
+    "raw_description": "via.5a : min. m1 enclosure of 0.15um via of 2 adjacent edges : 0.085um",
+    "layer_hint": "via",
+    "rule_type": "enclosure",
+    "threshold_value": 0.085,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "m2.1",
+    "raw_description": "m2.1 : min. m2 width : 0.14um",
+    "layer_hint": "m2",
+    "rule_type": "width",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.2",
+    "raw_description": "m2.2 : min. m2 spacing : 0.14um",
+    "layer_hint": "m2",
+    "rule_type": "spacing",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.3ab",
+    "raw_description": "m2.3ab : min. 3um.m2 spacing m2 : 0.28um",
+    "layer_hint": "m2",
+    "rule_type": "spacing",
+    "threshold_value": 0.28,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.6",
+    "raw_description": "m2.6 : min. m2 area : 0.0676um\u00b2",
+    "layer_hint": "m2",
+    "rule_type": "area",
+    "threshold_value": 0.0676,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.7",
+    "raw_description": "m2.7 : min. m2 holes area : 0.14um\u00b2",
+    "layer_hint": "m2",
+    "rule_type": "area",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.4",
+    "raw_description": "m2.4 : min. m2 enclosure of via : 0.055um",
+    "layer_hint": "m2",
+    "rule_type": "enclosure",
+    "threshold_value": 0.055,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m2.4_a",
+    "raw_description": "m2.4_a : via in periphery must be enclosed by met2",
+    "layer_hint": "m2",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": "in periphery"
+  },
+  {
+    "rule_id": "m2.4_b",
+    "raw_description": "m2.4_B : min. m2 enclosure of via inside areaid:core : 0.045um",
+    "layer_hint": "m2",
+    "rule_type": "enclosure",
+    "threshold_value": 0.045,
+    "threshold_unit": "um",
+    "condition": "inside areaid:core"
+  },
+  {
+    "rule_id": "m2.5",
+    "raw_description": "m2.5 : min. m2 enclosure of via of 2 adjacent edges : 0.085um",
+    "layer_hint": "m2",
+    "rule_type": "enclosure",
+    "threshold_value": 0.085,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "via2.1a",
+    "raw_description": "via2.1a : via2 outside of moduleCut should be rectangular",
+    "layer_hint": "via2",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via2.1a_a",
+    "raw_description": "via2.1a_a : min. width of via2 outside of moduleCut : 0.2um",
+    "layer_hint": "via2",
+    "rule_type": "width",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.1a_b",
+    "raw_description": "via2.1a_b : maximum length of via2 : 0.2um",
+    "layer_hint": "via2",
+    "rule_type": null,
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.2",
+    "raw_description": "via2.2 : min. via2 spacing : 0.2um",
+    "layer_hint": "via2",
+    "rule_type": "spacing",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.3",
+    "raw_description": "via2.3 : min. width of ring-shaped via2 : 0.2um",
+    "layer_hint": "via2",
+    "rule_type": "width",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.3_a",
+    "raw_description": "via2.3_a : max. width of ring-shaped via2 : 0.205um",
+    "layer_hint": "via2",
+    "rule_type": "width",
+    "threshold_value": 0.205,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.3_b",
+    "raw_description": "via2.3_b: ring-shaped via2 must be enclosed by areaid_sl",
+    "layer_hint": "via2",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via2.4",
+    "raw_description": "via2.4 : min. m2 enclosure of via2 : 0.04um",
+    "layer_hint": "via2",
+    "rule_type": "enclosure",
+    "threshold_value": 0.04,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via2.4_a",
+    "raw_description": "via2.4_a : via must be enclosed by met2",
+    "layer_hint": "via2",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via2.5",
+    "raw_description": "via2.5 : min. m3 enclosure of via2 of 2 adjacent edges : 0.085um",
+    "layer_hint": "via2",
+    "rule_type": "enclosure",
+    "threshold_value": 0.085,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "m3.1",
+    "raw_description": "m3.1 : min. m3 width : 0.3um",
+    "layer_hint": "m3",
+    "rule_type": "width",
+    "threshold_value": 0.3,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m3.2",
+    "raw_description": "m3.2 : min. m3 spacing : 0.3um",
+    "layer_hint": "m3",
+    "rule_type": "spacing",
+    "threshold_value": 0.3,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m3.3cd",
+    "raw_description": "m3.3cd : min. 3um.m3 spacing m3 : 0.4um",
+    "layer_hint": "m3",
+    "rule_type": "spacing",
+    "threshold_value": 0.4,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m3.4",
+    "raw_description": "m3.4 : min. m3 enclosure of via2 : 0.065um",
+    "layer_hint": "m3",
+    "rule_type": "enclosure",
+    "threshold_value": 0.065,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m3.4_a",
+    "raw_description": "m3.4_a : via2 must be enclosed by met3",
+    "layer_hint": "m3",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m3.6",
+    "raw_description": "m3.6 : min. m3 area : 0.240um\u00b2",
+    "layer_hint": "m3",
+    "rule_type": "area",
+    "threshold_value": 0.24,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m3.7",
+    "raw_description": "m3.7 : min. m3 holes area : 0.2um\u00b2",
+    "layer_hint": "m3",
+    "rule_type": "area",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via3.1",
+    "raw_description": "via3.1 : via3 outside of moduleCut should be rectangular",
+    "layer_hint": "via3",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via3.1_a",
+    "raw_description": "via3.1_a : min. width of via3 outside of moduleCut : 0.2um",
+    "layer_hint": "via3",
+    "rule_type": "width",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via3.1_b",
+    "raw_description": "via3.1_b : maximum length of via3 : 0.2um",
+    "layer_hint": "via3",
+    "rule_type": null,
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via3.2",
+    "raw_description": "via3.2 : min. via3 spacing : 0.2um",
+    "layer_hint": "via3",
+    "rule_type": "spacing",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via3.4",
+    "raw_description": "via3.4 : min. m3 enclosure of via3 : 0.06um",
+    "layer_hint": "via3",
+    "rule_type": "enclosure",
+    "threshold_value": 0.06,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via3.4_a",
+    "raw_description": "via3.4_a : non-ring via3 must be enclosed by met3",
+    "layer_hint": "via3",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via3.5",
+    "raw_description": "via3.5 : min. m3 enclosure of via3 of 2 adjacent edges : 0.09um",
+    "layer_hint": "via3",
+    "rule_type": "enclosure",
+    "threshold_value": 0.09,
+    "threshold_unit": "um",
+    "condition": "of 2 adjacent edges"
+  },
+  {
+    "rule_id": "m4.1",
+    "raw_description": "m4.1 : min. m4 width : 0.3um",
+    "layer_hint": "m4",
+    "rule_type": "width",
+    "threshold_value": 0.3,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m4.2",
+    "raw_description": "m4.2 : min. m4 spacing : 0.3um",
+    "layer_hint": "m4",
+    "rule_type": "spacing",
+    "threshold_value": 0.3,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m4.4a",
+    "raw_description": "m4.4a : min. m4 area : 0.240um\u00b2",
+    "layer_hint": "m4",
+    "rule_type": "area",
+    "threshold_value": 0.24,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m4.5ab",
+    "raw_description": "m4.5ab : min. 3um.m4 spacing m4 : 0.4um",
+    "layer_hint": "m4",
+    "rule_type": "spacing",
+    "threshold_value": 0.4,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m4.3",
+    "raw_description": "m4.3 : min. m4 enclosure of via3 : 0.065um",
+    "layer_hint": "m4",
+    "rule_type": "enclosure",
+    "threshold_value": 0.065,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m4.3_a",
+    "raw_description": "m4.3_a : via3 must be enclosed by met4",
+    "layer_hint": "m4",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m4.7",
+    "raw_description": "m4.7 : min. m4 holes area : 0.2um\u00b2",
+    "layer_hint": "m4",
+    "rule_type": "area",
+    "threshold_value": 0.2,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.1",
+    "raw_description": "via4.1 : via4 outside of moduleCut should be rectangular",
+    "layer_hint": "via4",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via4.1_a",
+    "raw_description": "via4.1_a : min. width of via4 outside of moduleCut : 0.8um",
+    "layer_hint": "via4",
+    "rule_type": "width",
+    "threshold_value": 0.8,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.1_b",
+    "raw_description": "via4.1_b : maximum length of via4 : 0.8um",
+    "layer_hint": "via4",
+    "rule_type": null,
+    "threshold_value": 0.8,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.2",
+    "raw_description": "via4.2 : min. via4 spacing : 0.8um",
+    "layer_hint": "via4",
+    "rule_type": "spacing",
+    "threshold_value": 0.8,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.3",
+    "raw_description": "via4.3 : min. width of ring-shaped via4 : 0.8um",
+    "layer_hint": "via4",
+    "rule_type": "width",
+    "threshold_value": 0.8,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.3_a",
+    "raw_description": "via4.3_a : max. width of ring-shaped via4 : 0.805um",
+    "layer_hint": "via4",
+    "rule_type": "width",
+    "threshold_value": 0.805,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.3_b",
+    "raw_description": "via4.3_b: ring-shaped via4 must be enclosed by areaid_sl",
+    "layer_hint": "via4",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "via4.4",
+    "raw_description": "via4.4 : min. m4 enclosure of via4 : 0.19um",
+    "layer_hint": "via4",
+    "rule_type": "enclosure",
+    "threshold_value": 0.19,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "via4.4_a",
+    "raw_description": "via4.4_a : m4 must enclose all via4",
+    "layer_hint": "via4",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m5.1",
+    "raw_description": "m5.1 : min. m5 width : 1.6um",
+    "layer_hint": "m5",
+    "rule_type": "width",
+    "threshold_value": 1.6,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m5.2",
+    "raw_description": "m5.2 : min. m5 spacing : 1.6um",
+    "layer_hint": "m5",
+    "rule_type": "spacing",
+    "threshold_value": 1.6,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m5.3",
+    "raw_description": "m5.3 : min. m5 enclosure of via4 : 0.31um",
+    "layer_hint": "m5",
+    "rule_type": "enclosure",
+    "threshold_value": 0.31,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m5.3_a",
+    "raw_description": "m5.3_a : via must be enclosed by m5",
+    "layer_hint": "m5",
+    "rule_type": "enclosure",
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "m5.4",
+    "raw_description": "m5.4 : min. m5 area : 4.0um\u00b2",
+    "layer_hint": "m5",
+    "rule_type": "area",
+    "threshold_value": 4.0,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "m5.7",
+    "raw_description": "m5.7 : min. m5 holes area : 0.14um\u00b2",
+    "layer_hint": "m5",
+    "rule_type": "area",
+    "threshold_value": 0.14,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "pad.2",
+    "raw_description": "pad.2 : min. pad spacing : 1.27um",
+    "layer_hint": "pad",
+    "rule_type": "spacing",
+    "threshold_value": 1.27,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "moduleCut.1",
+    "raw_description": "moduleCut.1 : moduleCut layer is for SkyWater use only",
+    "layer_hint": "moduleCut",
+    "rule_type": null,
+    "threshold_value": null,
+    "threshold_unit": null,
+    "condition": null
+  },
+  {
+    "rule_id": "hvi.1",
+    "raw_description": "hvi.1 : min. hvi width : 0.6um",
+    "layer_hint": "hvi",
+    "rule_type": "width",
+    "threshold_value": 0.6,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvi.2a",
+    "raw_description": "hvi.2a : min. hvi spacing : 0.7um",
+    "layer_hint": "hvi",
+    "rule_type": "spacing",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvntm.1",
+    "raw_description": "hvntm.1 : min. hvntm width : 0.7um",
+    "layer_hint": "hvntm",
+    "rule_type": "width",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": null
+  },
+  {
+    "rule_id": "hvntm.2",
+    "raw_description": "hvntm.2 : min. hvntm spacing : 0.7um",
+    "layer_hint": "hvntm",
+    "rule_type": "spacing",
+    "threshold_value": 0.7,
+    "threshold_unit": "um",
+    "condition": null
+  }
+]

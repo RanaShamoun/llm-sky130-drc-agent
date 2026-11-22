@@ -84,3 +84,21 @@ No live Ollama queries were launched, no model weights or source pins were chang
 Validation is complete with the two explicitly recorded platform failures. This supports proceeding to a deliberate code/documentation review and commit, but not describing the suite as fully passing. Running the same suite again on this unchanged Windows setup is expected to reproduce those failures until their prerequisites/assertions are addressed.
 
 Step 4 should review what is staged, keep secrets/environments/weights/raw runtime folders out of the commit, and record the resulting commit hash. Step 5 remains the six-query smoke pilot; it has not been run by this validation step. Keep its observations separate from historical setup demonstrations.
+
+## Follow-up Validation: November 15, 2026
+
+After making the permission assertion POSIX-only and handling the unavailable Windows symlink privilege explicitly, the current Windows environment (Python 3.13.7) reported:
+
+| Check | Result |
+|---|---|
+| Full pytest suite | 73 passed, 1 skipped |
+| Skip | Symlink escape case: Windows returned `WinError 1314` when creating the test symlink |
+| Ruff | Passed with no findings |
+| Archived benchmark audit | Passed for all 56 layouts; 41 numeric markers had previously been cross-checked |
+| `git diff --check` | Passed |
+
+The hidden-key test still does not validate Windows ACL permissions for `.env`; its Unix mode-bit assertion now runs only on POSIX. Do not treat this as proof of owner-only Windows access.
+
+Pytest also emitted an ignored `WinError 5` while cleaning its numbered temporary directories at process exit, after reporting the test suite as passed. This did not change the pytest exit status, but remains a Windows temp-directory cleanup warning.
+
+The earlier November 11 results above are preserved as historical evidence. This follow-up does not retroactively change those results or claim that the symlink check ran on Windows.

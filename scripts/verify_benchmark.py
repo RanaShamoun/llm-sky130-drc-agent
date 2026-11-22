@@ -8,7 +8,6 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-import klayout.db
 import klayout.rdb as rdb
 
 from drc_explain.common import ROOT, read_json, sha256, write_json

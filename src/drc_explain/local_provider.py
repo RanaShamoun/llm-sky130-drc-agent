@@ -14,7 +14,7 @@ from .provider import ProviderError, load_local_config
 
 DEFAULT_LOCAL_MODEL = "qwen3:8b"
 LOCAL_URL = "http://127.0.0.1:11434"
-DEFAULT_TIMEOUT_S = 900
+DEFAULT_TIMEOUT_S = 1200
 
 
 class OllamaClient:
@@ -64,7 +64,12 @@ class OllamaClient:
                 f"Local Ollama request timed out after {self.timeout_s} seconds. "
                 "Check local inference load; no paid API was contacted."
             ) from None
-        except URLError:
+        except URLError as exc:
+            if isinstance(exc.reason, TimeoutError):
+                raise ProviderError(
+                    f"Local Ollama request timed out after {self.timeout_s} seconds. "
+                    "Check local inference load; no paid API was contacted."
+                ) from None
             raise ProviderError(
                 "Local Ollama is unavailable. Run python run.py serve-local in another terminal; no paid API was contacted."
             ) from None
@@ -168,6 +173,15 @@ class OllamaClient:
 
     @staticmethod
     def _normalize_arguments(name, arguments):
+        if name == "retrieve_rules":
+            normalized = dict(arguments)
+            value = normalized.get("limit")
+            if isinstance(value, str) and value.isascii() and value.isdigit():
+                limit = int(value)
+                if 1 <= limit <= 8:
+                    normalized["limit"] = limit
+                    return normalized, ["limit"]
+            return normalized, []
         if name != "finalize_answer":
             return arguments, []
         normalized = dict(arguments)
@@ -224,21 +238,33 @@ class OllamaClient:
         calls = message.get("tool_calls") or []
         action_format = "native_tool_calls"
         if not calls and isinstance(message.get("content"), str):
-            # Some local runtimes return an exact JSON action in content rather
-            # than tool_calls. Accept only the same explicit name/arguments
-            # envelope; all actions still pass through the normal verifier.
+            # Some local runtimes return a JSON action in content rather than
+            # tool_calls. Only registered names and exact argument envelopes
+            # are executable; all actions still pass through normal validation.
             try:
                 action = json.loads(message["content"])
             except json.JSONDecodeError:
                 action = None
-            if (
-                isinstance(action, dict)
-                and set(action) == {"name", "arguments"}
-                and action["name"] in {tool["name"] for tool in tools}
-                and isinstance(action["arguments"], dict)
-            ):
-                calls = [{"function": action}]
-                action_format = "json_action"
+            if isinstance(action, dict) and action.get("name") in {
+                tool["name"] for tool in tools
+            }:
+                argument_field = (
+                    "arguments"
+                    if set(action) == {"name", "arguments"}
+                    else "parameters"
+                    if set(action) == {"name", "parameters"}
+                    else None
+                )
+                if argument_field and isinstance(action[argument_field], dict):
+                    calls = [
+                        {
+                            "function": {
+                                "name": action["name"],
+                                "arguments": action[argument_field],
+                            }
+                        }
+                    ]
+                    action_format = "json_action"
         output = []
         argument_normalizations = []
         for call in calls:

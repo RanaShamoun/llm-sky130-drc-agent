@@ -1,118 +1,171 @@
 # DRC Explain
 
 **Team:** Giovanni Cascone and Rana Shamoun
+**Course:** CMPE 258 Deep Learning
 
-An LLM agent that selects SKY130 design rules, checks chip-layout geometry with KLayout, and explains the result using real evidence.
+DRC Explain is a bounded LLM agent for explaining SKY130 layout checks. It retrieves supported design rules, requests geometry checks from KLayout, and submits only structured claims that are verified against tool evidence.
 
-**Current status:** Tools, benchmark, a free local LLM agent, a minimal local UI, and an A/B/C experiment runner with scoring are implemented. The first six-query pilot completed: C verified both verdicts, while all A/B runs failed answer-schema validation. A bounded baseline schema-repair change is unit-tested; a new live pilot is pending. Full model comparisons, results analysis, and final report remain pending. See [pilot review](docs/PILOT_REVIEW.md).
+This repository is prepared for instructor review. It contains the implementation, benchmark, automated tests, evidence audit, experiment manifests, course-report draft, demo guide, and progress report.
 
-## Start here
+## Repository status
 
-On the prepared Mac, open a terminal in this folder:
+- Core local Qwen3 8B workflow is implemented and usable without an API key.
+- Optional Gemini 3.5 Flash-Lite and OpenAI GPT-4o provider adapters are implemented.
+- A/B/C experiment runner supports resumable grids and evaluator-only scoring.
+- 113 automated tests pass and 1 platform-specific test is intentionally skipped.
+- A fresh 168-record grid was completed for each of Qwen3 8B, GPT-4o, and Gemini 3.5 Flash-Lite under matching prompt, implementation, and public-input hashes.
+
+The frozen-grid outcomes are summarized below. Accuracy uses the fixed 50-layout benchmark denominator; probe results and `ERROR` records are reported separately.
+
+| Model | A verdict accuracy | B verdict accuracy | C verdict accuracy | ERROR records |
+|---|---:|---:|---:|---:|
+| Qwen3 8B | 23/50 (46%) | 29/50 (58%) | 50/50 (100%) | 5 |
+| GPT-4o | 29/50 (58%) | 27/50 (54%) | 50/50 (100%) | 0 |
+| Gemini 3.5 Flash-Lite | 41/50 (82%) | 43/50 (86%) | 46/50 (92%) | 9 |
+
+The comparison has one repetition and uses a small, previously exposed benchmark. It is not a foundry-signoff study or a substitute for independent held-out layouts. Gemini's 9 errors included HTTP 503, turn-budget, and protocol failures; its 429 retry count was zero. GPT-4o and Gemini API cost values are estimates or held usage ledgers, not proof of final provider billing.
+
+See [Experiment Results](docs/EXPERIMENT_RESULTS.md), [Course Report Draft](docs/COURSE_REPORT_DRAFT.md), and [Demo Guide](docs/DEMO_GUIDE.md).
+
+## Quick start
+
+### Windows
+
+```powershell
+.\.venv\Scripts\python.exe run.py doctor
+.\.venv\Scripts\python.exe run.py check
+.\.venv\Scripts\python.exe run.py demo
+```
+
+For live local inference:
+
+```powershell
+.\.venv\Scripts\python.exe run.py pull-local
+.\.venv\Scripts\python.exe run.py agent --gds benchmark/b004.gds `
+  --question "Check ordinary width and spacing of metal1 routing."
+```
+
+### macOS/Linux
 
 ```sh
 source .venv/bin/activate
+python run.py doctor
 python run.py check
+python run.py demo
+python run.py pull-local
 python run.py agent --gds benchmark/b004.gds
 ```
 
-`check` verifies the code and saved benchmark evidence. `agent` uses the local model to select and check rules; this test layout has an intended spacing failure. The separate tool-only `demo` command shows: width passes and spacing fails with a **0.135 um gap** against a **0.140 um minimum**.
+`b004` is a known demonstration layout. It has a 0.135 um metal1 spacing result against a 0.140 um limit.
 
-New machine? Follow [Setup](docs/SETUP.md). For the free model, follow [Local setup](docs/LOCAL_MODEL.md) and [Agent details](docs/AGENT.md). For evaluation, read [Rana's handoff](docs/HANDOFF.md) and [the working example](examples/use_tools.py).
-
-Before committing or running experiments, read [Understanding our work](docs/PROJECT_WALKTHROUGH.md) for changes, verified evidence, limitations, and pre-commit findings. Read the [file-by-file guide](docs/FILE_GUIDE.md) for a plain-language explanation of each module, script, data file, and document.
-
-### Windows local UI
-
-After installing dependencies, Ollama with `qwen3:8b`, the pinned sources, and KLayout 0.30.13:
-
-```powershell
-$env:KLAYOUT_BIN = "$env:APPDATA\KLayout\klayout_app.exe"
-.\.venv\Scripts\python.exe run.py doctor
-.\.venv\Scripts\python.exe run.py ui --port 8765
-```
-
-Use your actual KLayout executable path if different. Open http://127.0.0.1:8765 and keep the server terminal running. Local inference can take several minutes. Do not submit UI checks while a separate experiment is running.
-
-## Completed work
-
-- [x] Pin the KLayout version, upstream rule deck, and layer map.
-- [x] Build a checker that rejects failed runs and missing checks.
-- [x] Implement rule lookup, layout inspection, and selected-rule DRC tools.
-- [x] Log tool inputs, outputs, timestamps, and latency.
-- [x] Create 50 benchmark layouts, six development layouts, and six refusal probes.
-- [x] Label all 56 layouts using separate full-deck KLayout runs.
-- [x] Cross-check saved reports and 41 numeric markers with KLayout's native reader.
-- [x] Review 10 cases visually and document the enclosure-rule discrepancy.
-- [x] Verify passing/failing examples for all eight supported rules.
-- [x] Implement the local model agent, bounded tool loop, claim verification, and refusal path.
-- [x] Verify five scripted agent scenarios with the real checker (not LLM accuracy).
-- [x] Verify real local inference: spacing FAIL/PASS, corner-enclosure FAIL, and antenna REFUSE.
-- [x] Add evaluator-only scoring and a resumable local-model A/B/C runner.
-- [x] Add a local UI with layout geometry, verified verdict, sources, and tool trace.
-- [x] Reproduce pinned source setup and live width demonstrations on Windows.
-
-**Evidence status:** On November 11, 2026, the focused tests passed 17/17; the full Windows suite passed 70 tests with two known permission/symlink failures. The archived audit passed for all 56 layouts and cross-checked 41 numeric markers. See [pre-commit validation](docs/PRECOMMIT_VALIDATION.md) for exact commands and remaining coverage limitations. The benchmark has 24 scoped PASS and 26 scoped FAIL cases; these are oracle labels, not model accuracy. The full LLM benchmark has not been evaluated yet. The original handoff's 55 passing tests and four accepted live examples are historical evidence.
-
-## Rana's next steps
-
-1. Review the learning guides and [debug-case disclosure](docs/DEBUG_CASE_DISCLOSURE.md). The encoding fix and known Windows demonstration disclosure are complete; b001 and b002 are previously inspected cases.
-2. Review the [pilot findings](docs/PILOT_REVIEW.md), validate and commit the schema-repair change, and run a new pilot in a separate output directory. The [pre-commit validation](docs/PRECOMMIT_VALIDATION.md) documents the earlier checkpoint's two Windows test failures.
-3. Run A/B/C across the approved model mix and inspect saved metrics, traces, and failures.
-4. Finish results analysis, final report, and demo recording; disclose setup/debug cases.
-
-[The handoff guide](docs/HANDOFF.md) describes the original task list. The [walkthrough](docs/PROJECT_WALKTHROUGH.md) explains the current implementation and remaining work.
-
-### Six-query smoke pilot
-
-From a terminal with `KLAYOUT_BIN` configured and Ollama running:
-
-```powershell
-.\.venv\Scripts\python.exe run.py experiments run --models qwen3:8b --conditions A B C --cases b001 b002 --no-probes --output runs/experiments/pilot-v2
-```
-
-A predicts from coordinates without retrieval or DRC. B adds rule retrieval. C uses the existing agent with retrieval, KLayout, and deterministic verification. Two cases times three conditions equals six queries. The runner currently accepts benchmark cases and probes, not development cases; this pilot is a smoke test, not development-only prompt tuning or untouched evaluation.
-
-The runner saves records, traces, a manifest, metrics, and a readable results table under the selected output directory. Resume with the identical command and unchanged code/model/options. Existing records, including ERROR records, are skipped. C also adds verification, so this is a system ablation rather than an isolated KLayout-only comparison.
-
-After the pilot is reviewed, the default one-model grid has 50 layouts plus six probes under A/B/C: 168 queries. It does not by itself satisfy the original three-model proposal; agree on any model-mix changes before final evaluation. See the walkthrough for full-run, scoring, and evidence-preservation instructions.
-
-## Where everything lives
+## Project structure
 
 ```text
-run.py                 Simple commands for everyday work
-src/drc_explain/       Agent, checker, tools, benchmark, scoring, experiments, and UI
-examples/use_tools.py  Small example to copy into the agent
-scripts/               Source setup and verification helpers
-tests/                 Automated regression tests
-data/                  Pinned rules, layer mappings, and source hashes
-eval/public/           Questions, coordinates, and GDS layouts for models
-eval/gold/             Private labels and archived oracle evidence
-docs/                  Setup, handoff, tool details, and original research
+run.py                 Everyday commands
+src/drc_explain/       Agent, provider adapters, KLayout tools, verifier, UI, and scoring
+scripts/               Setup and benchmark verification helpers
+tests/                 Automated unit and integration tests
+data/                  Pinned sources, rules, layers, and deck hashes
+eval/public/           Layouts and public questions
+eval/gold/             Private labels and oracle evidence
+docs/                  Setup, handoff, report, validation, and demo documents
+runs/                  Generated agent and experiment records, ignored by Git
 ```
 
 Give models only `eval/public/`. Keep `eval/gold/` in the evaluator.
 
-## Everyday commands
+## Web demo
 
-| Command | What it does |
-|---|---|
-| `python run.py check` | Run tests and validate all saved benchmark reports |
-| `python run.py pull-local` | Download the free local model once |
-| `python run.py agent --gds benchmark/b004.gds` | Run the real local LLM agent; no paid API |
-| `python run.py ui --port 8765` | Start the local layout/trace/verdict UI |
-| `python run.py experiments run --help` | Show local-model A/B/C grid options |
-| `python run.py experiments score --output runs/experiments/pilot` | Score saved pilot records without model inference |
-| `python run.py agent-smoke` | Run five explicitly scripted agent integration checks |
-| `python run.py demo` | Run a short example using all three tools |
-| `python run.py doctor` | Verify the batch executable and pinned sources |
-| `python run.py smoke` | Run 16 real-tool checks covering all supported rules |
-| `python run.py format` | Sort imports and format the Python code |
-| `python run.py generate` | Recreate deterministic benchmark inputs |
-| `python run.py label` | Recheck all layouts and rebuild labels/evidence |
+```powershell
+.\.venv\Scripts\python.exe run.py ui --port 8765
+```
 
-After editing code, run `check`. After changing checker behavior, also run `smoke`. After changing benchmark geometry, run `generate`, then `label`, then `check`.
+Open `http://127.0.0.1:8765`. The UI shows layout geometry, the selected layout, model response, deterministic verdict, sources, and tool trace. Local inference can take several minutes.
 
-## Scope
+Do not run UI demonstrations while a cloud or local experiment is active.
 
-V1 supports eight ordinary metal1/metal2 width, spacing, and via-enclosure rules on rectangular geometry. The unchanged full deck executes, then only requested results are returned. A PASS covers those rules only. Passing checks do not provide measured distances; unsupported markers retain their raw evidence. See the [tool contract](docs/TOOL_CONTRACT.md) and [enclosure audit](docs/ENCLOSURE_AUDIT.md) for the details.
+## Evaluation commands
+
+```powershell
+# Run tests and verify saved benchmark evidence
+.\.venv\Scripts\python.exe run.py check
+
+# Run scripted agent integration checks
+.\.venv\Scripts\python.exe run.py agent-smoke
+
+# Run tool coverage across supported rules
+.\.venv\Scripts\python.exe run.py smoke
+
+# Score an existing experiment without model inference
+.\.venv\Scripts\python.exe run.py experiments score `
+  --output runs\experiments\final-comparison-gpt4o-20261121
+```
+
+Full grids are expensive and should only be rerun intentionally. The current fresh results are preserved under:
+
+- `runs/experiments/final-comparison-qwen3-20261121/`
+- `runs/experiments/final-comparison-gpt4o-20261121/`
+- `runs/experiments/final-comparison-gemini35-20261121/`
+
+These directories are ignored by Git. Preserve or archive them separately when submitting or sharing the repository.
+
+## Progress report
+
+The submission-ready progress report can be regenerated from the project script:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\generate_progress_report.py
+```
+
+This produces:
+
+- `DRC_Explain_Progress_Report.docx`
+- `DRC_Explain_Progress_Report.pdf`
+
+The report summarizes completed work, the three-model frozen-grid results, limitations, and specific questions for professor feedback.
+
+## Hosted-provider setup
+
+Hosted providers are opt-in:
+
+```powershell
+.\.venv\Scripts\python.exe run.py configure openai
+.\.venv\Scripts\python.exe run.py configure gemini
+```
+
+Configure keys interactively. Credentials remain in the ignored `.env` file and should never be pasted into chat, traces, source control, or submission documents.
+
+Gemini uses `gemini-3.5-flash-lite` in the implementation default. Existing `.env` values are preserved. GPT-4o and Gemini experiment runs require explicit application estimate caps:
+
+```powershell
+--api-budget-usd 5
+--api-budget-usd 2
+```
+
+These are runner-side estimate guards, not guaranteed billing caps. Provider account dashboards and billing settings are authoritative.
+
+## Scope and limitations
+
+The implementation currently supports eight curated ordinary metal1/metal2 width, spacing, and via-enclosure rules. It supports limited rectangular geometry and does not provide full-chip signoff.
+
+Important limitations:
+
+- The benchmark is small and contains previously exposed team-development cases.
+- The oracle and implementation use the same KLayout engine.
+- A/B outputs are unverified coordinate/retrieval predictions.
+- C outputs are constrained by deterministic verification but cover only selected rules.
+- One repetition was used, so run-to-run uncertainty is not estimated.
+- `ERROR` is separate from PASS/FAIL/REFUSE and remains visible in all accuracy denominators.
+
+See [Tool Contract](docs/TOOL_CONTRACT.md), [Enclosure Audit](docs/ENCLOSURE_AUDIT.md), and [Debug Case Disclosure](docs/DEBUG_CASE_DISCLOSURE.md).
+
+## Development commands
+
+```powershell
+.\.venv\Scripts\python.exe run.py format
+.\.venv\Scripts\python.exe run.py generate
+.\.venv\Scripts\python.exe run.py label
+.\.venv\Scripts\python.exe run.py check
+```
+
+After editing code, run `check`. After changing checker behavior, run `smoke` too. After changing benchmark geometry, run `generate`, `label`, and `check`.

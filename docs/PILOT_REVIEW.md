@@ -35,7 +35,7 @@ Feedback identifies missing/unexpected fields and explains the required null ref
 
 This is a protocol change motivated by a pipeline failure, not prompt tuning to the case's gold geometry. Nevertheless, disclose it before final evaluation. The model may alter its own predictions during correction; the harness does not force them to remain identical.
 
-## Next Run
+## Next Run (historical; completed in pilot-v2)
 
 Do not resume the original output directory with changed implementation. It will fail its manifest comparison, and saved ERROR records are skipped rather than retried. Do not delete or relabel those errors to improve the original scores.
 
@@ -48,3 +48,27 @@ $env:KLAYOUT_BIN = "$env:APPDATA\KLayout\klayout_app.exe"
 ```
 
 Inspect the new records and correction traces before launching 168 queries. No need for A/B to score perfectly: structurally valid inaccurate predictions are useful evaluation data. Repeated schema exhaustion or infrastructure failures need investigation before scaling. Keep both pilot versions, and do not pool them into a single experiment condition.
+
+## Follow-up: pilot-v2
+
+The separate six-record run in `runs/experiments/pilot-v2/` completed after the schema-repair change. A on b001 returned ERROR because local Ollama was unavailable; A on b002 returned FAIL, which is incorrect. B returned the correct FAIL/PASS pair, and C returned the same pair with verified evidence. Aggregate verdict accuracy was A 0/2, B 2/2, C 2/2; C grounding was 2/2.
+
+This confirms the repaired protocol can produce valid A/B submissions, but the pilot still had a runtime failure and covers only two previously inspected cases. It does not validate the full benchmark or the model's unseen-case accuracy. Keep this output separate from the initial pilot and from the full run.
+
+## Follow-up: Llama 3.1 A/B protocol review
+
+The initial 168-record Llama 3.1 8B grid completed, but all 56 A records and all 56 B records were `ERROR`. A traces showed plain-text JSON actions with unregistered names such as `get_rule_selections`. B traces showed repeated `retrieve_rules` calls with string or out-of-range `limit` values, plus attempts to call the unavailable `calculate_distance` tool. C had 15 errors in 56 records; its exploratory benchmark verdict accuracy was 78%.
+
+A follow-up compatibility change accepts a `parameters` JSON-action envelope only for a registered tool and normalizes a decimal-string `retrieve_rules.limit` only when it is in range. Baseline A/B now allow one logged protocol-repair attempt. Rejected calls are returned as errors and are never executed; A still has only `finalize_answer`, and B still has only `retrieve_rules` and `finalize_answer`. The attempt count is pinned in the experiment manifest.
+
+The separate two-case retry smoke (`runs/experiments/llama31-protocol-retry-20261121/`) still produced A 0/2 and B 0/2 valid predictions, while C produced 2/2 outputs. The traces show that the retry did not resolve Llama's unsupported-tool and final-schema failures. Keep this diagnostic run separate from the initial full grid; do not describe the A/B errors as ordinary answer-accuracy measurements or pool these runs.
+
+Any new final cross-model comparison must disclose which protocol version each run used. If the retry policy is used for final results, use it consistently for every model and preserve prior runs as historical evidence rather than overwriting them.
+
+## Follow-up: Qwen3 C request-timeout diagnostic
+
+The Qwen3 full-grid `main` run recorded 17 C benchmark errors. Fifteen result files say `Local Ollama is unavailable`, but this message alone did not identify whether the cause was a server outage or a request timeout. The original `main` manifest does not record an inference-timeout value.
+
+For b026 and b041, the experiment trace and `%LOCALAPPDATA%\\Ollama\\server-3.log` align: the final `/api/chat` request ended with HTTP 500 after exactly 180 seconds. The Ollama log shows token generation continuing until the task was canceled; subsequent requests were served. This is strong evidence for a request cutoff/client cancellation in those cases, not a server crash, but it does not prove that all 15 `unavailable` errors had the same cause.
+
+A separate run, `runs/experiments/qwen-b041-timeout-diagnostic-20261121/`, retried only b041 in condition C with `--timeout-s 1200`. It completed in 694.9 seconds, with model requests lasting about 236, 135, and 319 seconds. The structured result was accepted and the overall verdict was correct, but it included three irrelevant citations, 40% selection precision, and 0 grounding under the saved metric. This supports testing longer request timeouts; it does not replace or alter the original full-grid result, nor establish that a full Qwen rerun would have the same performance.

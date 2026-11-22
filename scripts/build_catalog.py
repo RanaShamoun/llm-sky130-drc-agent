@@ -1,6 +1,5 @@
 """Extract supported rule descriptions verbatim from the pinned upstream deck."""
 
-import json
 import re
 import sys
 import xml.etree.ElementTree as ET

@@ -19,7 +19,10 @@ TOOL_SCHEMAS = [
         "parameters": {
             "type": "object",
             "properties": {
-                "query": {"type": "string"},
+                "query": {
+                    "type": "string",
+                    "description": "Natural-language rule, layer, or geometry question to search for.",
+                },
                 "limit": {"type": "integer", "minimum": 1, "maximum": 8},
             },
             "required": ["query"],

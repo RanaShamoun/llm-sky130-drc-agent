@@ -6,7 +6,7 @@ Read this first, then read the [file-by-file guide](FILE_GUIDE.md). This is a le
 
 An integrated-circuit layout is a drawing of physical shapes on manufacturing layers. A GDS file stores those shapes. SKY130 is an open semiconductor process with rules that say how wide shapes must be, how far apart they must be, and how much metal must surround a via.
 
-DRC means Design Rule Checking. KLayout is the trusted geometry checker in this project. Qwen is the language model that interprets the engineering question, retrieves rules, chooses what to check, and submits an answer. Qwen does not replace KLayout or generate a new checker.
+DRC means Design Rule Checking. KLayout is the trusted geometry checker in this project. The language model interprets the engineering question, retrieves rules, chooses what to check, and submits an answer. The model does not replace KLayout or generate a new checker.
 
 Our supported categories are width, spacing, and enclosure. The supported catalog contains eight rules for ordinary rectangular metal1/metal2 routing and square 0.15 um vias. It is not a full-chip certification service.
 
@@ -28,7 +28,7 @@ All conditions receive the same base question and coordinate content. A/B use th
 
 C also adds answer verification and verified explanation rendering. Therefore this is a system ablation, not a perfectly isolated test of KLayout alone. State that in the report.
 
-One local model across A/B/C does not fulfill the proposal's original three-model comparison by itself. Any change to the open/closed model mix needs agreement and transparent reporting. The current experiment runner supports local Ollama models, not a three-provider grid.
+The saved main run covers A/B/C for Qwen3 on all 50 benchmark cases and six probes. Separate full grids for GPT-4o and Llama 3.1 8B cover the same cases and conditions. GPT-4o and Llama share prompt and core implementation hashes; Qwen's hashes differ, so the three runs are exploratory rather than a fully controlled model-only comparison. Llama A/B produced no accepted outputs in the full grid because of protocol/schema failures; its C run had 15 errors in 56 records. See [Experiment Results](EXPERIMENT_RESULTS.md) for scores, accepted-output counts, and the separate retry smoke.
 
 ## 3. What Was Already Built Before This Session
 
@@ -129,7 +129,7 @@ These live demonstrations cost $0 in API charges. Hardware, electricity, and tim
 
 Pre-commit validation on November 11, 2026, confirmed 17 focused tests passing and 70 full-suite tests passing with the same two Windows permission/symlink failures. The archived audit passed all 56 layouts and 41 numeric marker cross-checks. The failures were not silently corrected or declared passing; see [the validation record](PRECOMMIT_VALIDATION.md) for their exact scope and unverified security coverage.
 
-Update after the first six-query pilot: all six records were saved, C returned two correct verified verdicts, and A/B returned four schema-validation errors. A bounded schema-repair change is unit-tested, with a separate live pilot pending. See [pilot review](PILOT_REVIEW.md). No 168-query experiment or final comparative benchmark is established as complete here.
+Update: the initial six-query pilot exposed a missing `refusal_reason` field in every A/B final answer. The bounded schema-repair change was followed by the separate six-query `pilot-v2`: B and C both returned correct predictions on b001/b002, while A had one Ollama-unavailable error and one incorrect verdict. This pilot uses previously inspected cases and is only a smoke test. See [pilot review](PILOT_REVIEW.md).
 
 ## 8. Important Pre-Commit Findings
 
@@ -212,13 +212,13 @@ Progress prints after each completed or skipped record. A quiet terminal during 
 
 Read the generated `results.md` and inspect any ERROR record before launching the full grid. A pilot is useful even if A/B answers are wrong: its first purpose is verifying execution, storage, scoring, and restrictions.
 
-### Full one-model experiment
+### Recorded one-model experiment
 
 ```powershell
 .\.venv\Scripts\python.exe run.py experiments run --models qwen3:8b --conditions A B C --output runs/experiments/qwen3-main
 ```
 
-Fifty layouts plus six probes, times three conditions, equals 168 queries. This is one model, not the proposal's three-model comparison. Runtime may be many hours; the two UI demos are not enough to accurately predict all conditions and case types.
+The saved `runs/experiments/main/` contains the 168 Qwen3 records (50 layouts plus six probes under three conditions). Separate GPT-4o and Llama full-grid directories are summarized in [Experiment Results](EXPERIMENT_RESULTS.md); interpret their comparison with the documented prompt/implementation-hash caveat. The Qwen C records include many local-service errors.
 
 ### Resume and score
 
@@ -234,4 +234,4 @@ Resume refuses a changed manifest. For intentional changes, use a new output dir
 
 ## 11. What Remains for Final Completion
 
-Resolve the pre-commit findings, validate the pilot, run the approved model/condition grid, preserve raw evidence, inspect failures, and write results with limitations. Obtain agreement on any reduced model mix. Finish the report and demo recording. A functioning UI and two good examples are integration milestones, not the final semester evaluation.
+The exploratory model grids are complete, but a strict three-model comparison would require rerunning all selected models with one frozen prompt and implementation. Unless that is necessary for the course requirements, preserve the current records and present them with their limitations rather than starting another full run. Finish the report and demo recording, preserve all errors, and include the prior-exposure disclosure in [Experiment Results](EXPERIMENT_RESULTS.md). A functioning UI and two good examples are integration milestones, not the final semester evaluation.

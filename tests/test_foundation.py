@@ -1,11 +1,9 @@
 import json
-from pathlib import Path
 
 import pytest
 
-from drc_explain.benchmark import designs, generate
+from drc_explain.benchmark import generate
 from drc_explain.common import read_json
-from drc_explain.layouts import inspect_layout
 from drc_explain.reports import ReportError, marker_measurement, parse_report
 from drc_explain.runner import Checker, CheckerError
 from drc_explain.tools import Toolset, retrieve_rules
@@ -78,7 +76,12 @@ def test_tool_path_boundary_and_no_gold_exposure(tmp_path):
     for path in ["../secret.gds", str(tmp_path / "secret.gds"), "missing.gds"]:
         r = tools.call("inspect_layout", {"gds_path": path})
         assert not r["ok"] and r["verdict"] is None
-    (public / "link.gds").symlink_to(tmp_path / "secret.gds")
+    try:
+        (public / "link.gds").symlink_to(tmp_path / "secret.gds")
+    except OSError as exc:
+        if getattr(exc, "winerror", None) == 1314:
+            pytest.skip("Creating symlinks requires an enabled Windows privilege.")
+        raise
     assert not tools.call("inspect_layout", {"gds_path": "link.gds"})["ok"]
     assert len((tmp_path / "calls.jsonl").read_text().splitlines()) == 4
     assert not tools.call("run_full", {})["ok"]

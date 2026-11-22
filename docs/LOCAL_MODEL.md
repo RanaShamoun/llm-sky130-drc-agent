@@ -42,6 +42,8 @@ python run.py agent --question "Check antenna rules."
 
 The default model is `qwen3:8b`, with 32K context, a 4096-token output limit per turn, non-thinking mode, and temperature zero. Exact runtime version and downloaded model digest are recorded in `data/local_model.lock.json` once the model is pinned. A changed digest for that model is rejected until deliberately reviewed. Each result records the provider, runtime version, model digest, token counts, latency, and tool evidence.
 
+Local inference requests have a 1200-second timeout by default; `--timeout-s` overrides it for experiment runs, and the applied value is stored in the run manifest. Request timeouts are reported separately from an unavailable Ollama service.
+
 `cost_usd: 0.0` represents **API charges only**. Hardware, electricity, and download costs are not estimated. Local token counters are Ollama's `prompt_eval_count` and `eval_count`; do not treat them as OpenAI billing records or infer cache savings from absent cache counters.
 
 ## Scope of the experiment

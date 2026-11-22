@@ -47,7 +47,19 @@ Gold labels belong only in the evaluation/audit flow. They are not an input to t
 
 ### [README.md](../README.md)
 
-The usual front door: overview, scope, existing status, and basic commands. It is documentation, not executable code. Some inherited counts and handoff wording describe the earlier state. Use the new walkthrough for this session's additions and limitations; do not interpret historical counts as a fresh test run.
+The usual front door: overview, scope, current status, and basic commands. It is documentation, not executable code. See [Experiment Results](EXPERIMENT_RESULTS.md) for the saved model-evaluation evidence and remaining gaps.
+
+### [EXPERIMENT_RESULTS.md](EXPERIMENT_RESULTS.md)
+
+The checked summary of the Qwen3, GPT-4o, and Llama 3.1 A/B/C full grids, earlier pilots, and the separate Llama protocol-retry smoke. It distinguishes accepted outputs from errors and documents protocol-hash differences and evaluation limitations. Raw run records remain under ignored local `runs/experiments/` directories.
+
+### [COURSE_REPORT_DRAFT.md](COURSE_REPORT_DRAFT.md)
+
+A course-report draft with the research objective, system conditions, Qwen3 main results, exploratory three-model outcomes, interpretation, and limitations. It is not a final report; the runs do not form a fully controlled three-model comparison because Qwen used different prompt and implementation hashes.
+
+### [DEMO_GUIDE.md](DEMO_GUIDE.md)
+
+A five-minute presentation outline and PowerShell commands for the no-LLM deterministic tool demo, with an optional local-agent/UI path and explicit guidance for describing the scope and evaluation honestly.
 
 ### [ProjectProposal.txt](../ProjectProposal.txt)
 
@@ -194,7 +206,7 @@ The local path does not use this API adapter merely because the module exists. C
 
 Adapts the agent's message/tool format to Ollama's local chat API. `OllamaClient` talks to loopback only, rejects remote/cloud model names, records local API cost as zero, and verifies model availability and the default model digest against its lock.
 
-`_check_model()` ensures local weights exist and records metadata. `_messages()` translates tool-call history to Ollama messages. `respond()` sends instructions, inputs, schemas, and options, then returns normalized function calls for the agent.
+`_check_model()` ensures local weights exist and records metadata. `_messages()` translates tool-call history to Ollama messages. `respond()` sends instructions, inputs, schemas, and options, then returns normalized function calls for the agent. Its JSON-action fallback accepts only registered tool names; valid numeric-string retrieval limits are normalized and recorded.
 
 The options include deterministic temperature zero, disabled thinking, 32768 context, and a prediction limit. Zero temperature does not guarantee identical behavior on every machine/run. A timeout or HTTP 500 gives ERROR, never a manufactured PASS.
 
@@ -242,7 +254,7 @@ The resumable experiment controller, added in this session. It uses public input
 
 `model_input()` allowlists question, GDS path, top cell, and layout. It excludes verdicts, case types, pair membership, and even unneeded public bookkeeping fields from the prompt object.
 
-`condition_tools()` gives A only the answer-submission function and B retrieval plus submission. Neither condition can call DRC. `baseline()` runs their bounded prediction loop and saves unverified answers. `_validate_prediction()` checks answer structure and finite numbers, not agreement with the rule tool or oracle.
+`condition_tools()` gives A only the answer-submission function and B retrieval plus submission. Neither condition can call DRC. `baseline()` runs their bounded prediction loop and saves unverified answers. It allows one logged protocol-repair attempt after malformed or rejected calls without executing unregistered tools or expanding the condition's tool access. `_validate_prediction()` checks answer structure and finite numbers, not agreement with the rule tool or oracle.
 
 `run_grid()` selects benchmark cases/probes, checks public GDS hashes and local models, writes/compares the manifest, rotates condition order, runs A/B/C, saves a record per query, and prints progress. C calls the existing `Agent` rather than duplicating it.
 
@@ -314,7 +326,7 @@ Small runnable example of retrieving rules, inspecting a public GDS, and checkin
 
 ## Test Files
 
-Tests are assertions, not benchmark questions. Most use fixtures/mocks to avoid expensive model calls. A green unit suite does not mean the 168-query experiment ran.
+Tests are assertions, not benchmark questions. Most use fixtures/mocks to avoid expensive model calls. The saved 168-record run is separate evidence; see [EXPERIMENT_RESULTS.md](EXPERIMENT_RESULTS.md), including its execution errors and scope limitations.
 
 ### [tests/test_foundation.py](../tests/test_foundation.py)
 

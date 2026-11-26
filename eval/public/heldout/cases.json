@@ -1,0 +1,2108 @@
+[
+  {
+    "case_id": "h001",
+    "gds_path": "heldout/h001.gds",
+    "gds_sha256": "a370be77510c8185c556a2b7299f9dc0a75590f41239aed38303eb015922ce90",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.825,
+                0.1,
+                1.325,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.825,
+                  0.1
+                ],
+                [
+                  0.825,
+                  0.6
+                ],
+                [
+                  1.325,
+                  0.6
+                ],
+                [
+                  1.325,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h002",
+    "gds_path": "heldout/h002.gds",
+    "gds_sha256": "60e468892fa912644f9c8a474cf834d4842b4cb02d7cd062bc9129b08fc6ee6e",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.83,
+                0.1,
+                1.33,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.83,
+                  0.1
+                ],
+                [
+                  0.83,
+                  0.6
+                ],
+                [
+                  1.33,
+                  0.6
+                ],
+                [
+                  1.33,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h003",
+    "gds_path": "heldout/h003.gds",
+    "gds_sha256": "b1530199b9f55e7ec75cc824b8eaec36c8f0678f8ba759ef70088c6f09ed5d56",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.835,
+                0.1,
+                1.335,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.835,
+                  0.1
+                ],
+                [
+                  0.835,
+                  0.6
+                ],
+                [
+                  1.335,
+                  0.6
+                ],
+                [
+                  1.335,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h004",
+    "gds_path": "heldout/h004.gds",
+    "gds_sha256": "7bb134f53cbbddddb4a880dd936200401304e864ec55308bd4244c056fa3e8fd",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.845,
+                0.1,
+                1.345,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.845,
+                  0.1
+                ],
+                [
+                  0.845,
+                  0.6
+                ],
+                [
+                  1.345,
+                  0.6
+                ],
+                [
+                  1.345,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h005",
+    "gds_path": "heldout/h005.gds",
+    "gds_sha256": "96c3ea408eb46bbefd9b5fb7a66cba29630956a6ac8901f68e8f726c8ba93e23",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.85,
+                0.1,
+                1.35,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.85,
+                  0.1
+                ],
+                [
+                  0.85,
+                  0.6
+                ],
+                [
+                  1.35,
+                  0.6
+                ],
+                [
+                  1.35,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h006",
+    "gds_path": "heldout/h006.gds",
+    "gds_sha256": "b8edc0e7dec2a57b45e6d1195310c03fc03d99e7c7b892ce885d4ef0582744da",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.2,
+                0.1,
+                0.7,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.2,
+                  0.1
+                ],
+                [
+                  0.2,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.6
+                ],
+                [
+                  0.7,
+                  0.1
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.855,
+                0.1,
+                1.355,
+                0.6
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.855,
+                  0.1
+                ],
+                [
+                  0.855,
+                  0.6
+                ],
+                [
+                  1.355,
+                  0.6
+                ],
+                [
+                  1.355,
+                  0.1
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h007",
+    "gds_path": "heldout/h007.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.035,
+                0.2,
+                1.535,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.035,
+                  0.2
+                ],
+                [
+                  1.035,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h008",
+    "gds_path": "heldout/h008.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.045,
+                0.2,
+                1.545,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.045,
+                  0.2
+                ],
+                [
+                  1.045,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h009",
+    "gds_path": "heldout/h009.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.035,
+                0.2,
+                1.535,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.035,
+                  0.2
+                ],
+                [
+                  1.035,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h010",
+    "gds_path": "heldout/h010.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.045,
+                0.2,
+                1.545,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.045,
+                  0.2
+                ],
+                [
+                  1.045,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h011",
+    "gds_path": "heldout/h011.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.035,
+                0.2,
+                1.535,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.035,
+                  0.2
+                ],
+                [
+                  1.035,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.7
+                ],
+                [
+                  1.535,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h012",
+    "gds_path": "heldout/h012.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.4,
+                0.2,
+                0.9,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.4,
+                  0.2
+                ],
+                [
+                  0.4,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.7
+                ],
+                [
+                  0.9,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                1.045,
+                0.2,
+                1.545,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  1.045,
+                  0.2
+                ],
+                [
+                  1.045,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.7
+                ],
+                [
+                  1.545,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h013",
+    "gds_path": "heldout/h013.gds",
+    "gds_sha256": "cebe2a6d8daafd75ce92a8851d4e3b332976940ad34db85fc4ca6e8fc6f09265",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.435,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.57,
+                0.2,
+                0.705,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.57,
+                  0.2
+                ],
+                [
+                  0.57,
+                  0.8
+                ],
+                [
+                  0.705,
+                  0.8
+                ],
+                [
+                  0.705,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.635,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h014",
+    "gds_path": "heldout/h014.gds",
+    "gds_sha256": "6c74710b86f467f6754f500d503c39a452f25ca67b19c3573dc5eef5fedc05e9",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.435,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.58,
+                0.2,
+                0.715,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.58,
+                  0.2
+                ],
+                [
+                  0.58,
+                  0.8
+                ],
+                [
+                  0.715,
+                  0.8
+                ],
+                [
+                  0.715,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.635,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h015",
+    "gds_path": "heldout/h015.gds",
+    "gds_sha256": "bcfd82856048ec9ba50c8defe1fda1cdc57cc9ebd5993ca4a9b73189ac602478",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.445,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.58,
+                0.2,
+                0.725,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.58,
+                  0.2
+                ],
+                [
+                  0.58,
+                  0.8
+                ],
+                [
+                  0.725,
+                  0.8
+                ],
+                [
+                  0.725,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.645,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h016",
+    "gds_path": "heldout/h016.gds",
+    "gds_sha256": "f98686d3e6de571c3043809e121623d53688d3c744a6fe66775644198e43e663",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.445,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.59,
+                0.2,
+                0.735,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.59,
+                  0.2
+                ],
+                [
+                  0.59,
+                  0.8
+                ],
+                [
+                  0.735,
+                  0.8
+                ],
+                [
+                  0.735,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.645,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h017",
+    "gds_path": "heldout/h017.gds",
+    "gds_sha256": "6c74710b86f467f6754f500d503c39a452f25ca67b19c3573dc5eef5fedc05e9",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.435,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.8
+                ],
+                [
+                  0.435,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.58,
+                0.2,
+                0.715,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.58,
+                  0.2
+                ],
+                [
+                  0.58,
+                  0.8
+                ],
+                [
+                  0.715,
+                  0.8
+                ],
+                [
+                  0.715,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.635,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.7
+                ],
+                [
+                  2.635,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h018",
+    "gds_path": "heldout/h018.gds",
+    "gds_sha256": "bcfd82856048ec9ba50c8defe1fda1cdc57cc9ebd5993ca4a9b73189ac602478",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.3,
+                0.2,
+                0.445,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.3,
+                  0.2
+                ],
+                [
+                  0.3,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.8
+                ],
+                [
+                  0.445,
+                  0.2
+                ]
+              ]
+            },
+            {
+              "bbox_um": [
+                0.58,
+                0.2,
+                0.725,
+                0.8
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.58,
+                  0.2
+                ],
+                [
+                  0.58,
+                  0.8
+                ],
+                [
+                  0.725,
+                  0.8
+                ],
+                [
+                  0.725,
+                  0.2
+                ]
+              ]
+            }
+          ],
+          "shape_count": 2
+        },
+        {
+          "datatype": 20,
+          "layer": 69,
+          "name": "m2",
+          "polygons": [
+            {
+              "bbox_um": [
+                2.5,
+                0.3,
+                2.645,
+                0.7
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  2.5,
+                  0.3
+                ],
+                [
+                  2.5,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.7
+                ],
+                [
+                  2.645,
+                  0.3
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 3,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h019",
+    "gds_path": "heldout/h019.gds",
+    "gds_sha256": "e9ef8ef9a18c3c6ece8ecc0b4aa4258a575bc1c81f4b1011376d3d4c1535d30b",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.75,
+                0.71,
+                1.0,
+                1.04
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.75,
+                  0.71
+                ],
+                [
+                  0.75,
+                  1.04
+                ],
+                [
+                  1.0,
+                  1.04
+                ],
+                [
+                  1.0,
+                  0.71
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h020",
+    "gds_path": "heldout/h020.gds",
+    "gds_sha256": "d851902cc36a24c76cc6ace514e18438fb3b2ae6d27ae5209a57f0fdd8de427a",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.74,
+                0.74,
+                1.045,
+                1.045
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.74,
+                  0.74
+                ],
+                [
+                  0.74,
+                  1.045
+                ],
+                [
+                  1.045,
+                  1.045
+                ],
+                [
+                  1.045,
+                  0.74
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h021",
+    "gds_path": "heldout/h021.gds",
+    "gds_sha256": "11971240961e028b158f796eb23f8a3091e99afe46a898f77a1c554857c82019",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.705,
+                0.75,
+                1.045,
+                1.0
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.705,
+                  0.75
+                ],
+                [
+                  0.705,
+                  1.0
+                ],
+                [
+                  1.045,
+                  1.0
+                ],
+                [
+                  1.045,
+                  0.75
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h022",
+    "gds_path": "heldout/h022.gds",
+    "gds_sha256": "e9ef8ef9a18c3c6ece8ecc0b4aa4258a575bc1c81f4b1011376d3d4c1535d30b",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.75,
+                0.71,
+                1.0,
+                1.04
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.75,
+                  0.71
+                ],
+                [
+                  0.75,
+                  1.04
+                ],
+                [
+                  1.0,
+                  1.04
+                ],
+                [
+                  1.0,
+                  0.71
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h023",
+    "gds_path": "heldout/h023.gds",
+    "gds_sha256": "d851902cc36a24c76cc6ace514e18438fb3b2ae6d27ae5209a57f0fdd8de427a",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.74,
+                0.74,
+                1.045,
+                1.045
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.74,
+                  0.74
+                ],
+                [
+                  0.74,
+                  1.045
+                ],
+                [
+                  1.045,
+                  1.045
+                ],
+                [
+                  1.045,
+                  0.74
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h024",
+    "gds_path": "heldout/h024.gds",
+    "gds_sha256": "11971240961e028b158f796eb23f8a3091e99afe46a898f77a1c554857c82019",
+    "layout": {
+      "dbu_um": 0.001,
+      "layers": [
+        {
+          "datatype": 44,
+          "layer": 68,
+          "name": "via",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.8,
+                0.8,
+                0.95,
+                0.95
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.8,
+                  0.8
+                ],
+                [
+                  0.8,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.95
+                ],
+                [
+                  0.95,
+                  0.8
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        },
+        {
+          "datatype": 20,
+          "layer": 68,
+          "name": "m1",
+          "polygons": [
+            {
+              "bbox_um": [
+                0.705,
+                0.75,
+                1.045,
+                1.0
+              ],
+              "is_rectangle": true,
+              "points_um": [
+                [
+                  0.705,
+                  0.75
+                ],
+                [
+                  0.705,
+                  1.0
+                ],
+                [
+                  1.045,
+                  1.0
+                ],
+                [
+                  1.045,
+                  0.75
+                ]
+              ]
+            }
+          ],
+          "shape_count": 1
+        }
+      ],
+      "shape_count": 2,
+      "top_cell": "TOP",
+      "units": "um"
+    },
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "split": "benchmark"
+  }
+]

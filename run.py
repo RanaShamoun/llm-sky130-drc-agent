@@ -30,6 +30,8 @@ def main():
             "setup-sources",
             "generate",
             "label",
+            "generate-heldout",
+            "label-heldout",
             "format",
             "configure",
             "agent",
@@ -48,6 +50,7 @@ def main():
         if args.command == "check":
             python("-m", "pytest", "-q")
             python("scripts/verify_benchmark.py")
+            python("scripts/verify_heldout.py")
         elif args.command == "demo":
             python("examples/use_tools.py")
         elif args.command == "experiments":

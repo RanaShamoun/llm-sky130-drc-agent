@@ -17,6 +17,8 @@ def main():
     sub.add_parser("doctor")
     sub.add_parser("generate")
     sub.add_parser("label")
+    sub.add_parser("generate-heldout")
+    sub.add_parser("label-heldout")
     sub.add_parser("schemas")
     agent = sub.add_parser("agent", help="Run the live OpenAI tool-grounded agent")
     agent.add_argument(
@@ -76,6 +78,14 @@ def main():
             result = generate()
         elif args.command == "label":
             result = label()
+        elif args.command == "generate-heldout":
+            from .heldout import generate as generate_heldout
+
+            result = generate_heldout()
+        elif args.command == "label-heldout":
+            from .heldout import label as label_heldout
+
+            result = label_heldout()
         elif args.command == "schemas":
             result = TOOL_SCHEMAS
         else:

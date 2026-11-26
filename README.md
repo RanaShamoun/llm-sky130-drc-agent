@@ -12,7 +12,7 @@ This repository is prepared for instructor review. It contains the implementatio
 - Core local Qwen3 8B workflow is implemented and usable without an API key.
 - Optional Gemini 3.5 Flash-Lite and OpenAI GPT-4o provider adapters are implemented.
 - A/B/C experiment runner supports resumable grids and evaluator-only scoring.
-- 113 automated tests pass and 1 platform-specific test is intentionally skipped.
+- On November 25, 2026, 117 automated tests passed and 1 platform-specific test was skipped.
 - A fresh 168-record grid was completed for each of Qwen3 8B, GPT-4o, and Gemini 3.5 Flash-Lite under matching prompt, implementation, and public-input hashes.
 
 The frozen-grid outcomes are summarized below. Accuracy uses the fixed 50-layout benchmark denominator; probe results and `ERROR` records are reported separately.
@@ -26,6 +26,41 @@ The frozen-grid outcomes are summarized below. Accuracy uses the fixed 50-layout
 The comparison has one repetition and uses a small, previously exposed benchmark. It is not a foundry-signoff study or a substitute for independent held-out layouts. Gemini's 9 errors included HTTP 503, turn-budget, and protocol failures; its 429 retry count was zero. GPT-4o and Gemini API cost values are estimates or held usage ledgers, not proof of final provider billing.
 
 See [Experiment Results](docs/EXPERIMENT_RESULTS.md), [Course Report Draft](docs/COURSE_REPORT_DRAFT.md), and [Demo Guide](docs/DEMO_GUIDE.md).
+
+## Independent held-out workflow
+
+A separate 24-layout held-out set has been generated and labeled with zero construction/oracle mismatches. It is kept outside the original 56-case public and gold benchmark:
+
+- Public layouts and questions: `eval/public/heldout/`
+- Private labels and oracle archive: `eval/gold/heldout/`
+- Dataset documentation: [Held-Out Evaluation](docs/HELDOUT_EVALUATION.md)
+
+Generate and label the held-out set:
+
+```powershell
+.\.venv\Scripts\python.exe run.py generate-heldout
+.\.venv\Scripts\python.exe run.py label-heldout
+.\.venv\Scripts\python.exe scripts\verify_heldout.py
+```
+
+Run the held-out grid on one repetition:
+
+```powershell
+.\.venv\Scripts\python.exe run.py experiments run `
+  --heldout --provider ollama `
+  --models qwen3:8b `
+  --conditions A B C `
+  --repetitions 1 `
+  --timeout-s 1200 `
+  --no-probes `
+  --output runs\experiments\heldout-qwen3-20261122
+```
+
+For stronger evidence, add `--repetitions 3` and run each model in a separate, newly named output directory. Keep all original `ERROR` records, because they are part of end-to-end reliability. `--heldout` also changes the experiment's public/cases/gold manifest paths, and the held-out labels are private to the evaluator.
+
+## Benchmark scope and external suites
+
+The benchmark is not derived from a standard open-source SKY130/OpenROAD DRC suite. It is a project-constructed collection of synthetic rectangular layouts plus unsupported-scope probes. Oracle labels come from the pinned upstream KLayout SKY130 DRC deck in `data/sources.lock.json`, but that deck is not a complete installed fabrication PDK and the project does not claim external tape-out signoff. The 24-layout held-out set is mechanically independent from the original public development cases, but it is generated and labeled with the same geometry builder and same KLayout oracle. It therefore provides stronger generalization evidence than the exposed benchmark, not independent oracle or foundry validation.
 
 ## Quick start
 

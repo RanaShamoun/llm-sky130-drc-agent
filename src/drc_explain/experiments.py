@@ -292,20 +292,28 @@ def run_grid(
     client_factory=OllamaClient,
     timeout_s=1200,
     api_budget_usd=None,
+    cases_file=None,
+    public_root=None,
+    gold_root=None,
 ):
     if repetitions < 1 or not models or not conditions or set(conditions) - {"A", "B", "C"}:
         raise ValueError("Use positive repetitions, local models, and conditions A/B/C.")
     if type(timeout_s) is not int or timeout_s < 1:
         raise ValueError("timeout_s must be a positive integer.")
-    cases = [case for case in read_json(ROOT / "eval/public/cases.json") if case["split"] == "benchmark"]
+    public_root = Path(public_root or ROOT / "eval/public").resolve()
+    gold_root = Path(gold_root or ROOT / "eval/gold").resolve()
+    cases_file = Path(cases_file or public_root / "cases.json").resolve()
+    cases = [case for case in read_json(cases_file) if case["split"] == "benchmark"]
     if probes:
-        cases += read_json(ROOT / "eval/public/probes.json")
+        probes_file = cases_file.parent / "probes.json"
+        if probes_file.is_file():
+            cases += read_json(probes_file)
     if case_ids:
         if set(case_ids) - {case["case_id"] for case in cases}:
             raise ValueError("Unknown case IDs.")
         cases = [case for case in cases if case["case_id"] in case_ids]
     for case in cases:
-        if case.get("gds_path") and sha256(ROOT / "eval/public" / case["gds_path"]) != case["gds_sha256"]:
+        if case.get("gds_path") and sha256(public_root / case["gds_path"]) != case["gds_sha256"]:
             raise ValueError("Public layout hash mismatch.")
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -365,6 +373,23 @@ def run_grid(
         "debug_disclosure": "Four historical accepted examples plus Windows b001 FAIL/b002 PASS setup demonstrations were previously inspected. Four saved Windows b001 ERROR attempts also preceded evaluation. Scripted tests and historical rejected attempts used additional cases; this is not an exhaustive exposure inventory or an untouched held-out benchmark. See docs/DEBUG_CASE_DISCLOSURE.md. These records are disclosure only, not experiment observations or model inputs.",
         "api_budget_usd": budget.cap_usd if budget else 0,
         "api_budget_ledger": budget_ledger,
+        "dataset": {
+            "public_root": (
+                str(public_root.relative_to(ROOT)).replace("\\", "/")
+                if public_root.is_relative_to(ROOT)
+                else str(public_root)
+            ),
+            "cases_file": (
+                str(cases_file.relative_to(ROOT)).replace("\\", "/")
+                if cases_file.is_relative_to(ROOT)
+                else str(cases_file)
+            ),
+            "gold_root": (
+                str(gold_root.relative_to(ROOT)).replace("\\", "/")
+                if gold_root.is_relative_to(ROOT)
+                else str(gold_root)
+            ),
+        },
         "hardware_electricity_cost_usd": None,
         "baseline_protocol_repair_attempts": BASELINE_PROTOCOL_REPAIR_ATTEMPTS,
     }
@@ -398,8 +423,14 @@ def score_grid(output):
 
     output = Path(output)
     manifest = read_json(output / "manifest.json")
-    labels = [label for label in read_json(ROOT / "eval/gold/labels.json") if label["split"] == "benchmark"]
-    labels += [{"case_id": probe["case_id"], "verdict": "REFUSE"} for probe in read_json(ROOT / "eval/public/probes.json")]
+    dataset = manifest.get("dataset", {})
+    gold_value = dataset.get("gold_root", "eval/gold")
+    cases_value = dataset.get("cases_file", "eval/public/cases.json")
+    gold_root = Path(gold_value) if Path(gold_value).is_absolute() else ROOT / gold_value
+    labels = [label for label in read_json(gold_root / "labels.json") if label["split"] == "benchmark"]
+    cases_file = Path(cases_value) if Path(cases_value).is_absolute() else ROOT / cases_value
+    probes_file = cases_file.parent / "probes.json"
+    labels += [{"case_id": probe["case_id"], "verdict": "REFUSE"} for probe in read_json(probes_file)] if probes_file.is_file() else []
     categories = read_json(ROOT / "data/deck_categories.json")
     known = set(categories["categories"])
     tables = []
@@ -455,6 +486,11 @@ def main():
         default=1200,
         help="Per-request inference timeout in seconds (default: 1200).",
     )
+    parser.add_argument(
+        "--heldout",
+        action="store_true",
+        help="Use the separate eval/public/heldout and eval/gold/heldout datasets.",
+    )
     parser.add_argument("--no-probes", action="store_true")
     args = parser.parse_args()
     if args.action == "run":
@@ -476,6 +512,13 @@ def main():
             parser.error(
                 "--api-budget-usd is only valid with --provider openai or gemini."
             )
+        public_root = ROOT / "eval/public"
+        gold_root = ROOT / "eval/gold"
+        cases_file = None
+        if args.heldout:
+            public_root = ROOT / "eval/public"
+            gold_root = ROOT / "eval/gold/heldout"
+            cases_file = ROOT / "eval/public/heldout/cases.json"
         run_grid(
             args.output,
             args.models,
@@ -486,6 +529,9 @@ def main():
             timeout_s=args.timeout_s,
             client_factory=client_factory,
             api_budget_usd=args.api_budget_usd,
+            cases_file=cases_file,
+            public_root=public_root,
+            gold_root=gold_root,
         )
     score_grid(args.output)
     print(f"Saved metrics and results table to {args.output}")

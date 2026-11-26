@@ -1,0 +1,28 @@
+flowchart LR
+    U[User Question] --> UI[Local UI / CLI]
+    UI --> P[LLM Provider]
+    P --> LLM[Qwen3 / GPT-4o / Gemini]
+
+    GDS[(Public GDS Layout)] --> I[Layout Inspector]
+    I --> C[Coordinates and Shape Metadata]
+    C --> LLM
+
+    LLM --> R[Retrieve Supported Rules]
+    R --> RC[Curated SKY130 Rule Corpus]
+    RC --> R
+
+    LLM --> D[run_drc Tool]
+    D --> K[KLayout DRC Engine]
+    K --> DECK[Pinned SKY130 DRC Deck]
+    DECK --> K
+    K --> E[DRC Evidence:
+    Status / Limits / Markers]
+
+    LLM --> CLAIM[Structured PASS / FAIL / REFUSE Claims]
+    E --> V[Deterministic Verifier]
+    CLAIM --> V
+    V -->|Accepted| O[Grounded Explanation]
+    V -->|Rejected| X[Protocol / Claim Repair]
+    X --> LLM
+
+    O --> T[Explanation + Sources + Trace]

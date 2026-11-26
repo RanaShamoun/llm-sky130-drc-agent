@@ -62,6 +62,7 @@ The main operational finding is that tool-grounded verification can improve end-
 
 - The 50 curated layouts and six probes are not representative of a production workload.
 - The team had prior exposure to several benchmark cases during debugging and demonstrations; the benchmark is not an untouched holdout. See [Debug and Demonstration Case Disclosure](DEBUG_CASE_DISCLOSURE.md).
+- This is not an evaluation against an external OpenROAD/Magic/KLayout test suite. The layouts are project-generated synthetic constructions, although the pinned DRC oracle is the upstream KLayout SKY130 deck.
 - The archived labels were audited against KLayout's native report reader, but both use the same engine. This is not an independent foundry oracle.
 - The supported geometry and rule catalog are intentionally limited; the checker is not a signoff tool.
 - The fresh comparison has one repetition, so the reported proportions have no run-to-run uncertainty estimate.
@@ -75,7 +76,34 @@ The main operational finding is that tool-grounded verification can improve end-
 
 This project demonstrates an LLM workflow in which geometry remains checked by KLayout and accepted explanations are constrained by deterministic evidence. The Qwen3 results suggest that retrieval and verification can improve some measured outcomes; accepted C outputs selected all required rules in this benchmark, but end-to-end errors and the single repetition prevent claims of reliable generalization.
 
-The fresh three-model grids are complete under matching prompt, implementation, inputs, and conditions. Preserve the raw runs and report fixed-denominator accuracies alongside accepted-output counts and errors. Do not add a second repetition or retry run to the same directory. A strict generalization claim would require independent layouts and repeated runs.
+The fresh three-model grids are complete under matching prompt, implementation, inputs, and conditions. Preserve the raw runs and report fixed-denominator accuracies alongside accepted-output counts and errors. A separate 24-layout held-out dataset has been generated, labeled, native-RDB-verified with zero construction mismatches, and evaluated in repeated runs. Do not replace existing records with retries. Wider generalization claims require further independent layouts and oracle evidence.
+
+A first one-repetition local Qwen3 C run on the held-out layouts scored 24/24 benchmark verdicts, 3/3 probe refusals, and 0 execution errors. This is held-out evidence for one model, not a repeated stability study or a cross-model ranking.
+
+Three separate repetitions of held-out Qwen3 C then completed 24/24 benchmark verdicts
+in each repetition, with 3/3 refusals and 0 execution ERROR records in every run.
+The mean accuracy was 100% with a 100-100% range. This measures repeated stability
+for one local model and one held-out set, not a cross-model ranking or independent
+foundry signoff.
+
+Matching GPT-4o and Gemini held-out condition-C repetitions were completed on
+November 25, 2026. GPT-4o scored 24/24 in all three repetitions and had 0 ERROR
+records. Gemini's fixed-denominator benchmark accuracies were 20/24, 14/24, and
+15/24. Across all 81 Gemini records, there were 23 execution ERROR records:
+22 HTTP 503 failures and one protocol failure. All models refused every held-out
+probe correctly in each repetition.
+
+The Gemini adapter was then updated to retry HTTP 503 service-unavailable responses.
+In a separate 81-record run, fixed-denominator accuracy was 22/24, 21/24, and 19/24;
+there were 13 ERROR records. Of 78 records that encountered a 503, 65 later completed
+after retries and 13 exhausted retries. Probe refusals were 1/3, 2/3, and 3/3.
+The implementation and provider conditions differ from the original run, so the
+change in error counts is not a controlled causal estimate.
+
+A subsequent run with up to eight 503 retries scored 18/24, 0/24, and 0/24, with
+0/3 probe refusals in each repetition. All 63 ERROR records were HTTP 429 responses
+after the free-tier daily request quota was exhausted. This is a separate
+quota-limited run, not evidence that the earlier results should be replaced.
 
 ## 7. Reproducibility and Demo
 

@@ -24,6 +24,7 @@ DEFAULT_TIMEOUT_S = 60
 DEFAULT_MAX_OUTPUT_TOKENS = 4096
 DEFAULT_MIN_REQUEST_INTERVAL_S = 6.1
 DEFAULT_MAX_429_RETRIES = 5
+DEFAULT_MAX_SERVICE_RETRIES = 8
 DEFAULT_429_BACKOFF_S = 5.0
 MAX_429_BACKOFF_S = 60.0
 MAX_RETRY_AFTER_S = 120.0
@@ -166,6 +167,7 @@ class GeminiClient:
         budget=None,
         min_request_interval_s=None,
         max_429_retries=None,
+        max_service_retries=None,
     ):
         load_local_config()
         self.model = model or os.environ.get("GEMINI_MODEL", DEFAULT_MODEL)
@@ -183,6 +185,11 @@ class GeminiClient:
             if max_429_retries is None
             else max_429_retries
         )
+        self.max_service_retries = (
+            DEFAULT_MAX_SERVICE_RETRIES
+            if max_service_retries is None
+            else max_service_retries
+        )
         self.api_cost_usd = 0.0 if _gemini_pricing(self.model) else None
         self.metadata = {}
         if not isinstance(self.model, str) or not self.model or "/" in self.model:
@@ -198,6 +205,8 @@ class GeminiClient:
             raise ValueError("min_request_interval_s must be finite and non-negative.")
         if type(self.max_429_retries) is not int or self.max_429_retries < 0:
             raise ValueError("max_429_retries must be a non-negative integer.")
+        if type(self.max_service_retries) is not int or self.max_service_retries < 0:
+            raise ValueError("max_service_retries must be a non-negative integer.")
         if not self._api_key:
             raise ProviderError(
                 "Set GEMINI_API_KEY locally in .env or the terminal. Do not place it in chat or traces."
@@ -272,12 +281,15 @@ class GeminiClient:
                 "budget_cap_usd": self.budget.cap_usd if self.budget else None,
                 "minimum_request_interval_s": self.min_request_interval_s,
                 "max_429_retries": self.max_429_retries,
+                "max_service_retries": self.max_service_retries,
                 "rate_limit_retry_backoff_s": DEFAULT_429_BACKOFF_S,
                 "max_retry_after_s": MAX_RETRY_AFTER_S,
                 "request_attempt_count": 0,
                 "request_pacing_wait_s": 0.0,
                 "rate_limit_retry_count": 0,
                 "rate_limit_retry_wait_s": 0.0,
+                "service_unavailable_retry_count": 0,
+                "service_unavailable_retry_wait_s": 0.0,
             }
 
     def respond(self, inputs, tools, instructions):
@@ -373,6 +385,43 @@ class GeminiClient:
                     raise ProviderError(
                         f"Gemini HTTP {exc.code}{suffix}. Check model access and request parameters."
                     ) from None
+                if exc.code == 503:
+                    detail = _http_error_detail(exc, self._api_key)
+                    suffix = f" Provider detail: {detail}" if detail else ""
+                    service_retries = self.metadata["service_unavailable_retry_count"]
+                    if service_retries >= self.max_service_retries:
+                        if self.budget and reservation_id:
+                            self.budget.release(reservation_id)
+                        raise ProviderError(
+                            f"Gemini HTTP 503 after {request_attempts} attempts; "
+                            f"service retry limit ({self.max_service_retries}) reached."
+                            f"{suffix}"
+                        ) from None
+                    retry_after = _retry_after_seconds(
+                        (exc.headers or {}).get("Retry-After")
+                    )
+                    delay_s = (
+                        retry_after
+                        if retry_after is not None
+                        else min(
+                            MAX_429_BACKOFF_S,
+                            DEFAULT_429_BACKOFF_S * (2**service_retries),
+                        )
+                    )
+                    if delay_s > MAX_RETRY_AFTER_S:
+                        if self.budget and reservation_id:
+                            self.budget.release(reservation_id)
+                        raise ProviderError(
+                            "Gemini HTTP 503; server Retry-After exceeds the "
+                            f"{MAX_RETRY_AFTER_S:g}-second retry limit.{suffix}"
+                        ) from None
+                    self.metadata["service_unavailable_retry_count"] += 1
+                    self.metadata["service_unavailable_retry_wait_s"] = round(
+                        self.metadata["service_unavailable_retry_wait_s"] + delay_s,
+                        3,
+                    )
+                    time.sleep(delay_s)
+                    continue
                 raise ProviderError(f"Gemini HTTP {exc.code}. Check model access and request parameters.") from None
             except (URLError, TimeoutError):
                 raise ProviderError("Gemini request could not complete. Check network access or retry later.") from None

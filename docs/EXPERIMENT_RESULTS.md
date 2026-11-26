@@ -114,6 +114,71 @@ On November 21, 2026, the user's AI Studio Free-tier page showed peak Gemini 3.5
 
 This rate-limit handling changes the implementation hash. The existing Gemini pilot records must remain historical; for an apples-to-apples three-model comparison, run fresh Qwen, GPT-4o, and Gemini grids under this frozen code, using identical cases, conditions, and repetitions. Do not selectively retry individual model failures when scoring the comparison.
 
+## Independent held-out dataset
+
+A separate 24-layout held-out dataset and three refusal probes are now available under `eval/public/heldout/` and `eval/gold/heldout/`. It contains 6 near-boundary cases, 3 pass/fail pairs, 6 competing-rule layouts, and 6 conditional-enclosure layouts. The 24 private oracle labels passed construction checks with zero mismatches and are archived for native-RDB verification.
+
+The held-out run is repeat-ready through `run.py experiments run --heldout`. It is intentionally not mixed with the 56-case benchmark or the frozen November 21-22 grids. A first held-out run should establish baseline accuracy; a later repeated run should report the mean and range over at least three repetitions. The held-out layouts remain generated from the project’s geometry builder and checked by the same KLayout engine, so they strengthen methodological independence but do not replace an external physical oracle.
+
+### First held-out pilot, November 24, 2026
+
+One local Qwen3 8B condition-C repetition completed all 24 held-out benchmark layouts
+and all 3 refusal probes. It scored 24/24 benchmark verdict accuracy, 3/3 probe
+refusals, and 0 execution ERROR records. Selection recall was 24/24 required rule
+instances; the audit recorded six irrelevant citations on conditional-enclosure cases.
+This is a one-repetition pilot and is not a repeated or cross-model result.
+
+### Three-repetition held-out run, November 24-25, 2026
+
+Qwen3 8B condition C was rerun three times in a separate 81-record run directory.
+Each repetition completed 27/27 records and scored 24/24 on the fixed held-out
+benchmark denominator, with 3/3 correct probes and 0 execution ERROR records.
+The mean held-out verdict accuracy was 100% with a range of 100-100%. Selection
+recall was 1.000, probe refusal correctness was 1.000, and numeric grounding was
+1.000 in each repetition. Mean latency was 295.6, 279.6, and 274.9 seconds.
+
+This is strong repeated stability evidence for the local Qwen3 C condition on this
+held-out set. It is not cross-model evidence and does not establish foundry signoff.
+
+### Three-model held-out repetition comparison
+
+Matching held-out condition-C grids were run for GPT-4o and Gemini 3.5 Flash-Lite
+on November 25, 2026:
+
+| Model | Repeat 1 | Repeat 2 | Repeat 3 | ERROR records |
+|---|---:|---:|---:|---:|
+| Qwen3 8B | 24/24 | 24/24 | 24/24 | 0/81 |
+| GPT-4o | 24/24 | 24/24 | 24/24 | 0/81 |
+| Gemini 3.5 Flash-Lite | 20/24 | 14/24 | 15/24 | 23/81 |
+
+Gemini fixed-denominator repetition accuracy was 83.3%, 58.3%, and 62.5%. Across
+all 81 Gemini records, 23 execution ERROR records comprised 22 HTTP 503 provider
+failures and one expected-one-function-call protocol failure. All three models had
+3/3 probe refusals in every repetition. GPT-4o recorded $0.350, $0.346, and $0.355
+in the application cost ledger by repetition.
+
+### Gemini HTTP 503 retry fix
+
+The Gemini adapter was updated after the historical run to retry HTTP 503
+responses with bounded exponential backoff and Retry-After support. In a fresh
+81-record held-out run, repetition accuracies were 22/24 (91.7%), 21/24 (87.5%),
+and 19/24 (79.2%); ERROR records were 4/27, 4/27, and 5/27. Probe refusals were
+1/3, 2/3, and 3/3. There were 13/81 errors, compared with 23/81 in the historical
+run. Among 78 records that encountered a 503, 65 later completed
+after retries and 13 exhausted the retry limit. The historical and fixed runs must
+remain separate because implementation hashes and provider behavior differ; the
+observed difference is not a controlled causal estimate.
+
+### Gemini eight-retry run and quota exhaustion
+
+A later, separate three-repetition run allowed up to eight HTTP 503 retries. Its
+benchmark verdict accuracies were 18/24, 0/24, and 0/24; probe refusals were 0/3 in
+each repetition. There were 9, 27, and 27 ERROR records respectively, all HTTP 429
+after the Gemini free-tier daily request quota was exhausted. The run is not pooled
+with previous results and does not establish that increased retries improve or worsen
+answer quality. Raw records are in
+`runs/experiments/heldout-gemini35-c3-503retry8-20261125/`.
+
 After adding the throttle, a fresh single-record A/b004 smoke in `runs/experiments/gemini35-throttle-smoke-20261121-1610/` returned the expected FAIL prediction with model version `gemini-3.5-flash-lite`, one request attempt, zero 429 retries, and zero pacing wait. Its recorded $0.0006534 is the runner's standard paid-tier estimate, not a Google billing confirmation; the Free-tier dashboard is authoritative for actual charges. This A-condition smoke is unverified by design and is not rate-limit stress evidence or a full-grid result.
 
 The saved full-grid aggregates and records inspected for this report are local under `runs/experiments/main/`, `runs/experiments/gpt4o-full-20261120/`, and `runs/experiments/llama31-full-20261121/`. The later retry smoke and historical pilot/comparison outputs are in their own directories. These ignored raw records should be retained for reproducibility but are not automatically included in a Git submission.

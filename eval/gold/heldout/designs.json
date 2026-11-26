@@ -1,0 +1,944 @@
+[
+  {
+    "case_id": "h001",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h001.gds",
+    "gds_sha256": "a370be77510c8185c556a2b7299f9dc0a75590f41239aed38303eb015922ce90",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.825,
+          0.1,
+          1.325,
+          0.6
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.125um.",
+    "pair_id": null,
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h002",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "FAIL"
+    },
+    "gds_path": "heldout/h002.gds",
+    "gds_sha256": "60e468892fa912644f9c8a474cf834d4842b4cb02d7cd062bc9129b08fc6ee6e",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.83,
+          0.1,
+          1.33,
+          0.6
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.130um.",
+    "pair_id": null,
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h003",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h003.gds",
+    "gds_sha256": "b1530199b9f55e7ec75cc824b8eaec36c8f0678f8ba759ef70088c6f09ed5d56",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.835,
+          0.1,
+          1.335,
+          0.6
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.135um.",
+    "pair_id": null,
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h004",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "heldout/h004.gds",
+    "gds_sha256": "7bb134f53cbbddddb4a880dd936200401304e864ec55308bd4244c056fa3e8fd",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.845,
+          0.1,
+          1.345,
+          0.6
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.145um.",
+    "pair_id": null,
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h005",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h005.gds",
+    "gds_sha256": "96c3ea408eb46bbefd9b5fb7a66cba29630956a6ac8901f68e8f726c8ba93e23",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.85,
+          0.1,
+          1.35,
+          0.6
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.150um.",
+    "pair_id": null,
+    "question": "Is the metal1 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h006",
+    "case_type": "near_boundary",
+    "expected_by_construction": {
+      "m2.2": "PASS"
+    },
+    "gds_path": "heldout/h006.gds",
+    "gds_sha256": "b8edc0e7dec2a57b45e6d1195310c03fc03d99e7c7b892ce885d4ef0582744da",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.2,
+          0.1,
+          0.7,
+          0.6
+        ],
+        "layer": "m2"
+      },
+      {
+        "bbox_um": [
+          0.855,
+          0.1,
+          1.355,
+          0.6
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent held-out spacing=0.155um.",
+    "pair_id": null,
+    "question": "Is the metal2 spacing in TOP within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m2.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h007",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h007.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.0350000000000001,
+          0.2,
+          1.535,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out fail member of hpair01.",
+    "pair_id": "hpair01",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h008",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h008.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.045,
+          0.2,
+          1.545,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out pass member of hpair01.",
+    "pair_id": "hpair01",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h009",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h009.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.0350000000000001,
+          0.2,
+          1.535,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out fail member of hpair02.",
+    "pair_id": "hpair02",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h010",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h010.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.045,
+          0.2,
+          1.545,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out pass member of hpair02.",
+    "pair_id": "hpair02",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h011",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h011.gds",
+    "gds_sha256": "d2103c549d99532ba1efc9a4559e937a8455bbcf0562bc81046ae4fe30cb6ef6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.0350000000000001,
+          0.2,
+          1.535,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out fail member of hpair03.",
+    "pair_id": "hpair03",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h012",
+    "case_type": "pass_fail_pair",
+    "expected_by_construction": {
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h012.gds",
+    "gds_sha256": "9c12c0895be084617744b09998faf02076ce0f4bed5007fde71e704df41c92a6",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.4,
+          0.2,
+          0.9,
+          0.7
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          1.045,
+          0.2,
+          1.545,
+          0.7
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out pass member of hpair03.",
+    "pair_id": "hpair03",
+    "question": "Is the metal1 spacing in this layout within the ordinary requirement?",
+    "relevant_rule_ids": [
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h013",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h013.gds",
+    "gds_sha256": "cebe2a6d8daafd75ce92a8851d4e3b332976940ad34db85fc4ca6e8fc6f09265",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.435,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.5700000000000001,
+          0.2,
+          0.7050000000000001,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.635,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h014",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h014.gds",
+    "gds_sha256": "6c74710b86f467f6754f500d503c39a452f25ca67b19c3573dc5eef5fedc05e9",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.435,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.58,
+          0.2,
+          0.7150000000000001,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.635,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h015",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h015.gds",
+    "gds_sha256": "bcfd82856048ec9ba50c8defe1fda1cdc57cc9ebd5993ca4a9b73189ac602478",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.44499999999999995,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.58,
+          0.2,
+          0.725,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.645,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h016",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h016.gds",
+    "gds_sha256": "f98686d3e6de571c3043809e121623d53688d3c744a6fe66775644198e43e663",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.44499999999999995,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.59,
+          0.2,
+          0.735,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.645,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h017",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "FAIL",
+      "m1.2": "PASS"
+    },
+    "gds_path": "heldout/h017.gds",
+    "gds_sha256": "6c74710b86f467f6754f500d503c39a452f25ca67b19c3573dc5eef5fedc05e9",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.435,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.58,
+          0.2,
+          0.7150000000000001,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.635,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h018",
+    "case_type": "competing_rules",
+    "expected_by_construction": {
+      "m1.1": "PASS",
+      "m1.2": "FAIL"
+    },
+    "gds_path": "heldout/h018.gds",
+    "gds_sha256": "bcfd82856048ec9ba50c8defe1fda1cdc57cc9ebd5993ca4a9b73189ac602478",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.3,
+          0.2,
+          0.44499999999999995,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          0.58,
+          0.2,
+          0.725,
+          0.8
+        ],
+        "layer": "m1"
+      },
+      {
+        "bbox_um": [
+          2.5,
+          0.3,
+          2.645,
+          0.7
+        ],
+        "layer": "m2"
+      }
+    ],
+    "notes": "Independent layout with a separate metal2 distractor.",
+    "pair_id": null,
+    "question": "Check ordinary metal1 width and spacing in TOP; ignore metal2.",
+    "relevant_rule_ids": [
+      "m1.1",
+      "m1.2"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h019",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "PASS"
+    },
+    "gds_path": "heldout/h019.gds",
+    "gds_sha256": "e9ef8ef9a18c3c6ece8ecc0b4aa4258a575bc1c81f4b1011376d3d4c1535d30b",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.75,
+          0.7100000000000001,
+          1.0,
+          1.04
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.05, 0.09, 0.05, 0.09].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h020",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "heldout/h020.gds",
+    "gds_sha256": "d851902cc36a24c76cc6ace514e18438fb3b2ae6d27ae5209a57f0fdd8de427a",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.74,
+          0.74,
+          1.045,
+          1.045
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.06, 0.06, 0.095, 0.095].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h021",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "PASS"
+    },
+    "gds_path": "heldout/h021.gds",
+    "gds_sha256": "11971240961e028b158f796eb23f8a3091e99afe46a898f77a1c554857c82019",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.7050000000000001,
+          0.75,
+          1.045,
+          1.0
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.095, 0.05, 0.095, 0.05].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h022",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "PASS"
+    },
+    "gds_path": "heldout/h022.gds",
+    "gds_sha256": "e9ef8ef9a18c3c6ece8ecc0b4aa4258a575bc1c81f4b1011376d3d4c1535d30b",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.75,
+          0.7100000000000001,
+          1.0,
+          1.04
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.05, 0.09, 0.05, 0.09].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h023",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "PASS",
+      "via.5a": "FAIL"
+    },
+    "gds_path": "heldout/h023.gds",
+    "gds_sha256": "d851902cc36a24c76cc6ace514e18438fb3b2ae6d27ae5209a57f0fdd8de427a",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.74,
+          0.74,
+          1.045,
+          1.045
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.06, 0.06, 0.095, 0.095].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  },
+  {
+    "case_id": "h024",
+    "case_type": "conditional_enclosure",
+    "expected_by_construction": {
+      "via.4a": "FAIL",
+      "via.5a": "PASS"
+    },
+    "gds_path": "heldout/h024.gds",
+    "gds_sha256": "11971240961e028b158f796eb23f8a3091e99afe46a898f77a1c554857c82019",
+    "geometry": [
+      {
+        "bbox_um": [
+          0.8,
+          0.8,
+          0.95,
+          0.95
+        ],
+        "layer": "via"
+      },
+      {
+        "bbox_um": [
+          0.7050000000000001,
+          0.75,
+          1.045,
+          1.0
+        ],
+        "layer": "m1"
+      }
+    ],
+    "notes": "Independent held-out enclosure margins=[0.095, 0.05, 0.095, 0.05].",
+    "pair_id": null,
+    "question": "Check the minimum and corner-based metal1 enclosure of this 0.15um via.",
+    "relevant_rule_ids": [
+      "via.4a",
+      "via.5a"
+    ],
+    "split": "benchmark"
+  }
+]

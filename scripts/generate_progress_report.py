@@ -63,6 +63,7 @@ add_heading(document, "Completed work")
 add_bullets(document, [
     "Pinned the SKY130 sources, layer map, KLayout 0.30.7 checker, and eight-rule supported scope.",
     "Created 50 benchmark layouts, six development layouts, six unsupported-scope probes, and 56-case labels.",
+    "Created a separate 24-layout held-out dataset with 3 refusal probes, private labels, and native-RDB verification.",
     "Implemented rule retrieval, layout inspection, selected-rule DRC, bounded tool calls, structured claim verification, and refusal handling.",
     "Implemented local Ollama Qwen3 8B plus optional Gemini 3.5 Flash-Lite and OpenAI GPT-4o adapters.",
     "Built a resumable A/B/C experiment runner, evaluator-only scoring, local UI, raw traces, and provider metadata capture.",
@@ -99,6 +100,9 @@ add_heading(document, "Validity limitations")
 add_bullets(document, [
     "The 50-layout benchmark is small and was previously exposed during team debugging.",
     "The benchmark is curated and not representative of full-chip signoff workloads.",
+    "The benchmark is project-constructed; it is not a standard open-source SKY130/OpenROAD or Magic test suite.",
+    "Three held-out Qwen3 C repetitions scored 24/24 with no errors, but this is one-model evidence only.",
+    "The agent explains and verifies DRC results. It does not edit GDS layouts or run layout-fixing tools.",
     "The oracle and implementation use the same KLayout engine, so this is not an independent foundry oracle.",
     "The supported scope covers eight ordinary metal1/metal2 and via-enclosure rules.",
     "A/B outputs are unverified coordinate/retrieval predictions; C also covers only model-selected rules.",
@@ -116,20 +120,19 @@ add_bullets(document, [
 
 add_heading(document, "Questions for professor feedback")
 add_bullets(document, [
-    "How should we present preliminary model accuracy when the benchmark was previously exposed and has only one repetition?",
-    "Which stronger evidence is preferred: independent held-out layouts or repeated runs on a separate held-out set?",
-    "Is 24–56 unseen layouts sufficient for a course project, or should we reduce scope and focus on C only?",
-    "Should uncertainty be reported as Wilson intervals, paired-layout differences, or a fixed-result caveat only?",
-    "For the final submission, is a written report plus recorded demo sufficient, or should we add a live walkthrough?",
+    "The professor confirmed that the exposed 168-record runs are only sanity checks.",
+    "The professor recommends 24–56 genuinely unseen layouts and 2–3 repetitions.",
+    "The final report should count ERROR under a fixed denominator and break execution-error rate out separately.",
+    "The final deliverables are slides due December 3 and an <=8-page LaTeX report plus GitHub repo and 2-minute demo due December 15.",
 ])
 
 add_heading(document, "Immediate next steps")
 add_bullets(document, [
-    "Clean, archive, and document the raw run directories rather than rerunning the same benchmark.",
-    "Review the report and demo with the professor.",
-    "Before further model comparison, freeze a prompt/implementation and reserve a genuinely independent held-out layout set.",
-    "If repeated evaluation is approved, run at least three repetitions and keep every original record.",
-    "Record a short deterministic demo and submit this repository plus the progress PDF/DOCX.",
+    "Preserve and separate historical/exposed runs; do not pool or hide them.",
+    "Run 24 unseen layouts for all selected models with 2–3 repetitions when API and local budgets permit.",
+    "Keep every original ERROR and report mean/range or confidence intervals across repetitions.",
+    "Finish the conference-format LaTeX report and 2-minute demo video.",
+    "Upload the progress PDF/DOCX and linked repository to Canvas.",
 ])
 
 document.save(OUT_DOCX)
@@ -176,6 +179,7 @@ section("Completed work")
 bullets([
     "Pinned KLayout, SKY130 sources, layer map, and eight-rule supported scope.",
     "Built rule retrieval, layout inspection, selected-rule DRC, bounded tool calls, structured final answers, and deterministic verification.",
+    "Created a separate 24-layout held-out dataset with private labels and native-RDB verification.",
     "Implemented local Qwen3 8B plus optional Gemini 3.5 Flash-Lite and GPT-4o adapters.",
     "Built a resumable A/B/C runner, local UI, traces, evaluator-only scoring, and reproducibility checks.",
     "Completed 113 passing automated tests and 1 intentional platform-specific skip.",
@@ -207,6 +211,8 @@ bullets([
 section("Validity limitations")
 bullets([
     "The 50-layout benchmark is small and previously exposed.",
+    "It is project-constructed, not a standard open-source SKY130/OpenROAD or Magic suite.",
+    "The agent explains and verifies DRC results but does not edit GDS layouts.",
     "The oracle and implementation use the same KLayout engine.",
     "A/B outputs are predictions; C verifies only model-selected rules.",
     "One repetition provides no run-to-run uncertainty.",
@@ -215,20 +221,19 @@ bullets([
 
 section("Questions for professor feedback")
 bullets([
-    "How should preliminary model accuracy be presented given prior exposure and one repetition?",
-    "Which stronger evidence is preferred: independent held-out layouts or repeated held-out runs?",
-    "Is 24–56 unseen layouts sufficient for a course project?",
-    "Which uncertainty summary is most appropriate?",
-    "Is a written report plus recorded demo sufficient for the final submission?",
+    "The professor confirmed that the exposed 168-record runs are sanity checks, not generalization evidence.",
+    "The professor recommends 24–56 unseen layouts and 2–3 repetitions.",
+    "ERROR is included in fixed-denominator accuracy and reported separately as execution-error rate.",
+    "Slides are due December 3; the <=8-page LaTeX report, repository, and 2-minute demo are due December 15.",
 ])
 
 section("Immediate next steps")
 bullets([
-    "Archive the three full grids and keep earlier runs separate.",
-    "Review the report and demo with the professor.",
-    "Before another comparison, freeze the protocol and reserve independent held-out layouts.",
-    "If repetition is approved, run at least three repetitions and preserve every original record.",
-    "Record a short deterministic demo and submit this repository plus the progress report.",
+    "Preserve and separate historical/exposed runs rather than pooling or hiding them.",
+    "Run the held-out set across selected models with 2–3 repetitions when budgets permit.",
+    "Keep every original record and report mean/range or intervals rather than replacing `ERROR` outcomes.",
+    "Finish the conference-format LaTeX report and 2-minute demo.",
+    "Submit the progress PDF/DOCX and repository to Canvas.",
 ])
 
 pdf.build(story)

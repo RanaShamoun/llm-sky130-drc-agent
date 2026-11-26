@@ -1,0 +1,14 @@
+[
+  {
+    "case_id": "ho001",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "ho002",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  },
+  {
+    "case_id": "ho003",
+    "expected_action": "REFUSE_OR_EXPLAIN_UNSUPPORTED_SCOPE"
+  }
+]

@@ -4,9 +4,36 @@ import pytest
 
 from drc_explain.benchmark import generate
 from drc_explain.common import read_json
+from drc_explain.heldout import designs as heldout_designs
+from drc_explain.heldout import generate as generate_heldout
 from drc_explain.reports import ReportError, marker_measurement, parse_report
 from drc_explain.runner import Checker, CheckerError
 from drc_explain.tools import Toolset, retrieve_rules
+
+
+def test_heldout_dataset_is_separate_and_complete(tmp_path):
+    result = generate_heldout(tmp_path)
+    public = read_json(tmp_path / "public" / "heldout" / "cases.json")
+    probes = read_json(tmp_path / "public" / "heldout" / "probes.json")
+    gold = read_json(tmp_path / "gold" / "heldout" / "designs.json")
+
+    assert result == {"heldout_benchmark": 24, "heldout_probes": 3}
+    assert len(public) == len(gold) == 24
+    assert len(probes) == 3
+    assert {row["case_id"] for row in public} == {row["case_id"] for row in gold}
+    assert all(row["gds_path"].startswith("heldout/") for row in public)
+    assert all((tmp_path / "public" / row["gds_path"]).is_file() for row in public)
+    assert len({row["gds_sha256"] for row in public}) >= 12
+
+    categories = {}
+    for row in heldout_designs():
+        categories[row["case_type"]] = categories.get(row["case_type"], 0) + 1
+    assert categories == {
+        "near_boundary": 6,
+        "pass_fail_pair": 6,
+        "competing_rules": 6,
+        "conditional_enclosure": 6,
+    }
 
 
 def test_original_marker_has_correct_units():

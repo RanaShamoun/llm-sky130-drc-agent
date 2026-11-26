@@ -10,6 +10,7 @@ from drc_explain.experiments import (
     run_grid,
     score_grid,
 )
+from drc_explain.heldout import generate as generate_heldout
 
 
 class Client:
@@ -219,6 +220,44 @@ def test_gemini_experiment_records_provider_and_budget(tmp_path):
     assert "Gemini API cost is estimated at Google's standard paid-tier" in (
         tmp_path / "results.md"
     ).read_text()
+
+
+def test_heldout_experiment_records_separate_dataset(tmp_path):
+    generate_heldout(tmp_path)
+
+    class HeldoutFixture(Client):
+        def __init__(self, model, timeout_s):
+            super().__init__(("finalize_answer", {
+                "verdict": "REFUSE",
+                "claims": [],
+                "selections": [],
+                "refusal_reason": "Held-out fixture.",
+            }))
+            self.model = model
+            self.timeout_s = timeout_s
+
+    run_grid(
+        tmp_path / "experiment",
+        ["fixture"],
+        ["A"],
+        ["h001"],
+        probes=False,
+        client_factory=HeldoutFixture,
+        cases_file=tmp_path / "public" / "heldout" / "cases.json",
+        public_root=tmp_path / "public",
+        gold_root=tmp_path / "gold" / "heldout",
+    )
+    manifest = json.loads(
+        (tmp_path / "experiment" / "manifest.json").read_text()
+    )
+    record = json.loads(
+        (tmp_path / "experiment" / "model0" / "A" / "1" / "h001" / "record.json").read_text()
+    )
+    cases_file = manifest["dataset"]["cases_file"].replace("\\", "/")
+    gold_root = manifest["dataset"]["gold_root"].replace("\\", "/")
+    assert cases_file.endswith("public/heldout/cases.json")
+    assert gold_root.endswith("gold/heldout")
+    assert record["case_id"] == "h001"
 
 
 def test_gemini_experiment_cli_requires_budget(tmp_path, monkeypatch):

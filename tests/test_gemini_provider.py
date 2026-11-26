@@ -316,6 +316,85 @@ def test_gemini_not_found_exposes_model_detail(monkeypatch):
     assert "gemini-2.5-flash is not available" in str(error.value)
 
 
+def test_gemini_retries_503_and_records_wait(monkeypatch):
+    attempts = []
+    sleeps = []
+
+    def open_request(request, timeout, context):
+        attempts.append(request)
+        if len(attempts) == 1:
+            raise HTTPError(
+                request.full_url,
+                503,
+                "Service Unavailable",
+                {"Retry-After": "2"},
+                BytesIO(b'{"error":{"message":"Service temporarily unavailable."}}'),
+            )
+        return BytesIO(json.dumps({
+            "responseId": "retry-response",
+            "candidates": [{
+                "content": {
+                    "parts": [{
+                        "functionCall": {
+                            "name": "finalize_answer",
+                            "args": {"verdict": "REFUSE"},
+                        }
+                    }]
+                }
+            }],
+            "usageMetadata": {
+                "promptTokenCount": 10,
+                "candidatesTokenCount": 5,
+            },
+        }).encode())
+
+    monkeypatch.setattr("drc_explain.gemini_provider.urlopen", open_request)
+    monkeypatch.setattr("drc_explain.gemini_provider.time.sleep", sleeps.append)
+    client = GeminiClient(model="gemini-3.5-flash-lite", api_key="test-secret")
+
+    response = client.respond([], model_tools(), "Instructions")
+
+    assert len(attempts) == 2
+    assert response["status"] == "completed"
+    assert client.metadata["request_attempt_count"] == 2
+    assert client.metadata["service_unavailable_retry_count"] == 1
+    assert client.metadata["service_unavailable_retry_wait_s"] == 2
+    assert sleeps == [2]
+
+
+def test_gemini_exhausted_503_releases_budget_reservation(monkeypatch, tmp_path):
+    sleeps = []
+
+    def fail(request, timeout, context):
+        raise HTTPError(
+            request.full_url,
+            503,
+            "Service Unavailable",
+            {},
+            BytesIO(b'{"error":{"message":"Model overloaded."}}'),
+        )
+
+    monkeypatch.setattr("drc_explain.gemini_provider.urlopen", fail)
+    monkeypatch.setattr("drc_explain.gemini_provider.time.sleep", sleeps.append)
+    budget = GeminiBudget(0.10, tmp_path / "gemini_budget.json")
+    client = GeminiClient(
+        model="gemini-3.5-flash-lite",
+        api_key="test-secret",
+        budget=budget,
+        max_service_retries=1,
+    )
+
+    with pytest.raises(ProviderError, match="HTTP 503 after 2 attempts"):
+        client.respond([], model_tools(), "Instructions")
+
+    assert budget.pending_usd == 0
+    assert client.metadata["request_attempt_count"] == 2
+    assert client.metadata["service_unavailable_retry_count"] == 1
+    assert sleeps == [5]
+    ledger = json.loads((tmp_path / "gemini_budget.json").read_text())
+    assert ledger["reservations_usd"] == {}
+
+
 def test_gemini_retries_429_and_records_wait(monkeypatch):
     attempts = []
     sleeps = []
